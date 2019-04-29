@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DIG MAD</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse sticky-top">
+      <div class="header-logo">
+        <%= link_to "D I G  M A D", root_path, class: "logo"%>
+        <!-- ログインしているときはロゴをクリックするとインデックスに飛ぶ -->
+        <!-- jQueryでスクロールアニメーション -->
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- ログインしたときのヘッダー -->
+      <% if user_signed_in? %>
+        <li>
+          <%=link_to("MY PAGE",'#')%>
+        </li>
+        <li>
+          <%=link_to("ログアウト",destroy_user_session_path, :method => :delete)%>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "DIG MADとは？",'#'%>
+          <!-- jQueryでスクロールアニメーション -->
+        </li>
+        <li>
+          <%=link_to "新規登録",new_user_registration_path%>
+        </li>
+        <li>
+          <%=link_to "ログイン",new_user_session_path%>
+        </li>
+      <%end%>
+      </ul>
+    </header>
+    <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+  </body>
+</html>

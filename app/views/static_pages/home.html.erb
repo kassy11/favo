@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+<h1>わっしょい！！</h1>
+<%else%>
+<div class="servise_landing">
+  <div class="landing-container">
+    <h1 class="text-center font-weight-bold ">Let's start DIG MAD!</h1>
+    <%=link_to "新規登録する",new_user_registration_path, class:"btn btn-primary btn-lg"%>
+  </div>
+</div>
+
+<div class="servise_about" id="about">
+  <div class="about-container">
+<!-- サービスの説明 -->
+  </div>
+</div>
+<%end%>

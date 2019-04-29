@@ -1,0 +1,16 @@
+<h1 class="text-center font-weight-bold">検索結果</h1>
+<div class="search-results">
+  <!-- 検索結果がないときを条件分岐で書く -->
+    <p><%=@artists[0]%></p>
+    <% @artists.each do |artist| %>
+      <div class="search-info">
+        <h3 class="text-center font-weight-bold pt-10"><%= artist.name %></h3>
+          <% if artist.images.any?%>
+            <%image = artist.images[1]%>
+            <%= image_tag(image["url"])%>
+          <%else%>
+            <%=image_tag("no_image.jpg")%>
+          <%end%>
+      </div>
+    <%end%>
+</div>
