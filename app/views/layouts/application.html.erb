@@ -20,7 +20,7 @@
         <!-- ログインしたときのヘッダー -->
       <% if user_signed_in? %>
         <li>
-          <%=link_to("MY PAGE",'#')%>
+          <%=link_to("MY PAGE","/users/#{current_user.id}")%>
         </li>
         <li>
           <%=link_to("ログアウト",destroy_user_session_path, :method => :delete)%>

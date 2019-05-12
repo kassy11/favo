@@ -1,10 +1,9 @@
 <h1 class="text-center font-weight-bold">検索結果</h1>
+<!-- 検索結果があるとないときで分けたい -->
 <div class="search-results">
-  <!-- 検索結果がないときを条件分岐で書く -->
-    <p><%=@artists[0]%></p>
     <% @artists.each do |artist| %>
       <div class="search-info">
-        <h3 class="text-center font-weight-bold pt-10"><%= artist.name %></h3>
+        <%= link_to(artist.name, "/musics/#{artist.id}")%>
           <% if artist.images.any?%>
             <%image = artist.images[1]%>
             <%= image_tag(image["url"])%>

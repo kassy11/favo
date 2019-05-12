@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
+  post "musics/:artist_id/create" => "musics#create",param: :artist_id
+  post "musics/:artist_id/destroy" => "musics#destroy", param: :artist_id
+
   devise_for :users
-  get 'users/:id' => 'users#show'
+  resources :users, only: [:show]
   get 'musics/search' => 'musics#search'
   get 'musics/index' => 'musics#index'
   post 'musics/index' => 'musics#index'
+  resources :musics, only: :show, param: :artist_id
+
+
   get 'books/search' => 'books#search'
   get 'books/index' => 'books#index'
+
   get 'movies/search' => 'movies#index'
   get 'movies/index' => 'movies#index'
-  root 'static_pages#home'
 
+  root 'static_pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

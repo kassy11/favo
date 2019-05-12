@@ -1,0 +1,9 @@
+<h1><%=@artist.name%></h1>
+<% if @artist.images.any?%>
+  <%image = @artist.images[1]%>
+  <%= image_tag(image["url"])%>
+<%else%>
+  <%=image_tag("no_image.jpg")%>
+<%end%>
+
+<%= link_to("リストに追加する","/musics/#{@artist.id}/create", {method: "post"})%>

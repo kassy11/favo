@@ -3,5 +3,6 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @movies = 
   end
 end

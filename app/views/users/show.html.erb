@@ -14,6 +14,19 @@
         <h1>YOUR FAVORITE</h1>
         <div class="music_list">
           <h3>MUSIC LIST</h3>
+
+            <%@user.my_musics.each do |my_music|%>
+              <%artist = RSpotify::Artist.find(my_music.artist_id)%>
+              <%=artist.name%>
+              <%= link_to("リストから削除する","/musics/#{artist.id}/destroy", {method: "post"})%>
+              <% if artist.images.any?%>
+                <%image = artist.images[2]%>
+                <%= image_tag(image["url"])%>
+              <%else%>
+                <%=image_tag("no_image.jpg")%>
+              <%end%>
+            <%end%>
+
           <%= link_to "編集する",musics_search_path%>
         </div>
         <div class="movie_list">

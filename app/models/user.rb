@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   # validates :name, presence: true#追記
   validates :profile, length: { maximum: 300 } #追記
+
+  def my_musics
+    return Music.where(user_id: self.id)
+  end
 end

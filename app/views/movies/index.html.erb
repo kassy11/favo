@@ -1,2 +1,14 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+<h1 class="text-center font-weight-bold">検索結果</h1>
+<div class="search-results">
+    <% @artists.each do |artist| %>
+      <div class="search-info">
+        <h3 class="text-center font-weight-bold pt-10"><%= artist.name %></h3>
+          <% if artist.images.any?%>
+            <%image = artist.images[1]%>
+            <%= image_tag(image["url"])%>
+          <%else%>
+            <%=image_tag("no_image.jpg")%>
+          <%end%>
+      </div>
+    <%end%>
+</div>
