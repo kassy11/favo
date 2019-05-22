@@ -1,14 +1,13 @@
 <h1 class="text-center font-weight-bold">検索結果</h1>
+<!-- 検索結果があるとないときで分けたい -->
+<% if @movies.any?%>
 <div class="search-results">
-    <% @artists.each do |artist| %>
+    <% @movies.each do |movie| %>
       <div class="search-info">
-        <h3 class="text-center font-weight-bold pt-10"><%= artist.name %></h3>
-          <% if artist.images.any?%>
-            <%image = artist.images[1]%>
-            <%= image_tag(image["url"])%>
-          <%else%>
-            <%=image_tag("no_image.jpg")%>
-          <%end%>
+      <%= movie.name%>
       </div>
     <%end%>
 </div>
+<%else%>
+    <h1>なし</h1>
+<%end%>
