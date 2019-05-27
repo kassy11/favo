@@ -5,4 +5,5 @@ class Music < ApplicationRecord
   def artist
     @music_fav = Music.find_by(id: self.artist_id)
   end
+  
 end
