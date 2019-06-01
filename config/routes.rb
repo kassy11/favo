@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :musics, only: :show, param: :artist_id
 
   get 'books/search' => 'books#search'
-  get 'books/index' => 'books#index'
+  post 'books/index' => 'books#index'
 
   get 'movies/search' => 'movies#search'
   post 'movies/index' => 'movies#index'

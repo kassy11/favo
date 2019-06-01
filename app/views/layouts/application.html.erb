@@ -12,8 +12,12 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse sticky-top">
       <div class="header-logo">
-        <%= link_to "D I G  M A D", root_path, class: "logo"%>
-        <!-- ログインしているときはロゴをクリックするとインデックスに飛ぶ -->
+        <%if user_signed_in?%>
+          <%=link_to "F A V",users_path(id: current_user.id),class: "logo"%>
+        <%else%>
+          <%= link_to "F A V", root_path, class: "logo"%>
+        <%end%>
+
         <!-- jQueryでスクロールアニメーション -->
       </div>
       <ul class="nav navbar-nav navbar-right">
@@ -27,8 +31,8 @@
         </li>
       <% else %>
         <li>
-          <%= link_to "DIG MADとは？",'#'%>
-          <!-- jQueryでスクロールアニメーション -->
+          <%= link_to "F A Vとは？",'#'%>
+          <!-- jQueryでスクロールアニメーションをつける -->
         </li>
         <li>
           <%=link_to "新規登録",new_user_registration_path%>
