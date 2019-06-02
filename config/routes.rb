@@ -3,16 +3,18 @@ Rails.application.routes.draw do
   post "musics/:artist_id/destroy" => "musics#destroy", param: :artist_id
 
   devise_for :users
-  resources :users, only: [:show]
+  # resources :users, only: [:show]
+  get 'users/:id' => 'users#show', as: :mypage
 
-  get 'musics/search' => 'musics#search'
+  # get 'musics/search' => 'musics#search'
+  get 'users/:id/music_index' => 'users#music_index', as: :my_music
   post 'musics/index' => 'musics#index'
   resources :musics, only: :show, param: :artist_id
 
-  get 'books/search' => 'books#search'
+  get 'users/:id/book_index' => 'users#book_index', as: :my_book
   post 'books/index' => 'books#index'
 
-  get 'movies/search' => 'movies#search'
+  get 'users/:id/movie_index' => 'users#movie_index', as: :my_movie
   post 'movies/index' => 'movies#index'
 
   root 'static_pages#home'

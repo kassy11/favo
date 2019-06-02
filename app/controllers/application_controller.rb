@@ -3,13 +3,18 @@ class ApplicationController < ActionController::Base
 
   # 新規登録後のリダイレクト先をマイページへ
     def after_sign_in_path_for(resource)
-        root_path
+        mypage_path(resource)
     end
 
   # サインイン後のリダイレクト先をマイページへ
     def after_sign_in_path_for(resource)
-        root_path
+        mypage_path(resource)
     end
+
+    #ユーザ編集後のリダイレクト先をマイページに
+    # def after_update_path_for(resource)
+    #   mypage_path(resource)
+    # end
 
     # サインアウト後のリダイレクト先をトップページへ
     def after_sign_out_path_for(resource)
@@ -21,6 +26,6 @@ class ApplicationController < ActionController::Base
     # サインアップ時にnameのストロングパラメータを追加
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     # アカウント編集の時にname,profile,imageのストロングパラメータを追加する
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile,:image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile])
   end
 end

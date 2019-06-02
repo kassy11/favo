@@ -1,0 +1,18 @@
+<h3>アーティスト名で検索</h3>
+  <%= form_tag(controller:"musics",action:"index") do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索',:name => nil %>
+  <% end %>
+
+<h1>MUSIC LIST</h1>
+<%@user.my_musics.each do |my_music|%>
+  <%artist = RSpotify::Artist.find(my_music.artist_id)%>
+  <%=artist.name%>
+  <%= link_to("リストから削除する","/musics/#{artist.id}/destroy", {method: "post"})%>
+  <% if artist.images.any?%>
+    <%image = artist.images[2]%>
+    <%= image_tag(image["url"])%>
+  <%else%>
+    <%=image_tag("no_image.jpg")%>
+  <%end%>
+<%end%>

@@ -1,9 +1,13 @@
-<h1 class="text-center font-weight-bold">検索結果</h1>
+<!-- <h1 class="text-center font-weight-bold">検索結果</h1> -->
 <!-- 検索結果があるとないときで分けたい -->
-<div class="search-results">
-    <% @books.each do |book| %>
-      <div class="search-info">
-        <%=book%>
-      </div>
-    <%end%>
+<!-- <div class ="col-md-2">
+
+</div> -->
+<div class="search-results col-md-8">
+  <%=@books["items"][1]["volumeInfo"]["title"]%>
+
 </div>
+
+<!-- <div class="col-md-2">
+
+</div> -->
