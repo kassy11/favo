@@ -12,6 +12,35 @@
         <p>プロフィール : <%= @user.profile %></p>
       </div>
 
+      <div class="user_lists">
+
+        <div class="music_list">
+          <h3>MUSIC LIST   <%= link_to "編集する","/users/#{current_user.id}/music_index",:class => "list-btn btn btn-primary"%></h3>
+            <!-- ユーザ詳細にはベスト５くらいまでを表示して一覧＆編集ページにリンクを飛ばす -->
+          <%@user.my_musics.first(5).each do |my_music|%>
+              <%artist = RSpotify::Artist.find(my_music.artist_id)%>
+              <% if artist.images.any?%>
+                <%image = artist.images[2]%>
+                <%=link_to "/musics/#{artist.id}" do%>
+                  <%=image_tag image["url"]%>
+                <%end%>
+              <%else%>
+                <%=image_tag("no_image.jpg")%>
+              <%end%>
+          <%end%>
+
+
+        </div>
+
+        <div class="movie_list">
+          <h3>MOVIE LIST   <%= link_to "編集する","/users/#{current_user.id}/movie_index",:class => "btn btn-primary"%></h3>
+
+        </div>
+        <div class="book_list">
+          <h3>BOOK LIST <%= link_to "編集する","/users/#{current_user.id}/book_index",:class => "btn btn-primary"%></h3>
+
+        </div>
+      </div>
       <!-- URLコピーボタン：何回でもコピーできるようにする -->
       <div class="copy-button">
       <button type="button" id="copy-page"><span id="cAction">URLをコピー</span></button>
@@ -26,37 +55,6 @@
         document.getElementById("cAction").innerHTML = "コピーしました";
           };
         </script>
-      </div>
-
-      <div class="user_lists">
-
-        <div class="music_list">
-          <h3>MUSIC LIST</h3>
-          <%= link_to "編集する","/users/#{current_user.id}/music_index"%>
-            <!-- ユーザ詳細にはベスト５くらいまでを表示して一覧＆編集ページにリンクを飛ばす -->
-          <%@user.my_musics.first(5).each do |my_music|%>
-              <%artist = RSpotify::Artist.find(my_music.artist_id)%>
-              <%=artist.name%>
-              <%= link_to("リストから削除する","/musics/#{artist.id}/destroy", {method: "post"})%>
-
-              <% if artist.images.any?%>
-                <%image = artist.images[2]%>
-                <%= image_tag(image["url"])%>
-              <%else%>
-                <%=image_tag("no_image.jpg")%>
-              <%end%>
-          <%end%>
-
-
-        </div>
-        <div class="movie_list">
-          <h3>MOVIE LIST</h3>
-          <%= link_to "編集する","/users/#{current_user.id}/movie_index"%>
-        </div>
-        <div class="book_list">
-          <h3>BOOK LIST</h3>
-          <%= link_to "編集する","/users/#{current_user.id}/book_index"%>
-        </div>
       </div>
     </div>
     <div class="col-md-2">

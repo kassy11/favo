@@ -8,11 +8,13 @@
 <%@user.my_musics.each do |my_music|%>
   <%artist = RSpotify::Artist.find(my_music.artist_id)%>
   <%=artist.name%>
-  <%= link_to("リストから削除する","/musics/#{artist.id}/destroy", {method: "post"})%>
   <% if artist.images.any?%>
     <%image = artist.images[2]%>
-    <%= image_tag(image["url"])%>
+    <%=link_to "/musics/#{artist.id}" do%>
+      <%=image_tag image["url"]%>
+    <%end%>
   <%else%>
     <%=image_tag("no_image.jpg")%>
   <%end%>
+  <%= link_to("削除","/musics/#{artist.id}/destroy", {method: "post",:class => "btn btn-primary"})%>
 <%end%>
