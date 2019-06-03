@@ -1,24 +1,18 @@
 <h1 class="text-center font-weight-bold">検索結果</h1>
 <!-- 検索結果があるとないときで分けたい -->
 <div class="search-results">
-    <% @artists.each do |artist| %>
-      <div class="search-info">
-        <%= link_to(artist.name, "/musics/#{artist.id}")%>
-          <% if artist.images.any?%>
-            <%image = artist.images[1]%>
-            <%= image_tag(image["url"])%>
-          <%else%>
-            <%=image_tag("no_image.jpg")%>
-          <%end%>
-      </div>
+  <div class="card" style="width: 20rem;">
+  <% @artists.each do |artist| %>
+    <% if artist.images.any?%>
+      <%image = artist.images[1]%>
+      <%= image_tag(image["url"], :class => "card-img-top")%>
+    <%else%>
+      <%=image_tag("no_image.jpg", :class => "card-img-top")%>
     <%end%>
-</div>
-
-
-<div class="card" style="width: 20rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text"><%=%></p>
+    <div class="card-body">
+      <h4 class="card-title"><%= link_to(artist.name, "/musics/#{artist.id}")%></h4>
+      <p class="card-text"><%=artist.genres[0]%></p>
+    </div>
+  <%end%>
   </div>
 </div>
