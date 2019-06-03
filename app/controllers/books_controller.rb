@@ -3,9 +3,6 @@ class BooksController < ApplicationController
   require "json"
   require 'uri'
 
-  def search
-  end
-
   def index
     url = 'https://www.googleapis.com/books/v1/volumes?q='
     request = url + params[:search]

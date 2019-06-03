@@ -1,0 +1,7 @@
+<h3>作品名で検索</h3>
+  <%= form_tag(controller:"movies",action:"index") do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索',:name => nil %>
+<% end %>
+
+<h1>MOVIE LIST</h1>

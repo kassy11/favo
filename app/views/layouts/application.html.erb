@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FAV</title>
+    <title>FAVO</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- milligramを導入 -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+    <!-- デフォルトのカラーを変更 -->
+    <link rel="stylesheet" color="#2181cf" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css">
+      <script>
+        !function(){var e=new XMLHttpRequest,t=document.querySelectorAll("link[color]")[0];e.timeout=3e4,e.open("get",t.getAttribute("href"),!0),e.onreadystatechange=function(){if(200==this.status&&""!=this.responseText){e.onreadystatechange=null;var n=this.responseText,a=t.getAttribute("color");n=n.replace(/#9b4dca/g,a);var o=document.getElementsByTagName("head").item(0),r=document.createElement("style"),s=document.createTextNode(n);r.media="screen",r.type="text/css",r.appendChild(s),o.appendChild(r)}},e.send()}();
+      </script>
   </head>
 
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse sticky-top">
       <div class="header-logo">
         <%if user_signed_in?%>
-          <%=link_to "F A V","/users/#{current_user.id}",class: "logo"%>
+          <%=link_to "F A V O","/users/#{current_user.id}",class: "logo"%>
         <%else%>
-          <%= link_to "F A V", root_path, class: "logo"%>
+          <%= link_to "F A V O", root_path, class: "logo"%>
         <%end%>
 
         <!-- jQueryでスクロールアニメーション -->
@@ -30,8 +41,8 @@
           <%=link_to("ログアウト",destroy_user_session_path, :method => :delete)%>
         </li>
       <% else %>
-        <li>
-          <%= link_to "F A Vとは？",'#'%>
+        <li >
+          <%= link_to "F A V Oとは？",'#about',{:id => "header_about"}%>
           <!-- jQueryでスクロールアニメーションをつける -->
         </li>
         <li>

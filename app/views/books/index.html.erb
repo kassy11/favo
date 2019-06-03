@@ -4,10 +4,7 @@
 
 </div> -->
 <div class="search-results col-md-8">
-  <%=@books["items"][1]["volumeInfo"]["title"]%>
-
+  <%for i in 0..5 do%>
+    <%=@books["items"][i]["volumeInfo"]["title"]%>
+  <%end%>
 </div>
-
-<!-- <div class="col-md-2">
-
-</div> -->
