@@ -4,4 +4,17 @@
     <%= submit_tag '検索',:name => nil %>
   <% end %>
 
-<h1>ユーザのリストの一覧表示</h1>
+<h1>BOOK LIST</h1>
+<%@user.my_books.each do |my_book|%>
+  <%artist = RSpotify::Artist.find(my_music.artist_id)%>
+  <%=artist.name%>
+  <% if artist.images.any?%>
+    <%image = artist.images[2]%>
+    <%=link_to "/musics/#{artist.id}" do%>
+      <%=image_tag image["url"]%>
+    <%end%>
+  <%else%>
+    <%=image_tag("no_image.jpg")%>
+  <%end%>
+  <%= link_to("削除","/musics/#{artist.id}/destroy", {method: "post",:class => "btn btn-primary"})%>
+<%end%>

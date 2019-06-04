@@ -15,5 +15,6 @@ before_action :authenticate_user!
 
   def book_index
     @user = User.find_by(id: current_user.id)
+    books = @user.my_books
   end
 end

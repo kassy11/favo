@@ -1,10 +1,41 @@
-<!-- <h1 class="text-center font-weight-bold">検索結果</h1> -->
+<h1 class="text-center font-weight-bold">検索結果</h1>
 <!-- 検索結果があるとないときで分けたい -->
-<!-- <div class ="col-md-2">
+<div class="search-results container">
+<%if @books.any?%>
+  <div class="row">
+    <div class="card col-sm-6 col-md-3 card-deck">
+      <%for i in 0..@books.length do%>
+        <%id = @books["items"][i]["id"]%>
+        <%book_id = id.encode!%>
+        <%title = @books["items"][i]["volumeInfo"]["title"]%>
+        <%authors = @books["items"][i]["volumeInfo"]["authors"]%>
+        <%publisher = @books["items"][i]["volumeInfo"]["publisher"]%>
+        <%img_url = @books["items"][i]["volumeInfo"]["imageLinks"]["smallThumbnail"]%>
 
-</div> -->
-<div class="search-results col-md-8">
-  <%for i in 0..5 do%>
-    <%=@books["items"][i]["volumeInfo"]["title"]%>
-  <%end%>
+        <% if img_url%>
+          <%=link_to "/books/#{book_id}" do%>
+            <%=image_tag(img_url, :class => "card-img-top rounded")%>
+          <%end%>
+        <%else%>
+          <%=image_tag("no_image.jpg", :class => "card-img-top")%>
+        <%end%>
+
+      <div class="card-body">
+        <h4 class="card-title"><%= title %></h4>
+        <%if authors%>
+          <p class="card-text"><%=authors[0]%></p>
+        <%else%>
+          <p class="card-text"><%=publisher%></p>
+        <%end%>
+        <%=link_to '詳細',"/books/#{book_id}", :class => "btn btn-primary"%>
+      </div>
+      <%end%>
+    </div>
+  </div>
+<%else%>
+  <div class="search-no-results">
+    <h3>残念ながら見つかりませんでした。</h3>
+    <%=link_to '戻る',"/users/#{current_user.id}/music_index",:class => "btn btn-primary"%>
+  </div>
+<%end%>
 </div>

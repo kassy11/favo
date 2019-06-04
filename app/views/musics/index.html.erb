@@ -1,6 +1,7 @@
 <h1 class="text-center font-weight-bold">検索結果</h1>
 <!-- 検索結果があるとないときで分けたい -->
 <div class="search-results container">
+<%if @artists.any?%>
   <div class="row">
     <div class="card col-sm-6 col-md-3 card-deck">
       <% @artists.each do |artist| %>
@@ -21,4 +22,10 @@
       <%end%>
     </div>
   </div>
+<%else%>
+  <div class="search-no-results">
+    <h3>残念ながら見つかりませんでした。</h3>
+    <%=link_to '戻る',"/users/#{current_user.id}/music_index",:class => "btn btn-primary"%>
+  </div>
+<%end%>
 </div>
