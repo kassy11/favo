@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def my_books
     return Book.where(user_id: self.id)
   end
+
+  def my_movies
+    return Movie.where(user_id: self.id)
+  end
 end

@@ -13,10 +13,10 @@
       </div>
 
       <div class="user_lists">
-
+<!-- 非ログインユーザの場合は、「もっと見る」ボタンに変える -->
         <div class="music_list">
           <h3>MUSIC LIST   <%= link_to "編集する","/users/#{current_user.id}/music_index",:class => "list-btn btn btn-primary"%></h3>
-            <!-- ユーザ詳細にはベスト５くらいまでを表示して一覧＆編集ページにリンクを飛ばす -->
+
           <%@user.my_musics.first(5).each do |my_music|%>
               <%artist = RSpotify::Artist.find(my_music.artist_id)%>
               <% if artist.images.any?%>
@@ -34,13 +34,34 @@
 
         <div class="movie_list">
           <h3>MOVIE LIST   <%= link_to "編集する","/users/#{current_user.id}/movie_index",:class => "btn btn-primary"%></h3>
-
+          <%@user.my_movies.first(5).each do |my_movie|%>
+            <%movie_image = my_movie.movie_image_url%>
+            <%if movie_image%>
+              <%= link_to "/movies/#{my_movie.movie_id}" do%>
+                <%=image_tag(movie_image)%>
+              <%end%>
+            <%else%>
+              <%=image_tag("no_image.jpg")%>
+            <%end%>
+          <%end%>
         </div>
+
         <div class="book_list">
           <h3>BOOK LIST <%= link_to "編集する","/users/#{current_user.id}/book_index",:class => "btn btn-primary"%></h3>
-
+          <%@user.my_books.first(5).each do |my_book|%>
+            <%book_image = my_book.book_image_url%>
+            <%if book_image%>
+              <%= link_to "/books/#{my_book.book_id}" do%>
+                <%=image_tag(book_image)%>
+              <%end%>
+            <%else%>
+              <%=image_tag("no_image.jpg")%>
+            <%end%>
+          <%end%>
         </div>
+
       </div>
+
       <!-- URLコピーボタン：何回でもコピーできるようにする -->
       <div class="copy-button">
       <button type="button" id="copy-page"><span id="cAction">URLをコピー</span></button>

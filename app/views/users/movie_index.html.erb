@@ -5,3 +5,16 @@
 <% end %>
 
 <h1>MOVIE LIST</h1>
+<%@my_movies.each do |my_movie|%>
+  <%movie_image = my_movie.movie_image_url%>
+  <%=my_movie.movie_name%>
+  <%if movie_image%>
+    <%= link_to "/movies/#{my_movie.movie_id}" do%>
+      <%=image_tag(movie_image)%>
+    <%end%>
+  <%else%>
+    <%=image_tag("no_image.jpg")%>
+  <%end%>
+  <%= link_to("削除","/movies/#{my_movie.movie_id}/destroy", {method: "post",:class => "btn btn-danger"})%>
+<%end%>
+</div>

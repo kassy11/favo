@@ -1,4 +1,36 @@
-<h1>検索結果</h1>
-<% @movies.each do |movie| %>
-  <%= movie%>
-<% end %>
+<%array_number = @movies["results"].length - 1%>
+<%results_number = array_number + 1%>
+<h1 class="text-center font-weight-bold">検索結果：<%=results_number%>件</h1>
+
+<div class="search-results container">
+<%if @movies.any?%>
+  <div class="row">
+    <div class="card col-sm-6 col-md-3 card-deck">
+      <%for i in 0..array_number do%>
+        <%movie_id = @movies["results"][i]["id"]%>
+        <%title = @movies["results"][i]["title"]%>
+        <%img_path = @movies["results"][i]["poster_path"]%>
+        <%img_url = "https://image.tmdb.org/t/p/w185/#{img_path}"%>
+
+        <% if img_path%>
+          <%=link_to "/movies/#{movie_id}" do%>
+            <%=image_tag(img_url, :class => "card-img-top rounded")%>
+          <%end%>
+        <%else%>
+          <%=image_tag("no_image.jpg", :class => "card-img-top")%>
+        <%end%>
+
+      <div class="card-body">
+        <h4 class="card-title"><%= title %></h4>
+        <%=link_to '詳細',"/movies/#{movie_id}", :class => "btn btn-primary"%>
+      </div>
+      <%end%>
+    </div>
+  </div>
+<%else%>
+  <div class="search-no-results">
+    <h3>残念ながら見つかりませんでした。</h3>
+    <%=link_to '戻る',"/users/#{current_user.id}/movie_index",:class => "btn btn-primary"%>
+  </div>
+<%end%>
+</div>

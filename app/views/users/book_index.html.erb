@@ -5,16 +5,15 @@
   <% end %>
 
 <h1>BOOK LIST</h1>
-<%@user.my_books.each do |my_book|%>
-  <%artist = RSpotify::Artist.find(my_music.artist_id)%>
-  <%=artist.name%>
-  <% if artist.images.any?%>
-    <%image = artist.images[2]%>
-    <%=link_to "/musics/#{artist.id}" do%>
-      <%=image_tag image["url"]%>
+<%@my_books.each do |my_book|%>
+  <%book_image = my_book.book_image_url%>
+  <%=my_book.book_name%>
+  <%if book_image%>
+    <%= link_to "/books/#{my_book.book_id}" do%>
+      <%=image_tag(book_image)%>
     <%end%>
   <%else%>
     <%=image_tag("no_image.jpg")%>
   <%end%>
-  <%= link_to("削除","/musics/#{artist.id}/destroy", {method: "post",:class => "btn btn-primary"})%>
+  <%= link_to("削除","/books/#{my_book.book_id}/destroy", {method: "post",:class => "btn btn-danger"})%>
 <%end%>

@@ -11,10 +11,11 @@ before_action :authenticate_user!
 
   def movie_index
     @user = User.find_by(id: current_user.id)
+    @my_movies = @user.my_movies
   end
 
   def book_index
     @user = User.find_by(id: current_user.id)
-    books = @user.my_books
+    @my_books = @user.my_books
   end
 end

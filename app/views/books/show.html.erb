@@ -3,8 +3,10 @@
 <%img_url = @book["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]%>
 <%id = @book["items"][0]["id"]%>
 <%book_id = id.encode!%>
+<%title = @book["items"][0]["volumeInfo"]["title"]%>
+<%description = @book["items"][0]["volumeInfo"]["description"]%>
 
-<%=@book["items"][0]["volumeInfo"]["title"]%>
+<%=title%>
 
 <%if author%>
   <p class="card-text"><%=author[0]%></p>
@@ -17,5 +19,8 @@
 <%else%>
   <%=image_tag("no_image.jpg")%>
 <%end%>
+<br>
+<p>本の内容</p>
+<%=description%>
 
-<%= link_to("リストに追加する","/books/#{book_id}/create", {method: "post"})%>
+<%= link_to("リストに追加する","/books/#{book_id}/create", {method: "post",:class => "btn btn-primary"})%>

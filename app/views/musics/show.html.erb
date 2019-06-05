@@ -11,4 +11,4 @@
 <p>ジャンル</p>
 <%=@artist.genres[0]%>
 
-<%= link_to("リストに追加する","/musics/#{@artist.id}/create", {method: "post"})%>
+<%= link_to("リストに追加する","/musics/#{@artist.id}/create", {method: "post",:class => "btn btn-primary"})%>

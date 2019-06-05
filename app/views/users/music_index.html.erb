@@ -20,6 +20,6 @@
     <%else%>
       <%=image_tag("no_image.jpg")%>
     <%end%>
-    <%= link_to("削除","/musics/#{artist.id}/destroy", {method: "post",:class => "btn btn-primary"})%>
+    <%= link_to("削除","/musics/#{artist.id}/destroy", {method: "post",:class => "btn btn-danger"})%>
   <%end%>
 </div>

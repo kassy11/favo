@@ -1,0 +1,18 @@
+<%movie_id = @movie["id"]%>
+<%title = @movie["title"]%>
+<%overview = @movie["overview"]%>
+<%img_path = @movie["poster_path"]%>
+<%img_url = "https://image.tmdb.org/t/p/w342/" + img_path%>
+
+<%=title%>
+
+<% if img_url%>
+    <%=image_tag(img_url)%>
+<%else%>
+  <%=image_tag("no_image.jpg")%>
+<%end%>
+<br>
+<p>映画の内容</p>
+<%=overview%>
+
+<%= link_to("リストに追加する","/movies/#{movie_id}/create", {method: "post",:class => "btn btn-primary"})%>

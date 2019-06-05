@@ -1,16 +1,19 @@
-<h1 class="text-center font-weight-bold">検索結果</h1>
+<%array_number = @books["items"].length - 1%>
+<%results_number = array_number + 1%>
+<h1 class="text-center font-weight-bold">検索結果：<%=results_number%>件</h1>
 <!-- 検索結果があるとないときで分けたい -->
 <div class="search-results container">
 <%if @books.any?%>
   <div class="row">
     <div class="card col-sm-6 col-md-3 card-deck">
-      <%for i in 0..@books.length do%>
+
+      <%for i in 0..array_number do%>
         <%id = @books["items"][i]["id"]%>
         <%book_id = id.encode!%>
         <%title = @books["items"][i]["volumeInfo"]["title"]%>
         <%authors = @books["items"][i]["volumeInfo"]["authors"]%>
         <%publisher = @books["items"][i]["volumeInfo"]["publisher"]%>
-        <%img_url = @books["items"][i]["volumeInfo"]["imageLinks"]["smallThumbnail"]%>
+        <%img_url = @books["items"][i]["volumeInfo"]["imageLinks"]["smallThumbnail"] if @books["items"][i]["volumeInfo"].has_key?("imageLinks")%>
 
         <% if img_url%>
           <%=link_to "/books/#{book_id}" do%>
@@ -35,7 +38,7 @@
 <%else%>
   <div class="search-no-results">
     <h3>残念ながら見つかりませんでした。</h3>
-    <%=link_to '戻る',"/users/#{current_user.id}/music_index",:class => "btn btn-primary"%>
+    <%=link_to '戻る',"/users/#{current_user.id}/book_index",:class => "btn btn-primary"%>
   </div>
 <%end%>
 </div>
