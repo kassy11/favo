@@ -11,4 +11,6 @@
 <p>ジャンル</p>
 <%=@artist.genres[0]%>
 
-<%= link_to("リストに追加する","/musics/#{@artist.id}/create", {method: "post",:class => "btn btn-primary"})%>
+<%if Music.find_by(artist_id:"#{@artist.id}") == nil%>
+  <%= link_to("リストに追加する","/musics/#{@artist.id}/create", {method: "post",:class => "btn btn-primary"})%>
+<%end%>

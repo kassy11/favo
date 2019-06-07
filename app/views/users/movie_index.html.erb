@@ -1,4 +1,4 @@
-<h3>作品名で検索</h3>
+<h3 class="text-center font-weight-bold">作品名で検索</h3>
   <%= form_tag(controller:"movies",action:"index") do %>
     <%= text_field_tag :search %>
     <%= submit_tag '検索',:name => nil %>
@@ -17,4 +17,3 @@
   <%end%>
   <%= link_to("削除","/movies/#{my_movie.movie_id}/destroy", {method: "post",:class => "btn btn-danger"})%>
 <%end%>
-</div>

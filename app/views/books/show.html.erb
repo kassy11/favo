@@ -23,4 +23,6 @@
 <p>本の内容</p>
 <%=description%>
 
-<%= link_to("リストに追加する","/books/#{book_id}/create", {method: "post",:class => "btn btn-primary"})%>
+<%if Book.find_by(book_id: "#{book_id}") == nil%>
+  <%= link_to("リストに追加する","/books/#{book_id}/create", {method: "post",:class => "btn btn-primary"})%>
+<%end%>

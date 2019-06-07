@@ -15,4 +15,6 @@
 <p>映画の内容</p>
 <%=overview%>
 
-<%= link_to("リストに追加する","/movies/#{movie_id}/create", {method: "post",:class => "btn btn-primary"})%>
+<%if Movie.find_by(movie_id:"#{movie_id}") == nil%>
+  <%= link_to("リストに追加する","/movies/#{movie_id}/create", {method: "post",:class => "btn btn-primary"})%>
+<%end%>
