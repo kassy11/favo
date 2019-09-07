@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FAVOアップデートメモ
+機能面
+ * マイページでのアクセス制限を治す（ログイン・ログアウト後のアクセス制限）⇒ログイン後static_pages/homeにいけないようにする・ログインユーザ以外はユーザ情報とリストの編集ができない・ログインしていなくてもリンクから他者のリストが見れる
+ * リダイレクト先をなおす（ユーザ編集後をユーザ詳細に）after_update_path_for
+ * リストにあったら検索結果で登録ボタンが表示されなくする（リストに追加済み、の表示をする）、最終的にはアクセスできないようにする
+ * フラッシュメッセージ（作品登録後、ユーザ編集後、ログイン・ログアウト・新規登録後）
+ * ログインフォーム、新規登録フォームからfavoとは？のリンク
+ * 検索結果を人気度などでソートできるようにする
+ * 検索フォームが空のときの処理
+ * 検索後に取り出したい情報がないときの処理
+ * APIを複数用いて検索の網羅性を増やす
+ * 映画検索の日本語化
+ * 退会処理
+ * 複数検索（アルバム名などでも検索できるようにする）
+ * ツイートしたらいい感じに成形される（ファビコンとか？？）
+ * twitter/googleでユーザ登録ができるようにする
+ * リファクタリング
+ * passwordを忘れたときの処理
 
-Things you may want to cover:
 
-* Ruby version
+デザイン面
+ * 完全なレスポンシブ対応
+ * 余白を調整する
+ * 検索フォームの幅を狭める
+ * ユーザ編集のtextareaの縦幅を広げる
+ * deviseのエラーメッセージを日本語化する
+ * コピーボタンをクリック後にウィンドウが出るようにしたい
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
