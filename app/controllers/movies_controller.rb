@@ -1,8 +1,9 @@
 class MoviesController < ApplicationController
-  before_action :set_api, only: [:show, :create]
   require 'net/http'
   require "json"
   require 'uri'
+
+  before_action :set_api, only: [:show, :create]
   
   def index
     search_uri = "https://api.themoviedb.org/3/search/movie?api_key=df9c849f256c5f2784832a7eee5862e2&language=ja-JA&query=#{params[:search]}"
@@ -19,14 +20,13 @@ class MoviesController < ApplicationController
     title = @movie["title"]
     img_path = @movie["poster_path"]
     img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
-
-    @movie_fav = Movie.new(user_id: current_user.id, movie_id: params[:movie_id], movie_name: title, movie_image_url: img_url )
+    @movie_fav = current_user.movies.new(movie_id: params[:movie_id], movie_name: title, movie_image_url: img_url)
     @movie_fav.save
     redirect_to my_movie_path(current_user)
   end
 
   def destroy
-    @movie_fav = Movie.find_by(user_id: current_user.id, movie_id: params[:movie_id])
+    @movie_fav = current_user.movies.find_by(movie_id: params[:movie_id])
     @movie_fav.destroy
     redirect_to my_movie_path(current_user)
   end

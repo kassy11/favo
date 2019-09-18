@@ -1,9 +1,9 @@
 .search-form
   h3.text-center.font-weight-bold
     | アーティスト名で検索
-  = form_tag(controller:"musics",action:"index") do
-    = text_field_tag :search
-    = submit_tag '検索',:name => nil
+  = form_with url: musics_index_path, locale: true do |f|
+    = f.text_field :search
+    = f.submit '検索',:name => nil
 .list-index
   h1
     | MUSIC LIST

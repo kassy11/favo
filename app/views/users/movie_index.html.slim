@@ -1,8 +1,9 @@
 h3.text-center.font-weight-bold
   | 作品名で検索
-= form_tag(controller:"movies",action:"index") do
-  = text_field_tag :search
-  = submit_tag '検索',:name => nil
+= form_with url: movies_index_path, local: true do |f|
+  = f.text_field :search
+  = f.submit '検索',:name => nil
+
 h1
   | MOVIE LIST
 - @my_movies.each do |my_movie|
