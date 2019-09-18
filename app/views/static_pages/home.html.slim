@@ -1,0 +1,37 @@
+.static_page
+  .servise_landing
+    .container.landing_block
+      .row
+        .col-md-4
+
+        .landing_word.col-md-8
+          h1
+            span.start.text-center.font-weight-bold.text-white
+              | Let's Start
+            br
+            span.favo.text-center.font-weight-bold.text-white
+              | FAVO
+          .col-md-4
+
+          .landing_btn.col-md-5
+            =link_to "新規登録する",new_user_registration_path, class:"btn btn-primary btn-lg btn-block"
+  #about.servise_about
+    h1.intro-word.text-center.font-weight-bold
+      | WHAT'S FAVO ?
+    .container
+      .row.justify-content-around
+        .intro.col-md-4
+          .intro-image
+            img[src="/assets/good.png"]
+          p.intro-text
+            | 映画・音楽・書籍のお気に入りリストを簡単に作成できます
+        .intro.col-md-4
+          .intro-image
+            img[src="/assets/twitter.png"]
+          p.intro-text
+            | URLをコピーしSNS等に貼り付けることができます
+        .intro.col-md-4
+          .intro-image
+            img[src="/assets/find.png"]
+          p.intro-text
+            | 友達のお気に入りリストを覗いて新たな作品に巡り合うことができます

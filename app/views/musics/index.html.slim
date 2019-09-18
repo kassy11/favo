@@ -1,0 +1,25 @@
+h1.text-center.font-weight-bold
+  | 検索結果
+.search-results.container
+  - if @artists.any?
+    .row
+      .card-deck
+        .card
+          - @artists.each do |artist|
+            - if artist.images.any?
+              - image = artist.images[1]
+              =link_to "/musics/#{artist.id}" do
+                =image_tag image["url"], :class => "card-img-top rounded"
+            - else
+              =image_tag("no_image.jpg", :class => "card-img-top")
+            .card-body
+              h4.card-title
+                = artist.name
+              p.card-text
+                =artist.genres[0]
+              =link_to '詳細',"/musics/#{artist.id}", :class => "btn btn-primary"
+  - else
+    .search-no-results
+      h3
+        | 残念ながら見つかりませんでした。
+      =link_to '戻る',"/users/#{current_user.id}/music_index",:class => "btn btn-primary"

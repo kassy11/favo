@@ -1,0 +1,19 @@
+.search-form
+  h3.text-center.font-weight-bold
+    | アーティスト名で検索
+  = form_tag(controller:"musics",action:"index") do
+    = text_field_tag :search
+    = submit_tag '検索',:name => nil
+.list-index
+  h1
+    | MUSIC LIST
+  - @user.my_musics.each do |my_music|
+    - artist = RSpotify::Artist.find(my_music.artist_id)
+    =artist.name
+    - if artist.images.any?
+      - image = artist.images[2]
+      =link_to "/musics/#{artist.id}" do
+        =image_tag image["url"]
+    - else
+      =image_tag("no_image.jpg")
+    = link_to("削除","/musics/#{artist.id}/destroy", {method: "post",:class => "btn btn-danger"})

@@ -1,0 +1,58 @@
+.container
+  .row
+    .col-md-2
+
+    .col-md-8
+      .user_info
+        = gravatar_for @user,250
+        h1
+          = @user.name
+        =link_to "ユーザ情報の編集",edit_user_registration_path
+        p
+          | メールアドレス : 
+          = @user.email
+        p
+          | プロフィール : 
+          = @user.profile
+      .user_lists
+        .music_list
+          h3
+            | MUSIC LIST 
+            = link_to "編集する","/users/#{current_user.id}/music_index",:class => "list-btn btn btn-primary"
+          - @user.my_musics.first(5).each do |my_music|
+            - artist = RSpotify::Artist.find(my_music.artist_id)
+            - if artist.images.any?
+              - image = artist.images[2]
+              =link_to "/musics/#{artist.id}" do
+                =image_tag image["url"]
+            - else
+              =image_tag("no_image.jpg")
+        .movie_list
+          h3
+            | MOVIE LIST 
+            = link_to "編集する","/users/#{current_user.id}/movie_index",:class => "btn btn-primary"
+          - @user.my_movies.first(5).each do |my_movie|
+            - movie_image = my_movie.movie_image_url
+            - if movie_image
+              = link_to "/movies/#{my_movie.movie_id}" do
+                =image_tag(movie_image)
+            - else
+              =image_tag("no_image.jpg")
+        .book_list
+          h3
+            | BOOK LIST 
+            = link_to "編集する","/users/#{current_user.id}/book_index",:class => "btn btn-primary"
+          - @user.my_books.first(5).each do |my_book|
+            - book_image = my_book.book_image_url
+            - if book_image
+              = link_to "/books/#{my_book.book_id}" do
+                =image_tag(book_image)
+            - else
+              =image_tag("no_image.jpg")
+      .copy-button
+        button#copy-page[type="button"]
+          span#cAction
+            | URLをコピー
+        script
+          |  document.getElementById("copy-page").onclick = function() { $(document.body).append("<textarea id=\"copyTarget\" style=\"position:absolute; left:-9999px; top:0px;\" readonly=\"readonly\">" +location.href+ "</textarea>"); let obj = document.getElementById("copyTarget"); let range = document.createRange(); range.selectNode(obj); window.getSelection().addRange(range); document.execCommand('copy'); document.getElementById("cAction").innerHTML = "コピーしました"; }; 
+    .col-md-2

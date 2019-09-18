@@ -1,0 +1,16 @@
+h3.text-center.font-weight-bold
+  | 作品名で検索
+= form_tag(controller:"movies",action:"index") do
+  = text_field_tag :search
+  = submit_tag '検索',:name => nil
+h1
+  | MOVIE LIST
+- @my_movies.each do |my_movie|
+  - movie_image = my_movie.movie_image_url
+  =my_movie.movie_name
+  - if movie_image
+    = link_to "/movies/#{my_movie.movie_id}" do
+      =image_tag(movie_image)
+  - else
+    =image_tag("no_image.jpg")
+  = link_to("削除","/movies/#{my_movie.movie_id}/destroy", {method: "post",:class => "btn btn-danger"})

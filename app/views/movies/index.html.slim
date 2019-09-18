@@ -1,0 +1,28 @@
+- array_number = @movies["results"].length - 1
+- results_number = array_number + 1
+h1.text-center.font-weight-bold
+  | 検索結果：
+  =results_number
+  | 件
+.search-results
+  - if @movies.any?
+    .card[style="width: 30%;"]
+      - for i in 0..array_number do
+        - movie_id = @movies["results"][i]["id"]
+        - title = @movies["results"][i]["title"]
+        - img_path = @movies["results"][i]["poster_path"]
+        - img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
+        - if img_path
+          =link_to "/movies/#{movie_id}" do
+            =image_tag(img_url, :class => "card-img-top",:width=>"30%" ,:height=>"100%")
+        - else
+          =image_tag("no_image.jpg", :class => "card-img-top",:width=>"100%" ,:height=>"100%")
+        .card-body
+          h4.card-title
+            = title
+          =link_to '詳細',"/movies/#{movie_id}", :class => "btn btn-primary"
+  - else
+    .search-no-results
+      h3
+        | 残念ながら見つかりませんでした。
+      =link_to '戻る',"/users/#{current_user.id}/movie_index",:class => "btn btn-primary"

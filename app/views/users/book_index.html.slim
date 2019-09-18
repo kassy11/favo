@@ -1,0 +1,16 @@
+h3.text-center.font-weight-bold
+  | 書籍名で検索
+= form_tag(controller:"books",action:"index") do
+  = text_field_tag :search
+  = submit_tag '検索',:name => nil
+h1
+  | BOOK LIST
+- @my_books.each do |my_book|
+  - book_image = my_book.book_image_url
+  =my_book.book_name
+  - if book_image
+    = link_to "/books/#{my_book.book_id}" do
+      =image_tag(book_image)
+  - else
+    =image_tag("no_image.jpg")
+  = link_to("削除","/books/#{my_book.book_id}/destroy", {method: "post",:class => "btn btn-danger"})
