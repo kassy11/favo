@@ -1,11 +1,11 @@
-- array_number = @books["items"].length - 1
-- results_number = array_number + 1
-h1.text-center.font-weight-bold
-  | 検索結果：
-  =results_number
-  | 件
-.search-results.container
-  - if @books.any?
+- if @books.include?("items")
+  - array_number = @books["items"].length - 1
+  - results_number = array_number + 1
+  h1.text-center.font-weight-bold
+    | 検索結果：
+    =results_number
+    | 件
+  .search-results.container
     .row
       .card.col-sm-6.col-md-3.card-deck
         - for i in 0..array_number do
@@ -16,7 +16,7 @@ h1.text-center.font-weight-bold
           - publisher = @books["items"][i]["volumeInfo"]["publisher"]
           - img_url = @books["items"][i]["volumeInfo"]["imageLinks"]["smallThumbnail"] if @books["items"][i]["volumeInfo"].has_key?("imageLinks")
           - if img_url
-            =link_to "/books/#{book_id}" do
+            =link_to book_path(book_id) do
               =image_tag(img_url, :class => "card-img-top rounded")
           - else
             =image_tag("no_image.jpg", :class => "card-img-top")
@@ -29,9 +29,8 @@ h1.text-center.font-weight-bold
             - else
               p.card-text
                 =publisher
-            =link_to '詳細',"/books/#{book_id}", :class => "btn btn-primary"
-  - else
-    .search-no-results
-      h3
-        | 残念ながら見つかりませんでした。
-      =link_to '戻る',"/users/#{current_user.id}/book_index",:class => "btn btn-primary"
+            =link_to '詳細', book_path(book_id), :class => "btn btn-primary"
+- else
+  h2.text-center.font-weight-bold
+    | 残念ながら見つかりませんでした。
+  =link_to '戻る', my_book_path(current_user),:class => "btn btn-primary"

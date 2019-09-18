@@ -7,10 +7,11 @@ h1
   | MOVIE LIST
 - @my_movies.each do |my_movie|
   - movie_image = my_movie.movie_image_url
+  - movie_id = my_movie.movie_id
   =my_movie.movie_name
   - if movie_image
-    = link_to "/movies/#{my_movie.movie_id}" do
+    = link_to movie_path(movie_id) do
       =image_tag(movie_image)
   - else
     =image_tag("no_image.jpg")
-  = link_to("削除","/movies/#{my_movie.movie_id}/destroy", {method: "post",:class => "btn btn-danger"})
+  = link_to("削除", destroy_movie_list_path(movie_id), {method: "post",:class => "btn btn-danger"})

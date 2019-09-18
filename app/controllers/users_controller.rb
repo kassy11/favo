@@ -1,21 +1,24 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!
-
+  before_action :authenticate_user!
+  before_action :set_user
+  
   def show
-    @user = User.find_by(id: current_user.id)
   end
 
   def music_index
-    @user = User.find_by(id: current_user.id)
   end
 
   def movie_index
-    @user = User.find_by(id: current_user.id)
-    @my_movies = @user.my_movies
+    @my_movies = @user.movies
   end
 
   def book_index
+    @my_books = @user.books
+  end
+
+  private 
+
+  def set_user
     @user = User.find_by(id: current_user.id)
-    @my_books = @user.my_books
   end
 end

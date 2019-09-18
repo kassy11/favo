@@ -7,7 +7,7 @@
 .list-index
   h1
     | MUSIC LIST
-  - @user.my_musics.each do |my_music|
+  - @user.musics.each do |my_music|
     - artist = RSpotify::Artist.find(my_music.artist_id)
     =artist.name
     - if artist.images.any?

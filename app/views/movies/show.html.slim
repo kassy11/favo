@@ -8,9 +8,9 @@
   =image_tag(img_url)
 - else
   =image_tag("no_image.jpg")
-br
-p
-  | 映画の内容
-=overview
-- if Movie.find_by(movie_id:"#{movie_id}",user_id:current_user.id) == nil
-  = link_to("リストに追加する","/movies/#{movie_id}/create", {method: "post",:class => "btn btn-primary"})
+div
+  p
+    | 映画の内容
+  =overview
+  - if Movie.find_by(movie_id:"#{movie_id}",user_id:current_user.id) == nil
+    = link_to("リストに追加する", create_movie_list_path(movie_id), {method: "post",:class => "btn btn-primary"})
