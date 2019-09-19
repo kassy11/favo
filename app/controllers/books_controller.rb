@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   require 'uri'
 
   before_action :set_api, only: [:show, :create]
+  before_action :base_info, only: [:show, :create]
 
   def index
     url = 'https://www.googleapis.com/books/v1/volumes?q='
@@ -12,18 +13,20 @@ class BooksController < ApplicationController
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)
     @books = JSON.parse(json)
+    @base_contents = @books["items"]
   end
 
   def show
+    @author = @base_content["volumeInfo"]["authors"]
+    @publisher = @base_content["volumeInfo"]["publisher"]
+    @book_id = @base_content["id"].encode!
+    @description = @base_content["volumeInfo"]["description"]
   end
 
   def create
-    title = @book["items"][0]["volumeInfo"]["title"]
-    img_url = @book["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]
-
-    @book_fav = current_user.books.new(book_id: params[:book_id], book_name: title, book_image_url: img_url )
+    @book_fav = current_user.books.new(book_id: params[:book_id], book_name: @title, book_image_url: @img_url )
     @book_fav.save
-    redirect_to("/users/#{current_user.id}/book_index")
+    redirect_to my_book_path(current_user)
   end
 
   def destroy
@@ -40,5 +43,11 @@ class BooksController < ApplicationController
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)
     @book = JSON.parse(json)
+  end
+
+  def base_info
+    @base_content = @book["items"].first
+    @img_url = @base_content["volumeInfo"]["imageLinks"]["smallThumbnail"]
+    @title = @base_content["volumeInfo"]["title"]
   end
 end

@@ -1,8 +1,6 @@
 h3.text-center.font-weight-bold
   | 作品名で検索
-= form_with url: movies_index_path, local: true do |f|
-  = f.text_field :search
-  = f.submit '検索',:name => nil
+= render 'search', url: movies_index_path
 
 h1
   | MOVIE LIST

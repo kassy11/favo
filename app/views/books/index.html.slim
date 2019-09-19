@@ -1,4 +1,4 @@
-- if @books.include?("items")
+- if !@base_contents.blank?
   - array_number = @books["items"].length - 1
   - results_number = array_number + 1
   h1.text-center.font-weight-bold
@@ -9,12 +9,9 @@
     .row
       .card.col-sm-6.col-md-3.card-deck
         - for i in 0..array_number do
-          - id = @books["items"][i]["id"]
-          - book_id = id.encode!
-          - title = @books["items"][i]["volumeInfo"]["title"]
-          - authors = @books["items"][i]["volumeInfo"]["authors"]
-          - publisher = @books["items"][i]["volumeInfo"]["publisher"]
-          - img_url = @books["items"][i]["volumeInfo"]["imageLinks"]["smallThumbnail"] if @books["items"][i]["volumeInfo"].has_key?("imageLinks")
+          - book_id = @base_contents[i]["id"].encode!
+          - title = @base_contents[i]["volumeInfo"]["title"]
+          - img_url = @base_contents[i]["volumeInfo"]["imageLinks"]["smallThumbnail"] if @books["items"][i]["volumeInfo"].has_key?("imageLinks")
           - if img_url
             =link_to book_path(book_id) do
               =image_tag(img_url, :class => "card-img-top rounded")
@@ -23,12 +20,6 @@
           .card-body
             h4.card-title
               = title
-            - if authors
-              p.card-text
-                =authors[0]
-            - else
-              p.card-text
-                =publisher
             =link_to '詳細', book_path(book_id), :class => "btn btn-primary"
 - else
   h2.text-center.font-weight-bold
