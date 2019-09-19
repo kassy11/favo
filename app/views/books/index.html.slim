@@ -1,17 +1,12 @@
 - if !@base_contents.blank?
-  - array_number = @books["items"].length - 1
-  - results_number = array_number + 1
-  h1.text-center.font-weight-bold
-    | 検索結果：
-    =results_number
-    | 件
+  =render 'shared/result'
   .search-results.container
     .row
       .card.col-sm-6.col-md-3.card-deck
-        - for i in 0..array_number do
-          - book_id = @base_contents[i]["id"].encode!
-          - title = @base_contents[i]["volumeInfo"]["title"]
-          - img_url = @base_contents[i]["volumeInfo"]["imageLinks"]["smallThumbnail"] if @books["items"][i]["volumeInfo"].has_key?("imageLinks")
+        - @base_contents.each do |content|
+          - book_id = content["id"].encode!
+          - title = content["volumeInfo"]["title"]
+          - img_url = content["volumeInfo"]["imageLinks"]["smallThumbnail"] if content["volumeInfo"].has_key?("imageLinks")
           - if img_url
             =link_to book_path(book_id) do
               =image_tag(img_url, :class => "card-img-top rounded")

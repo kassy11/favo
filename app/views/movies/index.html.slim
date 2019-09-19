@@ -1,16 +1,11 @@
 - if !@base_contents.blank?
-  - array_number = @base_contents.length - 1
-  - results_number = array_number + 1
-  h1.text-center.font-weight-bold
-    | 検索結果：
-    =results_number
-    | 件
+  =render 'shared/result'
   .search-results
     .card[style="width: 30%;"]
-      - for i in 0..array_number do
-        - movie_id = @base_contents[i]["id"]
-        - title = @base_contents[i]["title"]
-        - img_path = @base_contents[i]["poster_path"]
+      - @base_contents.each do |content|
+        - movie_id = content["id"]
+        - title =content["title"]
+        - img_path = content["poster_path"]
         - img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
         - if img_path
           =link_to movie_path(movie_id) do

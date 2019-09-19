@@ -10,16 +10,4 @@ class User < ApplicationRecord
   has_many :movies
   has_many :musics
   has_many :books
-
-  # def my_musics
-  #   return Music.where(user_id: self.id)
-  # end
-
-  # def my_books
-  #   return Book.where(user_id: self.id)
-  # end
-
-  # def my_movies
-  #   return Movie.where(user_id: self.id)
-  # end
 end

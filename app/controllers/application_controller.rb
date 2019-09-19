@@ -2,24 +2,19 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # 新規登録後のリダイレクト先をマイページへ
-    def after_sign_in_path_for(resource)
-        mypage_path(resource)
-    end
+  def after_sign_in_path_for(resource)
+     mypage_path(resource)
+  end
 
   # サインイン後のリダイレクト先をマイページへ
-    def after_sign_in_path_for(resource)
-        mypage_path(resource)
-    end
-
-    #ユーザ編集後のリダイレクト先をマイページに
-    # def after_update_path_for(resource)
-    #   mypage_path(resource)
-    # end
+  def after_sign_in_path_for(resource)
+    mypage_path(resource)
+  end
 
     # サインアウト後のリダイレクト先をトップページへ
-    def after_sign_out_path_for(resource)
-        root_path
-    end
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
     # deviseコントローラーにストロングパラメータを追加する
   def configure_permitted_parameters
