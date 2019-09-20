@@ -25,6 +25,4 @@ Rails.application.routes.draw do
   resources :movies, only: :show, param: :movie_id
 
   root 'static_pages#home'
-  # get 'static_pages/test' => "static_pages#test"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

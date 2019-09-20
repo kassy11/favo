@@ -1,26 +1,26 @@
 class MusicsController < ApplicationController
-  require 'rspotify'
-  RSpotify.authenticate("6de2473819924e0c99991cda7f21a08d", "dad4a720264d46fd881f34a6c02f9156")
+  include ApplicationHelper
 
   def index
-    @artists = RSpotify::Artist.search(params[:search])
-    binding.pry
+    @artists = search_artist(params[:search]) unless params[:search].blank?
+    @base_contents = @artists
   end
 
   def show
-    @artist = RSpotify::Artist.find(params[:artist_id])
-    binding.pry
+    @artist = find_artist(params[:artist_id])
+    @title = @artist.name
+    @img_url = @artist.images[1]["url"] unless @artist.images.blank?
   end
 
   def create
-    @artist_fav = Music.new(user_id: current_user.id, artist_id: params[:artist_id])
+    @artist_fav = current_user.musics.new(artist_id: params[:artist_id])
     @artist_fav.save
-    redirect_to("/users/#{current_user.id}/music_index")
+    redirect_to my_music_path(current_user)
   end
 
   def destroy
-    @artist_fav = Music.find_by(user_id: current_user.id, artist_id: params[:artist_id])
+    @artist_fav = current_user.musics.find_by(artist_id: params[:artist_id])
     @artist_fav.destroy
-    redirect_to("/users/#{current_user.id}/music_index")
+    redirect_to my_music_path(current_user) 
   end
 end

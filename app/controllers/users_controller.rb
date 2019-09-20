@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def music_index
+    @my_musics = current_user.musics
   end
 
   def movie_index
