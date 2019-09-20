@@ -72,4 +72,6 @@ gem 'devise'
 
 gem 'rspotify'
 
+gem 'meta-tags'
+
 gem 'coffee-script-source', '1.8.0'

@@ -7,7 +7,9 @@
         = gravatar_for @user,250
         h1
           = @user.name
-        =link_to "ユーザ情報の編集",edit_user_registration_path
+        div 
+         = render 'sns' if current_user != nil && current_user == @user
+        =link_to "ユーザ情報の編集",edit_user_registration_path if current_user != nil && current_user == @user
         p
           | メールアドレス : 
           = @user.email
@@ -18,7 +20,7 @@
         .music_list
           h3
             | MUSIC LIST 
-            = link_to "編集する", my_music_path(current_user),:class => "list-btn btn btn-primary"
+            = link_to "編集する", my_music_path(@user),:class => "list-btn btn btn-primary" if current_user != nil && current_user == @user
           - @user.musics.first(5).each do |my_music|
             - music_id = my_music.artist_id
             - artist = find_artist(music_id)
@@ -31,7 +33,7 @@
         .movie_list
           h3
             | MOVIE LIST 
-            = link_to "編集する", my_movie_path(current_user),:class => "btn btn-primary"
+            = link_to "編集する", my_movie_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
           - @user.movies.first(5).each do |my_movie|
             - movie_id = my_movie.movie_id
             - movie_image = my_movie.movie_image_url
@@ -43,7 +45,7 @@
         .book_list
           h3
             | BOOK LIST 
-            = link_to "編集する",my_book_path(current_user),:class => "btn btn-primary"
+            = link_to "編集する",my_book_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
           - @user.books.first(5).each do |my_book|
             - book_id = my_book.book_id
             - book_image = my_book.book_image_url
@@ -52,10 +54,4 @@
                 =image_tag(book_image)
             - else
               =image_tag("no_image.jpg")
-      .copy-button
-        button#copy-page[type="button"]
-          span#cAction
-            | URLをコピー
-        script
-          |  document.getElementById("copy-page").onclick = function() { $(document.body).append("<textarea id=\"copyTarget\" style=\"position:absolute; left:-9999px; top:0px;\" readonly=\"readonly\">" +location.href+ "</textarea>"); let obj = document.getElementById("copyTarget"); let range = document.createRange(); range.selectNode(obj); window.getSelection().addRange(range); document.execCommand('copy'); document.getElementById("cAction").innerHTML = "コピーしました"; }; 
     .col-md-2
