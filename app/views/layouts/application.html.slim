@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title
+      | FAVO
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = display_meta_tags(default_meta_tags)
+    link[rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"]
+    link[rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css"]
+    link[rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"]
+    link[rel="stylesheet" color="#2181cf" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css"]
+    script
+      |  !function(){var e=new XMLHttpRequest,t=document.querySelectorAll("link[color]")[0];e.timeout=3e4,e.open("get",t.getAttribute("href"),!0),e.onreadystatechange=function(){if(200==this.status&&""!=this.responseText){e.onreadystatechange=null;var n=this.responseText,a=t.getAttribute("color");n=n.replace(/#9b4dca/g,a);var o=document.getElementsByTagName("head").item(0),r=document.createElement("style"),s=document.createTextNode(n);r.media="screen",r.type="text/css",r.appendChild(s),o.appendChild(r)}},e.send()}(); 
+  body
+    header
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        .container
+          - if user_signed_in?
+            =link_to "F A V O", mypage_path(current_user),class: "logo navbar-brand"
+          - else
+            = link_to "F A V O", root_path, class: "logo"
+          .collapse.navbar-collapse.justify-content-end
+            ul.navbar-nav
+              | 　 
+              - if user_signed_in?
+                li.nav-item
+                  =link_to("MY PAGE", mypage_path(current_user),:class => "nav-link")
+                li.nav-item
+                  =link_to("ログアウト",destroy_user_session_path, :method => :delete, :class => "nav-link")
+              - else
+                li
+                  = link_to "F A V Oとは？", root_path, :class => "nav-link"
+                li
+                  =link_to "新規登録",new_user_registration_path, :class => "nav-link"
+                li
+                  =link_to "ログイン",new_user_session_path, :class => "nav-link"
+    = yield

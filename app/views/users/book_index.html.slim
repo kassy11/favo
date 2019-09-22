@@ -1,0 +1,17 @@
+h3.text-center.font-weight-bold
+  | 書籍名で検索
+= render 'search', url: books_index_path
+
+h1
+  | BOOK LIST
+- @my_books.each do |my_book|
+  - book_image = my_book.book_image_url
+  - book_id = my_book.book_id
+  
+  =my_book.book_name
+  - if book_image
+    = link_to book_path(book_id) do
+      =image_tag(book_image)
+  - else
+    =image_tag("no_image.jpg")
+  = link_to("削除", destroy_book_list_path(book_id), {method: "post",:class => "btn btn-danger"})

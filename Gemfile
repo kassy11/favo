@@ -39,6 +39,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'sqlite3', '~> 1.3.13'
   # Use sqlite3 as the database for Active Record
 end
@@ -47,6 +49,8 @@ group :development do
 
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+  gem 'slim-rails'
+  gem 'html2slim', :require => false
 end
 
 group :test do
@@ -66,7 +70,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-
 gem 'rspotify'
+
+gem 'meta-tags'
 
 gem 'coffee-script-source', '1.8.0'
