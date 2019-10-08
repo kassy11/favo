@@ -11,10 +11,10 @@
          = render 'sns' if current_user != nil && current_user == @user
         =link_to "ユーザ情報の編集",edit_user_registration_path if current_user != nil && current_user == @user
         p
-          | メールアドレス : 
+          | メールアドレス :
           = @user.email
         p
-          | プロフィール : 
+          | プロフィール :
           = @user.profile
       .user_lists
         .music_list
