@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "movies/:movie_id/destroy" => "movies#destroy", param: :movie_id, as: :destroy_movie_list
 
 
-  devise_for :users, :controllers => { :registrations => :registrations }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'users/:id' => 'users#show', as: :mypage
 
   get 'users/:id/music_index' => 'users#music_index', as: :my_music
