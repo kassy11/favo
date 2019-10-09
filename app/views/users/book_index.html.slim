@@ -1,14 +1,13 @@
 h3.text-center.font-weight-bold
   | 書籍名で検索
-= form_with url: books_index_path, local: true do |f|
-  = f.text_field :search
-  = f.submit '検索',:name => nil
+= render 'search', url: books_index_path
 
 h1
   | BOOK LIST
 - @my_books.each do |my_book|
   - book_image = my_book.book_image_url
   - book_id = my_book.book_id
+  
   =my_book.book_name
   - if book_image
     = link_to book_path(book_id) do
