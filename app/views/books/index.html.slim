@@ -1,0 +1,21 @@
+- if !@base_contents.blank?
+  =render 'shared/result'
+  .search-results.container
+    .row
+      .card.col-sm-6.col-md-3.card-deck
+        - @base_contents.each do |content|
+          - book_id = content["id"].encode!
+          - title = content["volumeInfo"]["title"]
+          - img_url = content["volumeInfo"]["imageLinks"]["smallThumbnail"] if content["volumeInfo"].has_key?("imageLinks")
+          - if img_url
+            =link_to book_path(book_id) do
+              =image_tag(img_url, :class => "card-img-top rounded")
+          - else
+            =image_tag("no_image.jpg", :class => "card-img-top")
+          .card-body
+            h4.card-title
+              = title
+            =link_to '詳細', book_path(book_id), :class => "btn btn-primary"
+- else
+  = render 'shared/no_result'
+  =link_to '戻る', my_book_path(current_user),:class => "btn btn-primary"

@@ -1,0 +1,16 @@
+h3.text-center.font-weight-bold
+  | 作品名で検索
+= render 'search', url: movies_index_path
+
+h1
+  | MOVIE LIST
+- @my_movies.each do |my_movie|
+  - movie_image = my_movie.movie_image_url
+  - movie_id = my_movie.movie_id
+  =my_movie.movie_name
+  - if movie_image
+    = link_to movie_path(movie_id) do
+      =image_tag(movie_image)
+  - else
+    =image_tag("no_image.jpg")
+  = link_to("削除", destroy_movie_list_path(movie_id), {method: "post",:class => "btn btn-danger"})

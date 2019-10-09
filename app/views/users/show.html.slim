@@ -1,0 +1,57 @@
+.container
+  .row
+    .col-md-2
+
+    .col-md-8
+      .user_info
+        = gravatar_for @user,250
+        h1
+          = @user.name
+        div 
+         = render 'sns' if current_user != nil && current_user == @user
+        =link_to "ユーザ情報の編集",edit_user_registration_path if current_user != nil && current_user == @user
+        p
+          | メールアドレス :
+          = @user.email
+        p
+          | プロフィール :
+          = @user.profile
+      .user_lists
+        .music_list
+          h3
+            | MUSIC LIST 
+            = link_to "編集する", my_music_path(@user),:class => "list-btn btn btn-primary" if current_user != nil && current_user == @user
+          - @user.musics.first(5).each do |my_music|
+            - music_id = my_music.artist_id
+            - artist = find_artist(music_id)
+            - if artist.images.any?
+              - image = artist.images.second
+              =link_to music_path(music_id) do
+                =image_tag image["url"]
+            - else
+              =image_tag("no_image.jpg")
+        .movie_list
+          h3
+            | MOVIE LIST 
+            = link_to "編集する", my_movie_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
+          - @user.movies.first(5).each do |my_movie|
+            - movie_id = my_movie.movie_id
+            - movie_image = my_movie.movie_image_url
+            - if movie_image
+              = link_to movie_path(movie_id) do
+                =image_tag(movie_image)
+            - else
+              =image_tag("no_image.jpg")
+        .book_list
+          h3
+            | BOOK LIST 
+            = link_to "編集する",my_book_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
+          - @user.books.first(5).each do |my_book|
+            - book_id = my_book.book_id
+            - book_image = my_book.book_image_url
+            - if book_image
+              = link_to book_path(book_id) do
+                =image_tag(book_image)
+            - else
+              =image_tag("no_image.jpg")
+    .col-md-2

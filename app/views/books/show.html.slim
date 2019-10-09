@@ -1,0 +1,16 @@
+= render 'shared/works_show'
+
+div
+  -if @author
+    h4 
+      | 著者
+    = @author.first
+  -if @publisher
+    h4 出版社
+    = @publisher
+div
+  h4
+    | 本の内容
+  =simple_format @description
+  - if current_user.books.find_by(book_id: "#{@book_id}") == nil
+    = link_to("リストに追加する", create_book_list_path(@book_id), {method: "post",:class => "btn btn-primary"})

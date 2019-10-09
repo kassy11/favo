@@ -1,0 +1,53 @@
+.container
+  .row
+    .col-md-2
+
+    .col-md-8
+      h1.text-center.font-weight-bold.pt-5
+        | ユーザー情報の編集
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          = f.label :name, '名前'
+          br
+          = f.text_field :name, autofocus: true,class: "col-md-12 from-control"
+        div
+          = f.label :image,'画像'
+          =link_to "Gravatarで画像を登録する",'https://ja.gravatar.com/',:target=>["_blank"]
+        .field
+          = f.label :email,'Email'
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email",class: "col-md-12 from-control"
+        .field
+          = f.label :profile,'プロフィール'
+          br
+          = f.text_area :profile, autofocus: true,class: "col-md-12 from-control"
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for: 
+            = resource.unconfirmed_email
+        .field
+          = f.label :password,'パスワード'
+          i
+            | (変更しない場合は空白)
+          br
+          - if @minimum_password_length
+            br
+            em
+              = @minimum_password_length
+              | 文字以上のパスワードを設定してください
+          = f.password_field :password, autocomplete: "new-password",class: "col-md-12 from-control"
+        .field
+          = f.label :password_confirmation,'パスワード確認'
+          br
+          = f.password_field :password_confirmation, autocomplete: "new-password",class: "col-md-12 from-control"
+        .field
+          = f.label :current_password,'現在のパスワード'
+          i
+            | (現在設定しているパスワードを入力してください)
+          br
+          = f.password_field :current_password, autocomplete: "current-password"
+        .actions
+          = f.submit "編集" ,class:"btn btn-primary"
+      = link_to "戻る", :back
+    .col-md-2
