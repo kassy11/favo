@@ -1,18 +1,23 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
+  before_action :set_user
   
   def show
-    @user = current_user
   end
 
   def music_index
+    @my_musics = @user.musics
   end
 
   def movie_index
-    @my_movies = current_user.movies
+    @my_movies = @user.movies
   end
 
   def book_index
-    @my_books = current_user.books
+    @my_books = @user.books
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
