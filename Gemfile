@@ -69,7 +69,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-
 gem 'rspotify'
+gem 'meta-tags'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 gem 'coffee-script-source', '1.8.0'

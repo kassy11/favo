@@ -22,8 +22,8 @@ class MoviesController < ApplicationController
   end
 
   def create
-    img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
-    @movie_fav = current_user.movies.new(movie_id: params[:movie_id], movie_name: title, movie_image_url: img_url)
+    img_url = "https://image.tmdb.org/t/p/w154/#{@img_path}"
+    @movie_fav = current_user.movies.new(movie_id: params[:movie_id], movie_name: @title, movie_image_url: img_url)
     @movie_fav.save
     redirect_to my_movie_path(current_user)
   end
