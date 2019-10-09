@@ -1,4 +1,10 @@
 module UsersHelper
+  # require 'rspotify'
+
+  # def find_artist(my_music)
+  #   RSpotify::Artist.find(my_music.artist_id)
+  # end
+
   # 引数で与えられたユーザーのGravatar画像を返す
  def gravatar_for(user,size)
    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)

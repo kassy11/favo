@@ -1,24 +1,16 @@
-- author = @book["items"][0]["volumeInfo"]["authors"]
-- publisher = @book["items"][0]["volumeInfo"]["publisher"]
-- img_url = @book["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]
-- id = @book["items"][0]["id"]
-- book_id = id.encode!
-- title = @book["items"][0]["volumeInfo"]["title"]
-- description = @book["items"][0]["volumeInfo"]["description"]
-=title
-- if author
-  p.card-text
-    =author[0]
-- else
-  p.card-text
-    =publisher
-- if img_url
-  =image_tag(img_url)
-- else
-  =image_tag("no_image.jpg")
-br
-p
-  | 本の内容
-=description
-- if Book.find_by(book_id: "#{book_id}",user_id:current_user.id) == nil
-  = link_to("リストに追加する","/books/#{book_id}/create", {method: "post",:class => "btn btn-primary"})
+= render 'shared/works_show'
+
+div
+  -if @author
+    h4 
+      | 著者
+    = @author.first
+  -if @publisher
+    h4 出版社
+    = @publisher
+div
+  h4
+    | 本の内容
+  =simple_format @description
+  - if current_user.books.find_by(book_id: "#{@book_id}") == nil
+    = link_to("リストに追加する", create_book_list_path(@book_id), {method: "post",:class => "btn btn-primary"})
