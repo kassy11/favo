@@ -10,28 +10,13 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'FAVO',
+      title: 'FAVO',
+      description: 'FAVOは映画・音楽・書籍のお気に入りリストを作成できるサイトです。TwitterやFacebookなどのSNSであなたのお気に入りリストを共有して趣味をアピールしたり、友達のお気に入りリストを覗いて新たな作品に出会うこともできます。',
+      charset: 'utf-8',
       reverse: true,
-      separator: '|',
-      og: defalut_og,
-      twitter: default_twitter_card
-    }
-  end
-
-  private
-
-  def defalut_og
-    {
-      title: :full_title,         
-      description: :description,   
-      url: request.url,
-      image: 'https://example.com/hoge.png'
-    }
-  end
-
-  def default_twitter_card
-    {
-      card: 'summary_large_image', 
-      site: '@hogehoge'            
+      icon: image_url('favo_logo.png'),
+      noindex: ! Rails.env.production?,
+      separator: '|'
     }
   end
 end
