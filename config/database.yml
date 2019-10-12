@@ -25,7 +25,6 @@ test:
 #   database: db/production.sqlite3
 
 production:
-#半角スペース２個分の空白を開ける
   <<: *default
   adapter: postgresql
   encoding: unicode

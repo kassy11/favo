@@ -43,10 +43,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3', '~> 1.3.13'
   # Use sqlite3 as the database for Active Record
+  gem 'rubocop-rails'
 end
 
 group :development do
-
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'slim-rails'
