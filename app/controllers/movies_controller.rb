@@ -2,6 +2,8 @@ class MoviesController < ApplicationController
   require 'net/http'
   require "json"
   require 'uri'
+  require 'google/apis/youtube_v3'
+  require 'active_support/all'
 
   before_action :set_api, only: [:show, :create]
   before_action :base_info, only: [:show, :create]
@@ -18,7 +20,8 @@ class MoviesController < ApplicationController
   def show
     @movie_id = @movie["id"]
     @overview = @movie["overview"]
-    @img_url = "https://image.tmdb.org/t/p/w342/#{@img_path}" 
+    @img_url = "https://image.tmdb.org/t/p/w342/#{@img_path}"
+    @video = find_videos(@title).first
   end
 
   def create
@@ -48,4 +51,22 @@ class MoviesController < ApplicationController
     @title = @movie["title"]
     @img_path = @movie["poster_path"]
   end
+
+  def find_videos(keyword, after: 10.years.ago, before: Time.now)
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = Movie::YOUTUBE_KEY
+
+    next_page_token = nil
+      opt = {
+          q: keyword + '　予告',
+          type: 'video',
+          max_results: 1,
+          order: :date,
+          page_token: next_page_token,
+          published_after: after.iso8601,
+          published_before: before.iso8601
+      }
+      service.list_searches(:snippet, opt)
+  end
+
 end

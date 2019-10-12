@@ -75,6 +75,6 @@ gem 'meta-tags'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
-gem 'google-api-client'
+gem 'google-api-client', require: 'google/apis/youtube_v3'
 
 gem 'coffee-script-source', '1.8.0'

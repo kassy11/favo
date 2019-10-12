@@ -1,8 +1,11 @@
-= render 'shared/works_show'
+= render 'shared/works_show', locals: video: @video
 
 div
   h4
     | 映画の内容
   =simple_format @overview
+  h4
+    | 映画の予告編
+  = @video
   - if current_user.movies.find_by(movie_id:"#{@movie_id}") == nil
     = link_to("リストに追加する", create_movie_list_path(@movie_id), {method: "post",:class => "btn btn-primary"})
