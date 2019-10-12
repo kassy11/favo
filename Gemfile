@@ -75,4 +75,6 @@ gem 'meta-tags'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'google-api-client'
+
 gem 'coffee-script-source', '1.8.0'
