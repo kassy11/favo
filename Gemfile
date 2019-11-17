@@ -49,8 +49,6 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'slim-rails'
-  gem 'html2slim', :require => false
 end
 
 group :test do
@@ -76,3 +74,6 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 
 gem 'coffee-script-source', '1.8.0'
+
+gem 'slim-rails'
+gem 'html2slim', :require => false
