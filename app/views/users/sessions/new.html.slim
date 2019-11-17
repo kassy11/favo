@@ -5,6 +5,7 @@
     .col-md-8
       h1.text-center.font-weight-bold.pt-5
         | ログイン
+      = link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field.pt-3
           = f.label :email, 'Email'
