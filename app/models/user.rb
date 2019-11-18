@@ -46,11 +46,11 @@ class User < ApplicationRecord
     end
   end
 
-  def self.set_image(auth)
-    if auth.info.image.nil?
-      "dora.jpg"
-    else
-      auth.info.image
-    end
-  end
+  # def self.set_image(auth)
+  #   if auth.info.image.nil?
+  #     "dora.jpg"
+  #   else
+  #     auth.info.image
+  #   end
+  # end
 end
