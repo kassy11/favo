@@ -5,11 +5,11 @@
     .col-md-8
       .user_info
         - if @user.image.present?
-          =image_tag @user.image, size: '200x200'
+          =image_tag @user.image, :size => '200×200'
         h1
           = @user.name
-        div 
         = render 'sns' if current_user != nil && current_user == @user
+        div 
         =link_to "ユーザ情報の編集",edit_user_registration_path if current_user != nil && current_user == @user
         p
           | メールアドレス :

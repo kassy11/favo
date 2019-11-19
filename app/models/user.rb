@@ -24,7 +24,6 @@ class User < ApplicationRecord
           password: Devise.friendly_token[0, 20]
       )
     end
-
     user
   end
 
@@ -50,7 +49,7 @@ class User < ApplicationRecord
     if auth.info.image.nil?
       "dora.jpg"
     else
-      auth.info.image
+      auth.info.image.sub("_bigger","")
     end
   end
 end
