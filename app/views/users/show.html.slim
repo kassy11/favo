@@ -6,7 +6,6 @@
       .user_info
         - if @user.image.present?
           =image_tag @user.image, size: '200x200'
-        - end
         h1
           = @user.name
         div 
