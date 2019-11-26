@@ -4,11 +4,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
 
+  mount_uploader :image, UserImageUploader
+
   validates :profile, length: { maximum: 300 }
 
   has_many :movies
   has_many :musics
   has_many :books
+
+  validates def check_imgae_dimenions
+    if geometry[:width] < 200 || geometry[:height] < 200
+      errors.add :image, '200x200ピクセル以上のサイズの画像をアップロードしてください'
+    end
+  end
+
+  def geometry
+    @geometry ||= _geometry
+  end
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -47,9 +59,16 @@ class User < ApplicationRecord
 
   def self.set_image(auth)
     if auth.info.image.nil?
-      "dora.jpg"
+      "default.png"
     else
       auth.info.image.sub("_bigger","")
+    end
+  end
+
+  def _geometry
+    if image.file and File.exists?(image.file.file)
+      img = ::Magick::Image::read(image.file.file).first
+      { width: img.columns, height: img.rows }
     end
   end
 end
