@@ -5,7 +5,7 @@
     .col-md-8
       .user_info
         - if @user.image.present?
-          =image_tag @user.image_url(:thumb), :size => '200×200'
+          =image_tag @user.image.to_s, :size => '200×200'
         h1
           = @user.name
         = render 'sns' if current_user == @user

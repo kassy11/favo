@@ -12,15 +12,16 @@ class User < ApplicationRecord
   has_many :musics
   has_many :books
 
-  validates def check_imgae_dimenions
-    if geometry[:width] < 200 || geometry[:height] < 200
-      errors.add :image, '200x200ピクセル以上のサイズの画像をアップロードしてください'
-    end
-  end
-
-  def geometry
-    @geometry ||= _geometry
-  end
+  # アップロードする画像サイズのバリデーション
+  # validates def check_imgae_dimenions
+  #   if geometry[:width] < 200 || geometry[:height] < 200
+  #     errors.add :image, '200x200ピクセル以上のサイズの画像をアップロードしてください'
+  #   end
+  # end
+  #
+  # def geometry
+  #   @geometry ||= _geometry
+  # end
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -65,10 +66,10 @@ class User < ApplicationRecord
     end
   end
 
-  def _geometry
-    if image.file and File.exists?(image.file.file)
-      img = ::Magick::Image::read(image.file.file).first
-      { width: img.columns, height: img.rows }
-    end
-  end
+  # def _geometry
+  #   if image.file and File.exists?(image.file.file)
+  #     img = ::Magick::Image::read(image.file.file).first
+  #     { width: img.columns, height: img.rows }
+  #   end
+  # end
 end
