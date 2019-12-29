@@ -66,12 +66,16 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# for User
 gem 'devise'
-gem 'rspotify'
-gem 'meta-tags'
-
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog-aws'
+# for favotite-list
+gem 'rspotify'
+gem 'meta-tags'
 
 gem 'coffee-script-source', '1.8.0'
 
