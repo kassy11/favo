@@ -25,13 +25,13 @@ class BooksController < ApplicationController
   def create
     @book_fav = current_user.books.new(book_id: params[:book_id], book_name: @title, book_image_url: @img_url )
     @book_fav.save
-    redirect_to my_book_path(current_user)
+    redirect_to my_book_path(current_user), notice: 'BOOK LISTの項目を追加しました'
   end
 
   def destroy
     @book_fav = current_user.books.find_by(book_id: params[:book_id])
     @book_fav.destroy
-    redirect_to my_book_path(current_user)
+    redirect_to my_book_path(current_user), alert: 'BOOK LISTの項目を削除しました'
   end
 
   private 

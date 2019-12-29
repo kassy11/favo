@@ -45,10 +45,18 @@
     margin: 0 0 30px 0;
   }
 }
-//
-// .field_with_errors {
-//   @extend .has-error;
-//   .form-control {
-//     color: $state-danger-text;
-//   }
-// }
+
+.alert {
+  text-align: center;
+}
+.alert-info {
+  background-color: #bde9ff;
+  border-color: #bde9ff;
+  color: #4c6977;
+}
+
+.alert-danger {
+  background-color: #f3c0c0;
+  border-color: #f3c0c0;
+  color: #3e3a3a;
+}

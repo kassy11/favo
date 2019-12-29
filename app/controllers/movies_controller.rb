@@ -25,13 +25,13 @@ class MoviesController < ApplicationController
     img_url = "https://image.tmdb.org/t/p/w154/#{@img_path}"
     @movie_fav = current_user.movies.new(movie_id: params[:movie_id], movie_name: @title, movie_image_url: img_url)
     @movie_fav.save
-    redirect_to my_movie_path(current_user)
+    redirect_to my_movie_path(current_user), notice: 'MOVIE LISTの項目を追加しました'
   end
 
   def destroy
     @movie_fav = current_user.movies.find_by(movie_id: params[:movie_id])
     @movie_fav.destroy
-    redirect_to my_movie_path(current_user)
+    redirect_to my_movie_path(current_user), alert: 'MOVIE LISTの項目を削除しました'
   end
 
   private 

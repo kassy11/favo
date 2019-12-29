@@ -15,12 +15,12 @@ class MusicsController < ApplicationController
   def create
     @artist_fav = current_user.musics.new(artist_id: params[:artist_id])
     @artist_fav.save
-    redirect_to my_music_path(current_user)
+    redirect_to my_music_path(current_user), notice: 'MUSIC LISTの項目を追加しました'
   end
 
   def destroy
     @artist_fav = current_user.musics.find_by(artist_id: params[:artist_id])
     @artist_fav.destroy
-    redirect_to my_music_path(current_user) 
+    redirect_to my_music_path(current_user), alert: 'MOVIE LISTの項目を削除しました'
   end
 end

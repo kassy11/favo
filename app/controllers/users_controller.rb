@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     @my_books = @user.books
   end
 
+  private
+
   def set_user
     @user = User.find(params[:id])
   end

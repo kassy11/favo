@@ -2,7 +2,7 @@ h3.text-center.font-weight-bold
   | 作品名で検索
 = render 'search', url: movies_index_path
 
-h1
+h1.text-center
   | MOVIE LIST
 - @my_movies.each do |my_movie|
   - movie_image = my_movie.movie_image_url
