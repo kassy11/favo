@@ -14,4 +14,4 @@ h1.text-center
       =image_tag(book_image)
   - else
     =image_tag("no_image.jpg")
-  = link_to("削除", destroy_book_list_path(book_id), {method: "post",:class => "btn btn-danger"})
+  = link_to "削除", destroy_book_list_path(book_id), method: :post,data: { confirm: "「#{my_book.book_name}」をBOOK LISTから削除します。よろしいですか？" }, class: "btn btn-danger"

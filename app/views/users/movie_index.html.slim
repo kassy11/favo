@@ -13,4 +13,4 @@ h1.text-center
       =image_tag(movie_image)
   - else
     =image_tag("no_image.jpg")
-  = link_to("削除", destroy_movie_list_path(movie_id), {method: "post",:class => "btn btn-danger"})
+  = link_to "削除", destroy_movie_list_path(movie_id), method: :post, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger"

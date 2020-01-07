@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   mount_uploader :image, UserImageUploader
 
-  validates :profile, length: { maximum: 300 }
+  validates :profile, length: { maximum: 500 }
 
   has_many :movies
   has_many :musics
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   # def geometry
   #   @geometry ||= _geometry
   # end
-
+  #
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
@@ -40,31 +40,57 @@ class User < ApplicationRecord
     user
   end
 
+  #class << self
+  #  def find_for_oauth(auth)
+  #    provider = auth[:provider]
+  #    uid = auth[:uid]
+  #    profile = auth.set_profile
+  #    user_name = auth[:info][:name]
+  #    image_url = auth[:info][:image]
+  #    uri = URI.parse(image_url) # パースする必要がある
+  #    image = uri.open
+  #    email = auth.set_email
+  #    password = Devise.friendly_token[0, 20]
+  #
+  #    find_or_create_by(provider: provider, uid: uid) do |user|
+  #      user.name = user_name
+  #      user.email = email
+  #      user.password = password
+  #      user.profile = profile
+  #      user.avatar.attach(io: image, filename: "#{user.name}_profile.png")
+  #    end
+  #  end
+  #end
+
   private
 
   def self.set_email(auth)
-    if auth.info[:email].nil?
-      "#{auth.uid}-#{auth.provider}@example.com"
+    if auth.info.email
+      auth.info.email
     else
-      auth.info[:email]
+      "#{auth.uid}-#{auth.provider}@example.com"
     end
   end
 
   def self.set_profile(auth)
-    if auth.info.description.nil?
-      "プロフィールを設定してね"
-    else
+    if auth.info.description
       auth.info.description
+    else
+      "プロフィールを設定してね"
     end
   end
 
   def self.set_image(auth)
-    if auth.info.image.nil?
-      "default.png"
-    else
-      auth.info.image.sub("_bigger","")
+    if auth.info.image
+      uri = URI.parse(auth.info.image) # パースする必要がある
+      uri.open
     end
   end
+
+  #def self.set_image(auth)
+  #  if auth.info.image
+  #    auth.info.image
+  #end
 
   # def _geometry
   #   if image.file and File.exists?(image.file.file)

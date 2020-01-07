@@ -5,7 +5,7 @@
     .col-md-8
       h1.text-center.font-weight-bold.pt-5
         | ログイン
-      = link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path
+      = button_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: 'col-md-4 offset-md-4'
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field.pt-3
           = f.label :email, 'Email'
@@ -17,10 +17,10 @@
           = f.password_field :password, autocomplete: "current-password", class: "col-md-12 form-control"
         - if devise_mapping.rememberable?
           .field.pt-3
-            = f.check_box :remember_me
             = f.label :remember_me,'情報を保存する'
+            = f.check_box :remember_me
         .actions.pt-3
-          = f.submit "ログイン", class:"btn btn-primary"
+          = f.submit "ログイン", class:"btn btn-primary col-md-4 offset-md-4"
           br
       .pt-3
 

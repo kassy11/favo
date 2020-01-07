@@ -82,3 +82,4 @@ gem 'coffee-script-source', '1.8.0'
 
 gem 'slim-rails'
 gem 'html2slim', :require => false
+gem 'font-awesome-rails'
