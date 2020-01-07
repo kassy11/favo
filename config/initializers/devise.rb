@@ -260,8 +260,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  # ドメイン名によって変更する必要あり
   config.omniauth :twitter, Rails.application.credentials.twitter[:api_key], Rails.application.credentials.twitter[:api_secret_key],
-                  display: 'popup', callback_url: "http://localhost:3000/users/auth/twitter/callback", image_size: 'original'
+                  display: 'popup', callback_url: "https://favobykassy11.herokuapp.com//users/auth/twitter/callback", image_size: 'original'
 
 
   # ==> Warden configuration
