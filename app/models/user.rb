@@ -33,7 +33,7 @@ class User < ApplicationRecord
           name: auth.info.name,
           profile: User.set_profile(auth),
           email: User.set_email(auth),
-          image: User.set_image(auth),
+          # image: User.set_image(auth),
           password: Devise.friendly_token[0, 20]
       )
     end
@@ -80,12 +80,12 @@ class User < ApplicationRecord
     end
   end
 
-  def self.set_image(auth)
-    if auth.info.image
-      uri = URI.parse(auth.info.image) # パースする必要がある
-      uri.open
-    end
-  end
+  # def self.set_image(auth)
+  #   if auth.info.image
+  #     uri = URI.parse(auth.info.image) # パースする必要がある
+  #     uri.open
+  #   end
+  # end
 
   #def self.set_image(auth)
   #  if auth.info.image
