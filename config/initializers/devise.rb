@@ -262,7 +262,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   # ドメイン名によって変更する必要あり
   config.omniauth :twitter, Rails.application.credentials.twitter[:api_key], Rails.application.credentials.twitter[:api_secret_key],
-                  display: 'popup', callback_url: "https://favobykassy11.herokuapp.com//users/auth/twitter/callback", image_size: 'original'
+                  display: 'popup', callback_url: "https://favobykassy11.herokuapp.com/users/auth/twitter/callback", image_size: 'original'
 
 
   # ==> Warden configuration
