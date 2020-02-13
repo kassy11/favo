@@ -18,4 +18,4 @@
           =link_to '詳細', movie_path(movie_id), :class => "btn btn-primary"
 - else
   = render 'shared/no_result'
-  =link_to '戻る', my_movie_path(current_user),:class => "btn btn-primary"
+  =link_to '戻る', movie_index_user_path(current_user),:class => "btn btn-primary"

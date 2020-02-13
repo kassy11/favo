@@ -18,7 +18,7 @@
         .music_list
           h3
             | MUSIC LIST 
-            = link_to "編集する", my_music_path(@user),:class => "list-btn btn btn-primary" if current_user != nil && current_user == @user
+            = link_to "編集する", music_index_user_path(@user),:class => "list-btn btn btn-primary" if current_user != nil && current_user == @user
           - @user.musics.first(5).each do |my_music|
             - music_id = my_music.artist_id
             - artist = find_artist(music_id)
@@ -31,7 +31,7 @@
         .movie_list
           h3
             | MOVIE LIST 
-            = link_to "編集する", my_movie_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
+            = link_to "編集する", movie_index_user_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
           - @user.movies.first(5).each do |my_movie|
             - movie_id = my_movie.movie_id
             - movie_image = my_movie.movie_image_url
@@ -43,7 +43,7 @@
         .book_list
           h3
             | BOOK LIST 
-            = link_to "編集する",my_book_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
+            = link_to "編集する",book_index_user_path(@user),:class => "btn btn-primary" if current_user != nil && current_user == @user
           - @user.books.first(5).each do |my_book|
             - book_id = my_book.book_id
             - book_image = my_book.book_image_url

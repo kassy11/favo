@@ -5,4 +5,4 @@ div
     | 映画の内容
   =simple_format @overview
   - if current_user.movies.find_by(movie_id:"#{@movie_id}") == nil
-    = link_to("リストに追加する", create_movie_list_path(@movie_id), {method: "post",:class => "btn btn-primary"})
+    = link_to("リストに追加する", movies_path(@movie_id), {method: "post",:class => "btn btn-primary"})

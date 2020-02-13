@@ -19,4 +19,4 @@
               =link_to '詳細', music_path(artist.id), :class => "btn btn-primary"
 - else
   = render 'shared/no_result'
-  =link_to '戻る', my_music_path(current_user),:class => "btn btn-primary"
+  =link_to '戻る', music_index_user_path(current_user),:class => "btn btn-primary"
