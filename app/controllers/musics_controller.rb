@@ -3,6 +3,7 @@ class MusicsController < ApplicationController
 
   def index
     @artists = search_artist(params[:search]) unless params[:search].blank?
+    binding.pry
     @base_contents = @artists
   end
 
