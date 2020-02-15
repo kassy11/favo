@@ -23,13 +23,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book_fav = current_user.books.new(book_id: params[:book_id], book_name: @title, book_image_url: @img_url )
+    @book_fav = current_user.books.new(book_id: params[:work_id], book_name: @title, book_image_url: @img_url )
     @book_fav.save
     redirect_to book_index_user_path(current_user), notice: 'BOOK LISTの項目を追加しました'
   end
 
   def destroy
-    @book_fav = current_user.books.find_by(book_id: params[:book_id])
+    @book_fav = current_user.books.find_by(book_id: params[:work_id])
     @book_fav.destroy
     redirect_to book_index_user_path(current_user), alert: 'BOOK LISTの項目を削除しました'
   end
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
   private 
 
   def set_api
-    url = "https://www.googleapis.com/books/v1/volumes?q=id:#{params[:book_id]}"
+    url = "https://www.googleapis.com/books/v1/volumes?q=id:#{params[:work_id]}"
     enc_str = URI.encode(url)
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)

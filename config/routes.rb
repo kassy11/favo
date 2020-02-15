@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :musics, :books, :movies, only: [ :destroy, :show ], param: :work_id
+
   post "musics/:work_id/create" => "musics#create", as: :musics
   post "movies/:work_id/create" => "movies#create", as: :movies
   post "books/:work_id/create" => "books#create", as: :books
+  resources :musics, :books, :movies, only: [ :destroy, :show ], param: :work_id
+
   ## ここの上下３つをどうにかまとめたい..
   post 'musics/index' => 'musics#index'
   post 'books/index' => 'books#index'
