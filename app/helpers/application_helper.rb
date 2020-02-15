@@ -1,11 +1,13 @@
 module ApplicationHelper
+
+  def search_artist(artist_name)
+    RSpotify::Artist.search(artist_name)
+  end
+
   def find_artist(artist_id)
     RSpotify::Artist.find(artist_id)
   end
 
-  def search_artist(artist_id)
-    RSpotify::Artist.search(artist_id)
-  end
 
   def default_meta_tags
     {

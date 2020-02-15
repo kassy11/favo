@@ -5,4 +5,4 @@ div
     | ジャンル
   =@artist.genres[0]
   - if current_user.musics.find_by(artist_id:"#{@artist.id}") == nil
-    = link_to("リストに追加する", create_music_list_path(@artist.id), {method: "post",:class => "btn btn-primary"})
+    = link_to("リストに追加する", musics_path(@artist.id), {method: "post",:class => "btn btn-primary"})

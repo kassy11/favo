@@ -14,4 +14,4 @@ h1.text-center
       =image_tag image["url"]
   - else
     =image_tag("no_image.jpg")
-  = link_to "削除", destroy_music_list_path(music_id), method: :post, data: { confirm: "「#{artist.name}」をMUSIC LISTから削除します。よろしいですか？"},class: "btn btn-danger"
+  = link_to "削除", music_path(music_id), method: :delete, data: { confirm: "「#{artist.name}」をMUSIC LISTから削除します。よろしいですか？"},class: "btn btn-danger"
