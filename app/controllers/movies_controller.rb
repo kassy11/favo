@@ -10,8 +10,8 @@ class MoviesController < ApplicationController
     search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&query=#{params[:search]}"
     enc_uri = URI.encode(search_uri)
     uri = URI.parse(enc_uri)
-    json = Net::HTTP.get(uri) 
-    @movies = JSON.parse(json) 
+    json = Net::HTTP.get(uri)
+    @movies = JSON.parse(json)
     @base_contents = @movies["results"]
   end
 
