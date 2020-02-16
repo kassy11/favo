@@ -4,14 +4,25 @@ h3.text-center.font-weight-bold
 
 h1.text-center
   | MUSIC LIST
-- @my_musics.each do |my_music|
-  - music_id = my_music.artist_id
-  - artist = find_artist(music_id)
-  =artist.name
-  - if artist.images.any?
-    - image = artist.images.second
-    =link_to music_path(music_id) do
-      =image_tag image["url"]
-  - else
-    =image_tag("no_image.jpg")
-  = link_to "削除", music_path(music_id), method: :delete, data: { confirm: "「#{artist.name}」をMUSIC LISTから削除します。よろしいですか？"},class: "btn btn-danger"
+
+.container
+  .card-deck
+    .row
+      - @my_musics.each do |my_music|
+        .col-sm-3
+          .card.h-100
+            - artist_id = my_music.artist_id
+            - artist = find_artist(artist_id)
+            / - binding.pry
+            - artist_name = artist.name
+            - artist_image = artist.images.second["url"]
+            - if artist_image
+              = link_to music_path(artist_id) do
+                = image_tag(artist_image,:class => "card-img-top")
+            - else
+              = image_tag("no_image.jpg", :class => "card-img-top")
+            .card-body
+              h4.card-title
+                = artist_name
+              = link_to '詳細', music_path(artist_id), :class => "btn btn-primary"
+              = link_to "削除", music_path(artist_id), method: :delete, data: {confirm: "「#{artist_name}」をMUSIC LISTから削除します。よろしいですか？"}, class: "btn btn-danger"

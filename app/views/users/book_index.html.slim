@@ -4,14 +4,26 @@ h3.text-center.font-weight-bold
 
 h1.text-center
   | BOOK LIST
-- @my_books.each do |my_book|
-  - book_image = my_book.book_image_url
-  - book_id = my_book.book_id
+
+.container
+  .card-deck
+    .row
+      - @my_books.each do |my_book|
+        .col-sm-3
+          .card.h-100
+            - book_image = my_book.book_image_url
+            - book_id = my_book.book_id
+            - book_name = my_book.book_name
+            - if book_image
+              = link_to book_path(book_id) do
+                = image_tag(book_image,:class => "card-img-top")
+            - else
+              = image_tag("no_image.jpg", :class => "card-img-top")
+            .card-body
+              h4.card-title
+                = book_name
+              = link_to '詳細', book_path(book_id), :class => "btn btn-primary"
+              = link_to "削除", book_path(book_id), method: :delete, data: { confirm: "「#{book_name}" }, class: "btn btn-danger"
+
   
-  =my_book.book_name
-  - if book_image
-    = link_to book_path(book_id) do
-      =image_tag(book_image)
-  - else
-    =image_tag("no_image.jpg")
-  = link_to "削除", book_path(book_id), method: :delete ,data: { confirm: "「#{my_book.book_name}」をBOOK LISTから削除します。よろしいですか？" }, class: "btn btn-danger"
+  =
