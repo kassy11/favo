@@ -9,7 +9,7 @@ h1.text-center
   .card-deck
     .row
       - @my_books.each do |my_book|
-        .col-sm-3
+        .col-xs-6.col-sm-4.col-md-4.col-lg-3
           .card.h-100
             - book_image = my_book.book_image_url
             - book_id = my_book.book_id

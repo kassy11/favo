@@ -12,12 +12,12 @@
               - img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
               - if img_path
                =link_to movie_path(movie_id) do
-                  =image_tag(img_url, :class => "card-img-top",:width=>"30%" ,:height=>"100%")
+                  =image_tag img_url, class: "card-img-top img-fluid"
               - else
-                =image_tag("no_image.jpg", :class => "card-img-top",:width=>"100%" ,:height=>"100%")
+                =image_tag "no_image.jpg", class: "card-img-top img-fluid"
               .card-body
                 h4.card-title
                   = title
-                =link_to '詳細', movie_path(movie_id), :class => "btn btn-primary"
+                =link_to '詳細', movie_path(movie_id), class: "btn btn-primary"
 - else
   = render 'shared/no_result'

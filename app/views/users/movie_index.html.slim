@@ -9,7 +9,7 @@ h1.text-center
   .card-deck
     .row
       - @my_movies.each do |my_movie|
-        .col-sm-3
+        .col-xs-6.col-sm-4.col-md-4.col-lg-3
           .card.h-100
             - movie_image = my_movie.movie_image_url
             - movie_id = my_movie.movie_id

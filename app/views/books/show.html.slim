@@ -9,7 +9,7 @@
         | 出版社
       = @publisher
     h4
-      | 本の内容
+      | あらすじ
     =simple_format @description
     - if current_user.books.find_by(book_id: "#{@book_id}") == nil
       = link_to("リストに追加する", books_path(@book_id), {method: "post",:class => "btn btn-primary"})

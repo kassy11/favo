@@ -71,9 +71,7 @@ gem 'devise'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'carrierwave'
-gem 'rmagick'
-gem 'fog-aws'
+
 # for favotite-list
 gem 'rspotify'
 gem 'meta-tags'
