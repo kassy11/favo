@@ -1,21 +1,23 @@
 - if !@base_contents.blank?
   =render 'shared/result'
-  .search-results
-    .card[style="width: 30%;"]
-      - @base_contents.each do |content|
-        - movie_id = content["id"]
-        - title =content["title"]
-        - img_path = content["poster_path"]
-        - img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
-        - if img_path
-          =link_to movie_path(movie_id) do
-            =image_tag(img_url, :class => "card-img-top",:width=>"30%" ,:height=>"100%")
-        - else
-          =image_tag("no_image.jpg", :class => "card-img-top",:width=>"100%" ,:height=>"100%")
-        .card-body
-          h4.card-title
-            = title
-          =link_to '詳細', movie_path(movie_id), :class => "btn btn-primary"
+  .search-results.container
+    .card-deck
+      .row
+        - @base_contents.each do |content|
+          .col-sm-3
+            .card.h-100
+              - movie_id = content["id"]
+              - title =content["title"]
+              - img_path = content["poster_path"]
+              - img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
+              - if img_path
+               =link_to movie_path(movie_id) do
+                  =image_tag(img_url, :class => "card-img-top",:width=>"30%" ,:height=>"100%")
+              - else
+                =image_tag("no_image.jpg", :class => "card-img-top",:width=>"100%" ,:height=>"100%")
+              .card-body
+                h4.card-title
+                  = title
+                =link_to '詳細', movie_path(movie_id), :class => "btn btn-primary"
 - else
   = render 'shared/no_result'
-  =link_to '戻る', movie_index_user_path(current_user),:class => "btn btn-primary"

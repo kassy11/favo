@@ -4,13 +4,23 @@ h3.text-center.font-weight-bold
 
 h1.text-center
   | MOVIE LIST
-- @my_movies.each do |my_movie|
-  - movie_image = my_movie.movie_image_url
-  - movie_id = my_movie.movie_id
-  =my_movie.movie_name
-  - if movie_image
-    = link_to movie_path(movie_id) do
-      =image_tag(movie_image)
-  - else
-    =image_tag("no_image.jpg")
-  = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger"
+
+.container
+  .card-deck
+    .row
+      - @my_movies.each do |my_movie|
+        .col-sm-3
+          .card.h-100
+            - movie_image = my_movie.movie_image_url
+            - movie_id = my_movie.movie_id
+            - movie_name = my_movie.movie_name
+            - if movie_image
+              = link_to movie_path(movie_id) do
+                = image_tag(movie_image,:class => "card-img-top")
+            - else
+              = image_tag("no_image.jpg", :class => "card-img-top")
+            .card-body
+              h4.card-title
+                = movie_name
+              = link_to '詳細', movie_path(movie_id), :class => "btn btn-primary"
+              = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger"

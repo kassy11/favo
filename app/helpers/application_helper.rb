@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def search_artist(artist_name)
-    RSpotify::Artist.search(artist_name)
+    RSpotify::Artist.search(artist_name, limit: 50, offset: 0, market: nil)
   end
 
   def find_artist(artist_id)

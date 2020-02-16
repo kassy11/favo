@@ -1,22 +1,20 @@
 - if !@artists.blank?
   =render 'shared/result'
   .search-results.container
-    .row
-      .card-deck
-        .card
-          - @artists.each do |artist|
-            - if artist.images.any?
-              - image = artist.images.second
-              =link_to music_path(artist.id) do
-                =image_tag image["url"], :class => "card-img-top rounded"
-            - else
-              =image_tag("no_image.jpg", :class => "card-img-top")
-            .card-body
-              h4.card-title
-                = artist.name
-              p.card-text
-                =artist.genres.first
-              =link_to '詳細', music_path(artist.id), :class => "btn btn-primary"
+    .card-deck
+      .row
+        - @artists.each do |artist|
+          .col-sm-3
+            .card.h-100
+              - if artist.images.any?
+                - image = artist.images.second
+                =link_to music_path(artist.id) do
+                  =image_tag image["url"], :class => "card-img-top"
+              - else
+                =image_tag "no_image.jpg", :class => "card-img-top"
+              .card-body
+                h4.card-title
+                  = artist.name
+                =link_to '詳細', music_path(artist.id), :class => "btn btn-primary"
 - else
   = render 'shared/no_result'
-  =link_to '戻る', music_index_user_path(current_user),:class => "btn btn-primary"
