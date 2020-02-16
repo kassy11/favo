@@ -78,8 +78,6 @@ gem 'fog-aws'
 gem 'rspotify'
 gem 'meta-tags'
 
-gem 'kaminari'
-
 gem 'coffee-script-source', '1.8.0'
 
 gem 'slim-rails'

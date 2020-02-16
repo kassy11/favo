@@ -1,7 +1,16 @@
-h2    
- =@title
+.container
+  .row
+    .col-md-2
 
-- if @img_url
- =image_tag(@img_url)
-- else
- =image_tag("no_image.jpg")
+    .col-md-8
+      h2.text-center
+        = @title
+        .col-
+      - if @img_url
+        = image_tag(@img_url)
+      - else
+        =image_tag("no_image.jpg")
+
+      = yield
+
+    .col-md-2

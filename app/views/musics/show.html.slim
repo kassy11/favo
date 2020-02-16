@@ -1,8 +1,7 @@
-= render 'shared/works_show'
-
-div
-  h4
-    | ジャンル
-  =@artist.genres[0]
-  - if current_user.musics.find_by(artist_id:"#{@artist.id}") == nil
-    = link_to("リストに追加する", musics_path(@artist.id), {method: "post",:class => "btn btn-primary"})
+= render 'shared/works_show' do
+  .work-show
+    h4.text-center
+      | ジャンル
+    =@artist.genres[0]
+    - if current_user.musics.find_by(artist_id:"#{@artist.id}") == nil
+      = link_to("リストに追加する", musics_path(@artist.id), {method: "post",:class => "btn btn-primary"})
