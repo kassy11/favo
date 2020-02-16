@@ -1,16 +1,15 @@
 .container
   .row
-    .col-md-2
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
 
-    .col-md-8
+    .col-xs-8.col-sm-8.col-md-8.col-lg-8
       h2.text-center
         = @title
-        .col-
       - if @img_url
-        = image_tag(@img_url)
+        = image_tag @img_url, class: "d-block mx-auto img-fluid"
       - else
-        =image_tag("no_image.jpg")
+        = image_tag "no_image.jpg", class: "d-block mx-auto img-fluid"
 
       = yield
 
-    .col-md-2
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2

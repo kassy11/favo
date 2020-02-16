@@ -4,19 +4,19 @@
     .card-deck
       .row
         - @base_contents.each do |content|
-          .col-sm-3
+          .col-xs-6.col-sm-4.col-md-3
             .card.h-100
               - book_id = content["id"].encode!
               - title = content["volumeInfo"]["title"]
               - img_url = content["volumeInfo"]["imageLinks"]["smallThumbnail"] if content["volumeInfo"].has_key?("imageLinks")
               - if img_url
                 =link_to book_path(book_id) do
-                  =image_tag(img_url, :class => "card-img-top")
+                  =image_tag img_url, class: "card-img-top img-fluid"
               - else
-                =image_tag("no_image.jpg", :class => "card-img-top")
+                =image_tag "no_image.jpg", class: "card-img-top img-fluid"
               .card-body
                 h4.card-title
                   = title
-                =link_to '詳細', book_path(book_id), :class => "btn btn-primary"
+                =link_to '詳細', book_path(book_id), class: "btn btn-primary"
 - else
   = render 'shared/no_result'

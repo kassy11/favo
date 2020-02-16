@@ -4,14 +4,14 @@
     .card-deck
       .row
         - @artists.each do |artist|
-          .col-sm-3
+          .col-xs-6.col-sm-4.col-md-3
             .card.h-100
               - if artist.images.any?
                 - image = artist.images.second
                 =link_to music_path(artist.id) do
-                  =image_tag image["url"], :class => "card-img-top"
+                  =image_tag image["url"], :class => "card-img-top img-fluid"
               - else
-                =image_tag "no_image.jpg", :class => "card-img-top"
+                =image_tag "no_image.jpg", :class => "card-img-top img-fluid"
               .card-body
                 h4.card-title
                   = artist.name

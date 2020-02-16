@@ -1,8 +1,8 @@
 .container
   .row
-    .col-md-2
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
 
-    .col-md-8
+    .col-xs-8.col-sm-8.col-md-8.col-lg-8
       .user_info
         - if @user.image.present?
           =image_tag @user.image.to_s, :size => '200×200'
@@ -25,9 +25,9 @@
             - if artist.images.any?
               - image = artist.images.second
               =link_to music_path(music_id) do
-                =image_tag image["url"]
+                =image_tag image["url"], class: "img-fluid"
             - else
-              =image_tag("no_image.jpg")
+              =image_tag "no_image.jpg", class: "img-fluid"
         .movie_list
           h3
             | MOVIE LIST 
@@ -37,9 +37,9 @@
             - movie_image = my_movie.movie_image_url
             - if movie_image
               = link_to movie_path(movie_id) do
-                =image_tag(movie_image)
+                =image_tag movie_image, class: "img-fluid"
             - else
-              =image_tag("no_image.jpg")
+              =image_tag "no_image.jpg", class: "img-fluid"
         .book_list
           h3
             | BOOK LIST 
@@ -49,7 +49,7 @@
             - book_image = my_book.book_image_url
             - if book_image
               = link_to book_path(book_id) do
-                =image_tag(book_image)
+                =image_tag book_image, class: "img-fluid"
             - else
-              =image_tag("no_image.jpg")
-    .col-md-2
+              =image_tag "no_image.jpg", class: "img-fluid"
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
