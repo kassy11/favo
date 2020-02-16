@@ -10,7 +10,7 @@
           = @user.name
         = render 'sns' if current_user == @user
         div 
-        =link_to "ユーザ情報の編集",edit_user_registration_path if current_user.uid.blank? && current_user == @user
+        =link_to "ユーザ情報の編集",edit_user_registration_path if current_user == @user
         p
           | プロフィール :
           = @user.profile
