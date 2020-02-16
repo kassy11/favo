@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
 
-  mount_uploader :image, UserImageUploader
+  #mount_uploader :image, UserImageUploader
 
   validates :profile, length: { maximum: 500 }
 
