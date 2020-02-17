@@ -11,17 +11,7 @@ class User < ApplicationRecord
   has_many :musics
   has_many :books
 
-  # アップロードする画像サイズのバリデーション
-  # validates def check_imgae_dimenions
-  #   if geometry[:width] < 200 || geometry[:height] < 200
-  #     errors.add :image, '200x200ピクセル以上のサイズの画像をアップロードしてください'
-  #   end
-  # end
-  #
-  # def geometry
-  #   @geometry ||= _geometry
-  # end
-  #
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
@@ -32,7 +22,7 @@ class User < ApplicationRecord
           name: auth.info.name,
           profile: User.set_profile(auth),
           email: User.set_email(auth),
-          # image: User.set_image(auth),
+           image: User.set_image(auth),
           password: Devise.friendly_token[0, 20]
       )
     end
@@ -72,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def self.set_profile(auth)
-    if auth.info.description
+    if !!auth.info.description
       auth.info.description
     else
       "プロフィールを設定してね"
@@ -86,10 +76,12 @@ class User < ApplicationRecord
   #   end
   # end
 
-  #def self.set_image(auth)
-  #  if auth.info.image
-  #    auth.info.image
-  #end
+  def self.set_image(auth)
+    if auth.info.image
+      auth.info.image
+    end
+    ## TODO:画像ないときのデフォルト画像を探してくる
+  end
 
   # def _geometry
   #   if image.file and File.exists?(image.file.file)
