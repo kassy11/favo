@@ -19,10 +19,6 @@
  // @import "bootstrap-sprockets";
 @import 'font-awesome';
 
- body {
-   padding-top: 33px;
- }
-
  .logo {
    float: left;
    margin-right: 10px;
@@ -66,3 +62,12 @@
   margin-bottom: 50px;
 }
 
+.search-form{
+  margin-top: 20px;
+}
+
+.work-img{
+  margin: 20px;
+  width: 30%;
+  height: 30%;
+}

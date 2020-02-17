@@ -1,8 +1,8 @@
 .container
   .row
-    .col-xs-2.col-sm-2.col-md-2.col-lg-2
+    .col-xs-1.col-sm-1.col-md-1.col-lg-1
 
-    .col-xs-8.col-sm-8.col-md-8.col-lg-8
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10
       .user_info
         - if @user.image.present?
           =image_tag @user.image.to_s, :size => '200×200'
@@ -17,7 +17,7 @@
       .user_lists
         .music_list
           h3
-            | MUSIC LIST 
+            | ARTIST LIST
             = link_to "編集する", music_index_user_path(@user),:class => "list-btn btn btn-primary" if current_user != nil && current_user == @user
           - @user.musics.first(5).each do |my_music|
             - music_id = my_music.artist_id
@@ -25,9 +25,9 @@
             - if artist.images.any?
               - image = artist.images.second
               =link_to music_path(music_id) do
-                =image_tag image["url"], class: "img-fluid"
+                =image_tag image["url"], class: "img-fluid work-img"
             - else
-              =image_tag "no_image.jpg", class: "img-fluid"
+              =image_tag "no_image.jpg", class: "img-fluid work-img"
         .movie_list
           h3
             | MOVIE LIST 
@@ -37,9 +37,9 @@
             - movie_image = my_movie.movie_image_url
             - if movie_image
               = link_to movie_path(movie_id) do
-                =image_tag movie_image, class: "img-fluid"
+                =image_tag movie_image, class: "img-fluid work-img"
             - else
-              =image_tag "no_image.jpg", class: "img-fluid"
+              =image_tag "no_image.jpg", class: "img-fluid work-img"
         .book_list
           h3
             | BOOK LIST 
@@ -49,7 +49,7 @@
             - book_image = my_book.book_image_url
             - if book_image
               = link_to book_path(book_id) do
-                =image_tag book_image, class: "img-fluid"
+                =image_tag book_image, class: "img-fluid work-img"
             - else
-              =image_tag "no_image.jpg", class: "img-fluid"
-    .col-xs-2.col-sm-2.col-md-2.col-lg-2
+              =image_tag "no_image.jpg", class: "img-fluid work-img"
+    .col-xs-1.col-sm-1.col-md-1.col-lg-1
