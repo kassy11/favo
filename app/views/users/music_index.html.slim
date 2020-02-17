@@ -14,7 +14,7 @@ h1.text-center.font-weight-bold
             - artist_id = my_music.artist_id
             - artist = find_artist(artist_id)
             - artist_name = artist.name
-            - artist_image = artist.images.second["url"]
+            - artist_image = artist.images.second["url"] if artist.images.second.present?
             - if artist_image
               = link_to music_path(artist_id) do
                 = image_tag(artist_image,:class => "card-img-top")

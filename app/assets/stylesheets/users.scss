@@ -1,6 +1,10 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user_info{
+  padding-top: 20px;
+}
+
 .user_lists .copy-button{
   padding-top: 80px;
 }
@@ -12,20 +16,6 @@
 .fav_list{
   margin-top: 30px;
 }
-
-//.card-title{
-//  padding-bottom: 40px;
-//}
-//
-//.card-body{
-//  position: relative;
-//}
-//
-//.list-btns{
-//  position: absolute;
-//  bottom: 3px;
-//}
-//
 
 .fav-btn{
   margin-right: 10px;
