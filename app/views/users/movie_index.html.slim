@@ -2,7 +2,7 @@ h3.text-center.font-weight-bold.search-form
   | 作品名で検索
 = render 'search', url: movies_index_path
 
-h1.text-center
+h1.text-center.font-weight-bold
   | MOVIE LIST
 
 .container
@@ -22,5 +22,5 @@ h1.text-center
             .card-body
               h4.card-title
                 = movie_name
-              = link_to '詳細', movie_path(movie_id), :class => "btn btn-primary"
-              = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger"
+              = link_to '詳細', movie_path(movie_id), :class => "btn btn-primary btn-lg fav-btn"
+              = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger btn-lg"
