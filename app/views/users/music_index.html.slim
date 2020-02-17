@@ -9,7 +9,7 @@ h1.text-center.font-weight-bold
   .card-deck
     .row
       - @my_musics.each do |my_music|
-        .col-xs-6.col-sm-6.col-md-4.col-lg-3
+        .work-index.col-xs-6.col-sm-6.col-md-4.col-lg-3
           .card.h-100
             - artist_id = my_music.artist_id
             - artist = find_artist(artist_id)
@@ -23,5 +23,6 @@ h1.text-center.font-weight-bold
             .card-body
               h4.card-title.text-center
                 = artist_name
-              = link_to '詳細', music_path(artist_id), :class => "btn btn-primary btn-lg fav-btn"
-              = link_to "削除", music_path(artist_id), method: :delete, data: {confirm: "「#{artist_name}」をMUSIC LISTから削除します。よろしいですか？"}, class: "btn btn-danger btn-lg"
+              .list-btns
+                = link_to '詳細', music_path(artist_id), :class => "btn btn-primary btn-lg fav-btn"
+                = link_to "削除", music_path(artist_id), method: :delete, data: {confirm: "「#{artist_name}」をMUSIC LISTから削除します。よろしいですか？"}, class: "btn btn-danger btn-lg"

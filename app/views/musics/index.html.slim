@@ -1,10 +1,10 @@
 - if !@artists.blank?
   =render 'shared/result'
-  .search-results.container
+  .container
     .card-deck
       .row
         - @artists.each do |artist|
-          .col-xs-6.col-sm-4.col-md-3
+          .work-index.col-xs-6.col-sm-4.col-md-3
             .card.h-100
               - if artist.images.any?
                 - image = artist.images.second
@@ -15,6 +15,7 @@
               .card-body
                 h4.card-title
                   = artist.name
-                =link_to '詳細', music_path(artist.id), :class => "btn btn-primary btn-lg"
+                .list-btns
+                  =link_to '詳細', music_path(artist.id), :class => "btn btn-primary btn-lg"
 - else
   = render 'shared/no_result'

@@ -59,11 +59,20 @@
   color: #3e3a3a;
 }
 
-.search-results{
+.search-result{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.search-no-result{
+  margin-top: 50px;
   margin-bottom: 50px;
 }
 
 
+.search-form{
+  margin-top: 30px;
+}
 // スマホ
 @media screen and (max-width:820px) {
   .work-img{
@@ -101,5 +110,23 @@
 .header-item{
   margin-right: 15px;
 }
+
+.card-title{
+  padding-bottom: 40px;
+}
+
+.card-body{
+  position: relative;
+}
+
+.list-btns{
+  position: absolute;
+  bottom: 10px;
+}
+
+.work-index{
+  padding-top: 30px;
+}
+
 
 
