@@ -1,22 +1,22 @@
 header
-  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-    .container
-      - if user_signed_in?
-        =link_to "F A V O", user_path(current_user),class: "logo navbar-brand"
-      - else
-        = link_to "F A V O", root_path, class: "logo"
-      .collapse.navbar-collapse.justify-content-end
-        ul.navbar-nav
-          | 　
-          - if user_signed_in?
-            li.nav-item
-              =link_to("MY PAGE", user_path(current_user),:class => "nav-link")
-            li.nav-item
-              =link_to("ログアウト",destroy_user_session_path, :method => :delete, :class => "nav-link")
-          - else
-            li
-              = link_to "F A V Oとは？", root_path, :class => "nav-link"
-            li
-              =link_to "新規登録",new_user_registration_path, :class => "nav-link"
-            li
-              =link_to "ログイン",new_user_session_path, :class => "nav-link"
+  nav.navbar.navbar-expand-lg.navbar-expand-md.navbar-expand-sm.navbar-expand-xs.navbar-dark.bg-dark
+    - if user_signed_in?
+      = link_to "F A V O", user_path(current_user), class: "logo navbar-brand"
+    - else
+      = link_to "F A V O", root_path, class: "logo"
+    button.navbar-toggler aria-controls="Navbar" aria-expanded="false" data-target="#Navbar" data-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+
+    .collapse.navbar-collapse.justify-content-end#Navbar
+      ul.navbar-nav
+        | 　
+        - if user_signed_in?
+          li.nav-item.header-item
+            =link_to "MY PAGE", user_path(current_user),class: "nav-link"
+          li.nav-item.header-item
+            =link_to "ログアウト",destroy_user_session_path, :method => :delete, class: "nav-link"
+        - else
+          li.nav-item.header-item
+            =link_to "新規登録",new_user_registration_path,  class: "nav-link"
+          li.nav-item.header-item
+            =link_to "ログイン",new_user_session_path, class: "nav-link"

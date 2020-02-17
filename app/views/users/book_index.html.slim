@@ -2,7 +2,7 @@ h3.text-center.font-weight-bold.search-form
   | 書籍名で検索
 = render 'search', url: books_index_path
 
-h1.text-center
+h1.text-center.font-weight-bold
   | BOOK LIST
 
 .container
@@ -22,8 +22,8 @@ h1.text-center
             .card-body
               h4.card-title
                 = book_name
-              = link_to '詳細', book_path(book_id), :class => "btn btn-primary"
-              = link_to "削除", book_path(book_id), method: :delete, data: { confirm: "「#{book_name}" }, class: "btn btn-danger"
+              = link_to '詳細', book_path(book_id), :class => "btn btn-primary btn-lg fav-btn"
+              = link_to "削除", book_path(book_id), method: :delete, data: { confirm: "「#{book_name}" }, class: "btn btn-danger btn-lg"
 
   
   =

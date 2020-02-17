@@ -45,6 +45,7 @@
 
 .alert {
   text-align: center;
+  margin-bottom: 0;
 }
 .alert-info {
   background-color: #bde9ff;
@@ -62,12 +63,43 @@
   margin-bottom: 50px;
 }
 
-.search-form{
-  margin-top: 20px;
+
+// スマホ
+@media screen and (max-width:820px) {
+  .work-img{
+    margin: 10px;
+    width: 25%;
+    height: 25%;
+  }
+  .btn-lg{
+    font-size: 1.25rem;
+  }
+  .search-btn{
+    font-size: 1.5rem !important;
+    height: 4rem !important;
+
+  }
 }
 
-.work-img{
-  margin: 20px;
-  width: 30%;
-  height: 30%;
+// PC
+@media screen and (min-width:821px) {
+  .work-img {
+    margin: 20px;
+    width: 20%;
+    height: 20%;
+  }
+  .btn-lg{
+    font-size: 1.75rem;
+  }
+
+  .search-btn{
+    font-size: 1.75rem !important;
+    height: 5rem !important;
+  }
 }
+
+.header-item{
+  margin-right: 15px;
+}
+
+

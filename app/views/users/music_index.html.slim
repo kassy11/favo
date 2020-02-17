@@ -2,7 +2,7 @@ h3.text-center.font-weight-bold.search-form
   | アーティスト名で検索
 = render 'search', url: musics_index_path
 
-h1.text-center
+h1.text-center.font-weight-bold
   | ARTIST LIST
 
 .container
@@ -21,9 +21,7 @@ h1.text-center
             - else
               = image_tag("no_image.jpg", :class => "card-img-top")
             .card-body
-              h4.card-title
+              h4.card-title.text-center
                 = artist_name
-              .show-bottom
-                = link_to '詳細', music_path(artist_id), :class => "btn btn-primary"
-
-                = link_to "削除", music_path(artist_id), method: :delete, data: {confirm: "「#{artist_name}」をMUSIC LISTから削除します。よろしいですか？"}, class: "btn btn-danger"
+              = link_to '詳細', music_path(artist_id), :class => "btn btn-primary btn-lg fav-btn"
+              = link_to "削除", music_path(artist_id), method: :delete, data: {confirm: "「#{artist_name}」をMUSIC LISTから削除します。よろしいですか？"}, class: "btn btn-danger btn-lg"

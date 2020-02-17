@@ -15,6 +15,6 @@
               .card-body
                 h4.card-title
                   = artist.name
-                =link_to '詳細', music_path(artist.id), :class => "btn btn-primary"
+                =link_to '詳細', music_path(artist.id), :class => "btn btn-primary btn-lg"
 - else
   = render 'shared/no_result'
