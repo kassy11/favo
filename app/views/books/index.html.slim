@@ -4,7 +4,7 @@
     .card-deck
       .row
         - @base_contents.each do |content|
-          .col-xs-6.col-sm-4.col-md-3
+          .work-index.col-xs-6.col-sm-4.col-md-3
             .card.h-100
               - book_id = content["id"].encode!
               - title = content["volumeInfo"]["title"]
@@ -17,6 +17,7 @@
               .card-body
                 h4.card-title
                   = title
-                =link_to '詳細', book_path(book_id), class: "btn btn-primary btn-lg"
+                .list-btns
+                  =link_to '詳細', book_path(book_id), class: "btn btn-primary btn-lg"
 - else
   = render 'shared/no_result'

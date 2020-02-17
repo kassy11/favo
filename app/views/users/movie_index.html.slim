@@ -9,7 +9,7 @@ h1.text-center.font-weight-bold
   .card-deck
     .row
       - @my_movies.each do |my_movie|
-        .col-xs-6.col-sm-4.col-md-4.col-lg-3
+        .work-index.col-xs-6.col-sm-4.col-md-4.col-lg-3
           .card.h-100
             - movie_image = my_movie.movie_image_url
             - movie_id = my_movie.movie_id
@@ -22,5 +22,6 @@ h1.text-center.font-weight-bold
             .card-body
               h4.card-title
                 = movie_name
-              = link_to '詳細', movie_path(movie_id), :class => "btn btn-primary btn-lg fav-btn"
-              = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger btn-lg"
+              .list-btns
+                = link_to '詳細', movie_path(movie_id), :class => "btn btn-primary btn-lg fav-btn"
+                = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger btn-lg delete-btn"
