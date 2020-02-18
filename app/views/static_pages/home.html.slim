@@ -1,37 +1,35 @@
-.static_page
-  .servise_landing
-    .container.landing_block
-      .row
-        .col-md-4
+.servise_landing
+  .container
+    .row
+      .col-xs-4.col-sm-4.col-md-4
 
-        .landing_word.col-md-8
-          h1
-            span.start.text-center.font-weight-bold.text-white
-              | Let's Start
-            br
-            span.favo.text-center.font-weight-bold.text-white
-              | FAVO
-          .col-md-4
+      .landing_word.col-xs-8.col-sm-8.col-md-8
+        h1
+          span.start-word.text-center.font-weight-bold
+            | Let's Start
+          br
+          span.logo-word.text-center.font-weight-bold
+            | FAVO
+      =link_to "新規登録する",new_user_registration_path, class:"btn btn-primary btn-lg col-md-4 offset-md-4"
+      .col-xs-4.col-sm-4.col-md-4
 
-          .landing_btn.col-md-5
-            =link_to "新規登録する",new_user_registration_path, class:"btn btn-primary btn-lg btn-block"
-  #about.servise_about
-    h1.intro-word.text-center.font-weight-bold
-      | WHAT'S FAVO ?
-    .container
-      .row.justify-content-around
-        .intro.col-md-4
-          .intro-image
-            img[src="/assets/good.png"]
-          p.intro-text
-            | 映画・音楽・書籍のお気に入りリストを簡単に作成できます
-        .intro.col-md-4
-          .intro-image
-            img[src="/assets/twitter.png"]
-          p.intro-text
-            | TwitterなどのSNSでリストをシェアすることができます
-        .intro.col-md-4
-          .intro-image
-            img[src="/assets/find.png"]
-          p.intro-text
-            | 友達のお気に入りリストを覗いて新たな作品に巡り合うことができます
+.servise_about
+  h1.intro-word.text-center.font-weight-bold
+    | WHAT'S FAVO ?
+  .container
+    .row.justify-content-around
+      .intro.col-md-4
+        .intro-image
+          img[src="/assets/good.png"]
+        p.intro-text
+          | 映画・音楽・書籍のお気に入りリストを簡単に作成できます
+      .intro.col-md-4
+        .intro-image
+          img[src="/assets/twitter.png"]
+        p.intro-text
+          | TwitterなどのSNSでリストをシェアすることができます
+      .intro.col-md-4
+        .intro-image
+          img[src="/assets/find.png"]
+        p.intro-text
+          | 友達のお気に入りリストを覗いて新たな作品に巡り合うことができます
