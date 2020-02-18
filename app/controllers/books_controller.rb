@@ -16,10 +16,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    @author = @base_content["volumeInfo"]["authors"]
+    @authors = @base_content["volumeInfo"]["authors"]
     @publisher = @base_content["volumeInfo"]["publisher"]
     @book_id = @base_content["id"].encode!
     @description = @base_content["volumeInfo"]["description"]
+    @preview_link = @base_content["volumeInfo"]["previewLink"]
+    ## TODO:試し読みのリンクってなかったっけ？
   end
 
   def create
@@ -37,7 +39,7 @@ class BooksController < ApplicationController
   private 
 
   def set_api
-    url = "https://www.googleapis.com/books/v1/volumes?q=id:#{params[:work_id]}"
+    url = "https://www.googleapis.com/books/v1/volumes/#{params[:work_id]}"
     enc_str = URI.encode(url)
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)
@@ -45,8 +47,8 @@ class BooksController < ApplicationController
   end
 
   def base_info
-    @base_content = @book["items"].first
-    @img_url = @base_content["volumeInfo"]["imageLinks"]["smallThumbnail"]
+    @base_content = @book
+    @img_url = @base_content["volumeInfo"]["imageLinks"]["smallThumbnail"] if @base_content["volumeInfo"]["imageLinks"].present?
     @title = @base_content["volumeInfo"]["title"]
   end
 end

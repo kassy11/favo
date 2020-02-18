@@ -1,7 +1,21 @@
 = render 'shared/works_show' do
   .work-show
-    h4.text-center
+    h4
       | ジャンル
-    =@artist.genres[0]
-    - if user_signed_in? && current_user.musics.find_by(artist_id:"#{@artist.id}") == nil
+    - @genres.each do |genre|
+      p
+        = genre
+    h4
+      | ベスト３
+    - @top_tracks.each do |track|
+      p
+       = link_to "#{track.name}","#{track.preview_url}"
+      / TODO:mp3を埋め込めるようにする？
+    h4
+      |Spotifyで聴く
+    = link_to "#{@title}を聴いてみる", "#{@spotify_link}"
+    - if user_signed_in? && current_user.musics.find_by(artist_id: "#{@artist.id}") == nil
       = link_to("リストに追加する", musics_path(@artist.id), {method: "post",:class => "btn btn-primary"})
+
+
+
