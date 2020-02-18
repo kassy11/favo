@@ -59,20 +59,13 @@
   color: #3e3a3a;
 }
 
-.search-result{
+.page-title{
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.search-no-result{
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
 
 
-.search-form{
-  margin-top: 30px;
-}
 // スマホ
 @media screen and (max-width:820px) {
   .work-img{
@@ -105,6 +98,18 @@
     font-size: 1.75rem !important;
     height: 5rem !important;
   }
+
+  .artist-img{
+    height: 230px;
+  }
+
+  .book-img{
+    height: 300px;
+  }
+
+  .movie-img{
+    height: 320px;
+  }
 }
 
 .header-item{
@@ -118,6 +123,8 @@
 .card-body{
   position: relative;
 }
+
+
 
 .list-btns{
   position: absolute;

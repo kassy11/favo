@@ -1,4 +1,4 @@
-h3.text-center.font-weight-bold.search-form
+h3.text-center.font-weight-bold.page-title
   | アーティスト名で検索
 = render 'search', url: musics_index_path
 
@@ -17,9 +17,9 @@ h1.text-center.font-weight-bold
             - artist_image = artist.images.second["url"] if artist.images.second.present?
             - if artist_image
               = link_to music_path(artist_id) do
-                = image_tag(artist_image,:class => "card-img-top")
+                = image_tag(artist_image,:class => "card-img-top artist-img")
             - else
-              = image_tag("no_image.jpg", :class => "card-img-top")
+              = image_tag("no_image.jpg", :class => "card-img-top artist-img")
             .card-body
               h4.card-title.text-center
                 = artist_name

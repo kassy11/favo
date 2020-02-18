@@ -11,9 +11,9 @@
               - img_url = content["volumeInfo"]["imageLinks"]["smallThumbnail"] if content["volumeInfo"].has_key?("imageLinks")
               - if img_url
                 =link_to book_path(book_id) do
-                  =image_tag img_url, class: "card-img-top img-fluid"
+                  =image_tag img_url, class: "card-img-top img-fluid book-img"
               - else
-                =image_tag "no_image.jpg", class: "card-img-top img-fluid"
+                =image_tag "no_image.jpg", class: "card-img-top img-fluid book-img"
               .card-body
                 h4.card-title
                   = title

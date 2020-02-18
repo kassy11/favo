@@ -1,4 +1,4 @@
-h3.text-center.font-weight-bold.search-form
+h3.text-center.font-weight-bold.page-title
   | 作品名で検索
 = render 'search', url: movies_index_path
 
@@ -16,9 +16,9 @@ h1.text-center.font-weight-bold
             - movie_name = my_movie.movie_name
             - if movie_image
               = link_to movie_path(movie_id) do
-                = image_tag(movie_image,:class => "card-img-top")
+                = image_tag(movie_image,:class => "card-img-top movie-img")
             - else
-              = image_tag("no_image.jpg", :class => "card-img-top")
+              = image_tag("no_image.jpg", :class => "card-img-top movie-img")
             .card-body
               h4.card-title
                 = movie_name

@@ -12,9 +12,9 @@
               - img_url = "https://image.tmdb.org/t/p/w154/#{img_path}"
               - if img_path
                =link_to movie_path(movie_id) do
-                  =image_tag img_url, class: "card-img-top img-fluid"
+                  =image_tag img_url, class: "card-img-top img-fluid movie-img"
               - else
-                =image_tag "no_image.jpg", class: "card-img-top img-fluid"
+                =image_tag "no_image.jpg", class: "card-img-top img-fluid movie-img"
               .card-body
                 h4.card-title
                   = title

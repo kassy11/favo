@@ -9,9 +9,9 @@
               - if artist.images.any?
                 - image = artist.images.second
                 =link_to music_path(artist.id) do
-                  =image_tag image["url"], :class => "card-img-top img-fluid"
+                  =image_tag image["url"], :class => "card-img-top img-fluid artist-img"
               - else
-                =image_tag "no_image.jpg", :class => "card-img-top img-fluid"
+                =image_tag "no_image.jpg", :class => "card-img-top img-fluid artist-img"
               .card-body
                 h4.card-title
                   = artist.name
