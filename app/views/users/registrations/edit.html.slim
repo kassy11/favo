@@ -1,9 +1,9 @@
 .container
   .row
-    .col-md-2
+    .col-xs-2.col-sm-2.col-md-2
 
-    .col-md-8
-      h1.text-center.font-weight-bold.pt-5.page-title
+    .col-xs-8.col-sm-8.col-md-8
+      h1.text-center.font-weight-bold.page-title
         | ユーザー情報の編集
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = render "devise/shared/error_messages", resource: resource
@@ -38,4 +38,4 @@
           = f.password_field :current_password, autocomplete: "current-password"
         .actions.user-form
           = f.submit "編集" ,class:"btn btn-primary col-md-4 offset-md-4 btn-lg submit-btn"
-    .col-md-2
+    .col-xs-2.col-sm-2.col-md-2

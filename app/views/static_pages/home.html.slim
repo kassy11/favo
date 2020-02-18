@@ -3,19 +3,19 @@
     .row
       .col-xs-4.col-sm-4.col-md-4
 
-      .landing_word.col-xs-8.col-sm-8.col-md-8
-        h1
-          span.start-word.text-center.font-weight-bold
+      .landing-word.col-xs-4.col-sm-4.col-md-4
+        h2
+          .start-word.font-weight-bold
             | Let's Start
-          br
-          span.logo-word.text-center.font-weight-bold
+        h1
+          .logo-word.font-weight-bold
             | FAVO
-      =link_to "新規登録する",new_user_registration_path, class:"btn btn-primary btn-lg col-md-4 offset-md-4"
+        =link_to "新規登録する",new_user_registration_path, class:"btn btn-primary btn-lg register-btn"
       .col-xs-4.col-sm-4.col-md-4
 
 .servise_about
   h1.intro-word.text-center.font-weight-bold
-    | WHAT'S FAVO ?
+    | WHAT IS FAVO ?
   .container
     .row.justify-content-around
       .intro.col-md-4

@@ -8,24 +8,20 @@
   height:600px;
 }
 
-.landing_word{
+.landing-word{
   padding-top: 150px;
+  text-align: center;
 }
 
-.landing_btn{
-  padding-top: 30px;
-}
-
-
-.home-word{
-  font-size: 30px;
-}
 
 .servise_about{
   width:100%;
   padding-top:50px;
 }
 
+.intro{
+  text-align: center;
+}
 
 .intro-image img{
   width: 75%;
@@ -46,8 +42,9 @@
 
   .logo-word{
     font-size: 60px;
-    letter-spacing: 0.7em;
+    letter-spacing: 0.5em;
     color: white;
+    padding-left: 45px;
 
   }
 
@@ -62,6 +59,17 @@
     padding-top:40px;
     font-size: 20px;
     color: #b3aeb5;
+  }
+
+  .intro-image img{
+    width: 60%;
+    transition-duration: 0.5s;
+  }
+
+  .register-btn{
+    width: 250px;
+    height: 40px;
+    font-size: 20px!important;
   }
 
 }
@@ -92,6 +100,12 @@
     font-size: 30px;
     color: #b3aeb5;
   }
+
+  .intro-image img{
+    width: 75%;
+    transition-duration: 0.5s;
+  }
+
 
 }
 
