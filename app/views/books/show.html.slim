@@ -11,5 +11,5 @@
     h4
       | あらすじ
     =simple_format @description
-    - if current_user.books.find_by(book_id: "#{@book_id}") == nil
+    - if user_signed_in? && current_user.books.find_by(book_id: "#{@book_id}") == nil
       = link_to("リストに追加する", books_path(@book_id), {method: "post",:class => "btn btn-primary"})

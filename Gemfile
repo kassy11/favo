@@ -72,6 +72,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'font-awesome-rails'
 # for favotite-list
 gem 'rspotify'
 gem 'meta-tags'
@@ -80,4 +81,3 @@ gem 'coffee-script-source', '1.8.0'
 
 gem 'slim-rails'
 gem 'html2slim', :require => false
-gem 'font-awesome-rails'
