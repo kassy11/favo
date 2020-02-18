@@ -9,6 +9,7 @@ module ApplicationHelper
   end
 
 
+
   def default_meta_tags
     {
       site: 'FAVO',

@@ -1,9 +1,11 @@
 = render 'shared/works_show' do
   .work-show
-    -if @author
+    -if @authors
       h4
         | 著者
-      = @author.first
+      - @authors.each do |author|
+        p
+          = author
     -if @publisher
       h4
         | 出版社
@@ -11,5 +13,13 @@
     h4
       | あらすじ
     =simple_format @description
+
+    - if @preview_link
+      h4
+        | 試し読みする
+      = link_to "『#{@title}』を試し読みする", "#{@preview_link}"
+
     - if user_signed_in? && current_user.books.find_by(book_id: "#{@book_id}") == nil
       = link_to("リストに追加する", books_path(@book_id), {method: "post",:class => "btn btn-primary"})
+
+

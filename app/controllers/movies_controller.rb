@@ -18,7 +18,9 @@ class MoviesController < ApplicationController
   def show
     @movie_id = @movie["id"]
     @overview = @movie["overview"]
-    @img_url = "https://image.tmdb.org/t/p/w342/#{@img_path}" 
+    @img_url = "https://image.tmdb.org/t/p/w342/#{@img_path}"
+    @release_date = @movie["release_date"]
+    @genres = @movie["genres"]
   end
 
   def create

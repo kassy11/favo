@@ -1,7 +1,15 @@
 = render 'shared/works_show' do
   .work-show
-    h4.text-center
+    h4
+      | ジャンル
+    - @genres.each do |genre|
+      p
+        = genre["name"]
+    h4
+      | 公開日
+    = @release_date
+    h4
       | あらすじ
     =simple_format @overview
-    - if user_signed_in? && current_user.movies.find_by(movie_id:"#{@movie_id}") == nil　
+    - if user_signed_in? && current_user.movies.find_by(movie_id: "#{@movie_id}") == nil
       = link_to("リストに追加する", movies_path(@movie_id), {method: "post",:class => "btn btn-primary"})

@@ -16,10 +16,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    @author = @base_content["volumeInfo"]["authors"]
+    @authors = @base_content["volumeInfo"]["authors"]
     @publisher = @base_content["volumeInfo"]["publisher"]
     @book_id = @base_content["id"].encode!
     @description = @base_content["volumeInfo"]["description"]
+    @preview_link = @base_content["volumeInfo"]["previewLink"]
+    ## TODO:試し読みのリンクってなかったっけ？
   end
 
   def create
