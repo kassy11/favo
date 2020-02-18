@@ -15,7 +15,7 @@ html
     link[rel="stylesheet" color="#2181cf" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css"]
     script
       |  !function(){var e=new XMLHttpRequest,t=document.querySelectorAll("link[color]")[0];e.timeout=3e4,e.open("get",t.getAttribute("href"),!0),e.onreadystatechange=function(){if(200==this.status&&""!=this.responseText){e.onreadystatechange=null;var n=this.responseText,a=t.getAttribute("color");n=n.replace(/#9b4dca/g,a);var o=document.getElementsByTagName("head").item(0),r=document.createElement("style"),s=document.createTextNode(n);r.media="screen",r.type="text/css",r.appendChild(s),o.appendChild(r)}},e.send()}();
-      /TODO: ここをきれいにする
+      / TODO: ここをきれいにする
   body
     = render 'layouts/header'
     = render 'layouts/flash'

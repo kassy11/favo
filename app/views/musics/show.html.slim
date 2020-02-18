@@ -3,5 +3,5 @@
     h4.text-center
       | ジャンル
     =@artist.genres[0]
-    - if current_user.musics.find_by(artist_id:"#{@artist.id}") == nil
+    - if user_signed_in? && current_user.musics.find_by(artist_id:"#{@artist.id}") == nil
       = link_to("リストに追加する", musics_path(@artist.id), {method: "post",:class => "btn btn-primary"})

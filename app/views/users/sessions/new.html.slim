@@ -1,31 +1,20 @@
 .container
   .row
-    .col-md-2
+    .col-xs-2.col-sm-2.col-md-2
 
-    .col-md-8
-      h1.text-center.font-weight-bold.pt-5
+    .col-xs-8.col-sm-8.col-md-8
+      h1.text-center.font-weight-bold.page-title
         | ログイン
-      = button_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: 'col-md-4 offset-md-4'
+      = link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: 'col-md-4 offset-md-4 btn btn-primary btn-lg'
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field.pt-3
-          = f.label :email, 'Email'
-          br
+        .field.user-form
+          = f.label :email
           = f.email_field :email, autofocus: true, autocomplete: "email",class: "col-md-12 from-control"
-        .field.pt-3
-          = f.label :password,'パスワード'
-          br
+        .field.user-form
+          = f.label :password
           = f.password_field :password, autocomplete: "current-password", class: "col-md-12 form-control"
-        - if devise_mapping.rememberable?
-          .field.pt-3
-            = f.label :remember_me,'情報を保存する'
-            = f.check_box :remember_me
-        .actions.pt-3
-          = f.submit "ログイン", class:"btn btn-primary col-md-4 offset-md-4"
-          br
-      .pt-3
+        .actions.user-form
+          = f.submit "ログイン", class:"btn btn-primary col-md-4 offset-md-4 btn-lg submit-btn"
+        = render "users/shared/links"
 
-      .col-md-2
-
-      .pt-3
-
-      = render "users/shared/links"
+    .col-xs-2.col-sm-2.col-md-2

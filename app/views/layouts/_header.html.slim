@@ -1,7 +1,7 @@
 header
   nav.navbar.navbar-expand-lg.navbar-expand-md.navbar-expand-sm.navbar-expand-xs.navbar-dark.bg-dark
     - if user_signed_in?
-      = link_to "F A V O", user_path(current_user), class: "logo navbar-brand"
+      = link_to "F A V O", user_path(current_user), class: "logo"
     - else
       = link_to "F A V O", root_path, class: "logo"
     button.navbar-toggler aria-controls="Navbar" aria-expanded="false" data-target="#Navbar" data-toggle="collapse" type="button"

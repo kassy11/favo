@@ -1,53 +1,41 @@
 .container
   .row
-    .col-md-2
+    .col-xs-2.col-sm-2.col-md-2
 
-    .col-md-8
-      h1.text-center.font-weight-bold.pt-5
+    .col-xs-8.col-sm-8.col-md-8
+      h1.text-center.font-weight-bold.page-title
         | ユーザー情報の編集
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = render "devise/shared/error_messages", resource: resource
-        .field
+        .field.user-form
           = f.label :name
-          br
           = f.text_field :name, autofocus: true,class: "col-md-12 from-control"
-        div
+        .field.user-form
           = f.label :image
           = f.file_field :image
-        .field
-          = f.label :email,'Email'
-          br
+        .field.user-form
+          = f.label :email
           = f.email_field :email, autofocus: true, autocomplete: "email",class: "col-md-12 from-control"
-        .field
-          = f.label :profile,'プロフィール'
-          br
+        .field.user-form
+          = f.label :profile
           = f.text_area :profile, autofocus: true, class: "col-md-12 from-control"
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           div
-            | Currently waiting confirmation for: 
+            | Currently waiting confirmation for:
             = resource.unconfirmed_email
-        .field
-          = f.label :password,'パスワード'
-          i
-            | (変更しない場合は空白)
-          br
+        .field.user-form
+          = f.label :change_password
           - if @minimum_password_length
-            br
             em
               = @minimum_password_length
               | 文字以上のパスワードを設定してください
           = f.password_field :password, autocomplete: "new-password",class: "col-md-12 from-control"
-        .field
-          = f.label :password_confirmation,'パスワード確認'
-          br
+        .field.user-form
+          = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: "new-password",class: "col-md-12 from-control"
-        .field
-          = f.label :current_password,'現在のパスワード'
-          i
-            | (現在設定しているパスワードを入力してください)
-          br
+        .field.user-form
+          = f.label :current_password
           = f.password_field :current_password, autocomplete: "current-password"
-        .actions
-          = f.submit "編集" ,class:"btn btn-primary col-md-4 offset-md-4"
-      = link_to "戻る", :back
-    .col-md-2
+        .actions.user-form
+          = f.submit "編集" ,class:"btn btn-primary col-md-4 offset-md-4 btn-lg submit-btn"
+    .col-xs-2.col-sm-2.col-md-2

@@ -14,10 +14,9 @@
  *= require_self
  */
 
-
 @import "bootstrap";
- // @import "bootstrap-sprockets";
-@import 'font-awesome';
+//@import "font-awesome-sprockets";
+//@import "font-awesome";
 
  .logo {
    float: left;
@@ -59,20 +58,13 @@
   color: #3e3a3a;
 }
 
-.search-result{
-  margin-top: 30px;
+.page-title{
+  margin-top: 40px;
   margin-bottom: 30px;
 }
 
-.search-no-result{
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
 
 
-.search-form{
-  margin-top: 30px;
-}
 // スマホ
 @media screen and (max-width:820px) {
   .work-img{
@@ -83,7 +75,7 @@
   .btn-lg{
     font-size: 1.25rem;
   }
-  .search-btn{
+  .submit-btn{
     font-size: 1.5rem !important;
     height: 4rem !important;
 
@@ -101,9 +93,21 @@
     font-size: 1.75rem;
   }
 
-  .search-btn{
+  .submit-btn{
     font-size: 1.75rem !important;
     height: 5rem !important;
+  }
+
+  .artist-img{
+    height: 230px;
+  }
+
+  .book-img{
+    height: 300px;
+  }
+
+  .movie-img{
+    height: 320px;
   }
 }
 
@@ -118,6 +122,8 @@
 .card-body{
   position: relative;
 }
+
+
 
 .list-btns{
   position: absolute;

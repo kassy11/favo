@@ -1,4 +1,4 @@
-h3.text-center.font-weight-bold.search-form
+h3.text-center.font-weight-bold.page-title
   | 書籍名で検索
 = render 'search', url: books_index_path
 
@@ -7,18 +7,18 @@ h1.text-center.font-weight-bold
 
 .container
   .card-deck
-    .row
+    .row.d-flex.justify-content-center
       - @my_books.each do |my_book|
         .work-index.col-xs-6.col-sm-4.col-md-4.col-lg-3
           .card.h-100
-            - book_image = my_book.book_image_url
+            - book_image = my_book.book_image_url if my_book.book_image_url.present?
             - book_id = my_book.book_id
             - book_name = my_book.book_name
             - if book_image
               = link_to book_path(book_id) do
-                = image_tag(book_image,:class => "card-img-top")
+                = image_tag(book_image,:class => "card-img-top book-img")
             - else
-              = image_tag("no_image.jpg", :class => "card-img-top")
+              = image_tag("no_image.jpg", :class => "card-img-top book-img")
             .card-body
               h4.card-title
                 = book_name
