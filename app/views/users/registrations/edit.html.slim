@@ -13,31 +13,29 @@
         .field.user-form
           = f.label :image
           = f.file_field :image
-        - if current_user.uid.nil?
-          .field.user-form
-            = f.label :email
-            = f.email_field :email, autofocus: true, autocomplete: "email",class: "col-md-12 from-control"
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            div
-              | Currently waiting confirmation for:
-              = resource.unconfirmed_email
-        - if current_user.uid.nil?
-          .field.user-form
-            = f.label :change_password
-            - if @minimum_password_length
-              em
-                = @minimum_password_length
-                | 文字以上のパスワードを設定してください
-            = f.password_field :password, autocomplete: "new-password",class: "col-md-12 from-control"
-          .field.user-form
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation, autocomplete: "new-password",class: "col-md-12 from-control"
-          .field.user-form
-            = f.label :current_password
-            = f.password_field :current_password, autocomplete: "current-password"
         .field.user-form
-        = f.label :profile
-        = f.text_area :profile, autofocus: true, class: "col-md-12 from-control"
+          = f.label :email
+          = f.email_field :email, autofocus: true, autocomplete: "email",class: "col-md-12 from-control"
+        .field.user-form
+          = f.label :profile
+          = f.text_area :profile, autofocus: true, class: "col-md-12 from-control"
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for:
+            = resource.unconfirmed_email
+        .field.user-form
+          = f.label :change_password
+          - if @minimum_password_length
+            em
+              = @minimum_password_length
+              | 文字以上のパスワードを設定してください
+          = f.password_field :change_password, autocomplete: "new-password",class: "col-md-12 from-control"
+        .field.user-form
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, autocomplete: "new-password",class: "col-md-12 from-control"
+        .field.user-form
+          = f.label :current_password
+          = f.password_field :current_password, autocomplete: "current-password"
         .actions.user-form
           = f.submit "編集" ,class:"btn btn-primary col-md-4 offset-md-4 btn-lg submit-btn"
     .col-xs-2.col-sm-2.col-md-2

@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
 
   validates :profile, length: { maximum: 500 }
+  validates :name, presence: true
 
   has_many :movies
   has_many :musics
