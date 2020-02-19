@@ -18,6 +18,10 @@
 //@import "font-awesome-sprockets";
 //@import "font-awesome";
 
+.container{
+  margin-bottom: 50px;
+}
+
  .logo {
    float: left;
    margin-right: 10px;
@@ -63,6 +67,10 @@
   margin-bottom: 30px;
 }
 
+.show-title{
+  margin-top: 40px;
+}
+
 
 
 // スマホ
@@ -80,6 +88,10 @@
     height: 4rem !important;
 
   }
+}
+
+.show-img{
+  height: 350px;
 }
 
 // PC
@@ -109,6 +121,11 @@
   .movie-img{
     height: 320px;
   }
+
+  .search-form{
+    width: 50%;
+    margin: 0 auto;
+  }
 }
 
 .header-item{
@@ -129,10 +146,16 @@
   position: absolute;
   bottom: 10px;
 }
+.add-btn{
+  margin-top: 30px;
+}
 
 .work-index{
   padding-top: 30px;
 }
 
-
+.show-info{
+  background-color: whitesmoke;
+  font-style: oblique;
+}
 

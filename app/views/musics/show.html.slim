@@ -1,21 +1,27 @@
 = render 'shared/works_show' do
+  - if user_signed_in? && current_user.musics.find_by(artist_id: "#{@artist.id}") == nil
+    = link_to "リストに追加する", musics_path(@artist.id), method: :post, class: "btn btn-primary btn-lg add-btn col-md-4 offset-md-4"
   .work-show
-    h4
-      | ジャンル
-    - @genres.each do |genre|
-      p
-        = genre
-    h4
-      | ベスト３
-    - @top_tracks.each do |track|
-      p
-       = link_to "#{track.name}","#{track.preview_url}"
-      / TODO:mp3を埋め込めるようにする？
-    h4
-      |Spotifyで聴く
-    = link_to "#{@title}を聴いてみる", "#{@spotify_link}"
-    - if user_signed_in? && current_user.musics.find_by(artist_id: "#{@artist.id}") == nil
-      = link_to("リストに追加する", musics_path(@artist.id), {method: "post",:class => "btn btn-primary"})
+    - if @genres.present?
+      h4.show-title
+        | ジャンル
+      .show-info
+        - @genres.each do |genre|
+          p = genre
+    - if @top_tracks.present?
+      h4.show-title
+        | ベスト３
+      .show-info
+        - @top_tracks.each do |track|
+          p
+            = link_to "#{track.name}","#{track.preview_url}"
+        / TODO:mp3を埋め込めるようにする？
+    - if @spotify_link.present?
+      h4.show-title
+        |Spotifyで聴く
+      .show-info
+        = link_to "#{@title}を聴いてみる", "#{@spotify_link}", target: :_blank, rel: :noopener
+
 
 
 

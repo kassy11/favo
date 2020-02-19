@@ -8,7 +8,7 @@
             .card.h-100
               - book_id = content["id"].encode!
               - title = content["volumeInfo"]["title"]
-              - img_url = content["volumeInfo"]["imageLinks"]["smallThumbnail"] if content["volumeInfo"].has_key?("imageLinks")
+              - img_url = content["volumeInfo"]["imageLinks"]["thumbnail"] if content["volumeInfo"].has_key?("imageLinks")
               - if img_url
                 =link_to book_path(book_id) do
                   =image_tag img_url, class: "card-img-top img-fluid book-img"
