@@ -3,7 +3,7 @@ class MusicsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @artists = search_artist(params[:search]) unless params[:search].blank?
+    @artists = search_artist(search_param['search']) unless search_param['search'].blank?
     @base_contents = @artists
   end
 
@@ -27,5 +27,10 @@ class MusicsController < ApplicationController
     @artist_fav = current_user.musics.find_by(artist_id: params[:work_id])
     @artist_fav.destroy
     redirect_to music_index_user_path(current_user), alert: 'ARTIST LISTの項目を削除しました'
+  end
+
+  private
+  def search_param
+    params.permit(:search)
   end
 end

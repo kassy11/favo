@@ -26,6 +26,23 @@ class User < ApplicationRecord
     user
   end
 
+  def password_required?
+    if self.uid.present?
+      false
+    else
+      super
+    end
+  end
+
+  def email_required?
+    if self.uid.present?
+      false
+    else
+      super
+    end
+  end
+
+
   private
 
   def self.set_email(auth)
