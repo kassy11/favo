@@ -19,7 +19,11 @@
 //@import "font-awesome";
 
 .container{
-  margin-bottom: 50px;
+  margin-bottom: 50px!important;
+}
+
+.row{
+  margin: 0 auto;
 }
 
  .logo {
@@ -69,6 +73,10 @@
 
 .show-title{
   margin-top: 40px;
+}
+
+.summary{
+  letter-spacing: 1.5px;
 }
 
 
@@ -156,6 +164,6 @@
 
 .show-info{
   background-color: whitesmoke;
-  font-style: oblique;
+  padding: 5px;
 }
 

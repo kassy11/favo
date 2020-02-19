@@ -11,9 +11,10 @@
         = render 'sns' if current_user == @user
         div 
         =link_to "ユーザ情報の編集",edit_user_registration_path if current_user == @user
-        p
-          | プロフィール :
-          = @user.profile
+        - if @user.profile.present?
+          p
+            | プロフィール :
+            = @user.profile
       .user_lists
         .fav_list
           h3.font-weight-bold

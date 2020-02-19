@@ -14,7 +14,7 @@
       .show-info
         - @top_tracks.each do |track|
           p
-            = link_to "#{track.name}","#{track.preview_url}"
+            = link_to "#{track.name}","#{track.preview_url}", target: :_blank, rel: :noopener
         / TODO:mp3を埋め込めるようにする？
     - if @spotify_link.present?
       h4.show-title
