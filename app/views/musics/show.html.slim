@@ -1,6 +1,8 @@
 = render 'shared/works_show' do
   - if user_signed_in? && current_user.musics.find_by(artist_id: "#{@artist.id}") == nil
     = link_to "リストに追加する", musics_path(@artist.id), method: :post, class: "btn btn-primary btn-lg add-btn col-md-4 offset-md-4"
+  - elsif user_signed_in? && current_user.musics.find_by(artist_id: "#{@artist.id}")
+    = link_to "リストから削除する", music_path(@artist.id), method: :delete,data: { confirm: "「#{@title}」をARTIST LISTから削除します。よろしいですか？" }, class: "btn btn-danger btn-lg add-btn col-md-4 offset-md-4"
   .work-show
     - if @genres.present?
       h4.show-title

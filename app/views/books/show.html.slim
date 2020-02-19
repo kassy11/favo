@@ -1,6 +1,8 @@
 = render 'shared/works_show' do
   - if user_signed_in? && current_user.books.find_by(book_id: "#{@book_id}") == nil
     = link_to "リストに追加する", books_path(@book_id), method: :post, class: "btn btn-primary btn-lg add-btn col-md-4 offset-md-4"
+  - elsif user_signed_in? && current_user.books.find_by(book_id: "#{@book_id}")
+    = link_to "リストから削除する", book_path(@book_id), method: :delete, data: {confirm: "「#{@title}」をBOOK LISTから削除します。よろしいですか？"}, class: "btn btn-danger btn-lg add-btn col-md-4 offset-md-4"
   .work-show
     -if @authors.present?
       h4.show-title
