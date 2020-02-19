@@ -24,4 +24,4 @@ h1.text-center.font-weight-bold
                 = movie_name
               .list-btns
                 = link_to '詳細', movie_path(movie_id), :class => "btn btn-primary btn-lg fav-btn"
-                = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger btn-lg delete-btn"
+                = link_to "削除", movie_path(movie_id), method: :delete, data: { confirm: "「#{my_movie.movie_name}」をMOVIE LISTから削除します。よろしいですか？" }, class: "btn btn-danger btn-lg"
