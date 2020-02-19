@@ -1,25 +1,29 @@
 = render 'shared/works_show' do
+  - if user_signed_in? && current_user.books.find_by(book_id: "#{@book_id}") == nil
+    = link_to "リストに追加する", books_path(@book_id), method: :post, class: "btn btn-primary btn-lg add-btn col-md-4 offset-md-4"
   .work-show
-    -if @authors
-      h4
+    -if @authors.present?
+      h4.show-title
         | 著者
       - @authors.each do |author|
-        p
-          = author
-    -if @publisher
-      h4
+        .show-info
+          p = author
+    -if @publisher.present?
+      h4.show-title
         | 出版社
-      = @publisher
-    h4
-      | あらすじ
-    =simple_format @description
+      .show-info
+        = @publisher
+    - if @description.present?
+      h4.show-title
+        | あらすじ
+      .show-info
+        =simple_format @description
 
-    - if @preview_link
-      h4
+    - if @preview_link.present?
+      h4.show-title
         | 試し読みする
-      = link_to "『#{@title}』を試し読みする", "#{@preview_link}"
+      .show-info
+        = link_to "『#{@title}』を試し読みする", "#{@preview_link}", target: :_blank, rel: :noopener
 
-    - if user_signed_in? && current_user.books.find_by(book_id: "#{@book_id}") == nil
-      = link_to("リストに追加する", books_path(@book_id), {method: "post",:class => "btn btn-primary"})
 
 

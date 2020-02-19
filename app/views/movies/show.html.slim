@@ -1,15 +1,22 @@
 = render 'shared/works_show' do
+  - if user_signed_in? && current_user.movies.find_by(movie_id: "#{@movie_id}") == nil
+    = link_to "リストに追加する", movies_path(@movie_id),method: :post, class: "btn btn-primary btn-lg add-btn col-md-4 offset-md-4"
   .work-show
-    h4
-      | ジャンル
-    - @genres.each do |genre|
-      p
-        = genre["name"]
-    h4
-      | 公開日
-    = @release_date
-    h4
-      | あらすじ
-    =simple_format @overview
-    - if user_signed_in? && current_user.movies.find_by(movie_id: "#{@movie_id}") == nil
-      = link_to("リストに追加する", movies_path(@movie_id), {method: "post",:class => "btn btn-primary"})
+    -if @genres.present?
+      h4.show-title
+        | ジャンル
+      .show-info
+        - @genres.each do |genre|
+          p = genre["name"]
+    - if @release_date.present?
+      h4.show-title
+        | 公開日
+      .show-info
+        = @release_date
+    - if @overview.present?
+      h4.show-title
+        | あらすじ
+      .show-info
+        =simple_format @overview
+
+

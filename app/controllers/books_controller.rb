@@ -48,7 +48,7 @@ class BooksController < ApplicationController
 
   def base_info
     @base_content = @book
-    @img_url = @base_content["volumeInfo"]["imageLinks"]["smallThumbnail"] if @base_content["volumeInfo"]["imageLinks"].present?
+    @img_url = @base_content["volumeInfo"]["imageLinks"]["thumbnail"] if @base_content["volumeInfo"]["imageLinks"].present?
     @title = @base_content["volumeInfo"]["title"]
   end
 end
