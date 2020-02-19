@@ -18,6 +18,10 @@
 //@import "font-awesome-sprockets";
 //@import "font-awesome";
 
+.container{
+  margin-bottom: 50px;
+}
+
  .logo {
    float: left;
    margin-right: 10px;
@@ -116,6 +120,11 @@
 
   .movie-img{
     height: 320px;
+  }
+
+  .search-form{
+    width: 50%;
+    margin: 0 auto;
   }
 }
 

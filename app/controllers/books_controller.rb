@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   require 'net/http'
   require "json"
   require 'uri'
-
+  before_action :authenticate_user!, except: :show
   before_action :set_api, only: [:show, :create]
   before_action :base_info, only: [:show, :create]
 

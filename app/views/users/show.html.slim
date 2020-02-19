@@ -18,7 +18,7 @@
         .fav_list
           h3.font-weight-bold
             | ARTIST LIST
-            = link_to "編集する", music_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
+            = link_to "編集する", music_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if user_signed_in? && current_user == @user
           - @user.musics.each do |my_music|
             - music_id = my_music.artist_id
             - artist = find_artist(music_id)

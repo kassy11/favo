@@ -1,4 +1,5 @@
 class MusicsController < ApplicationController
+  before_action :authenticate_user!, except: :show
   include ApplicationHelper
 
   def index
