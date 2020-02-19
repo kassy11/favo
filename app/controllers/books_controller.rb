@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   before_action :base_info, only: [:show, :create]
 
   def index
-    search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{params[:search]}&maxResults=40&orderBy=relevance&Country=JP"
+    search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{search_param['search']}&maxResults=40&orderBy=relevance&Country=JP"
     enc_str = URI.encode(search_uri)
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     redirect_to book_index_user_path(current_user), alert: 'BOOK LISTの項目を削除しました'
   end
 
-  private 
+  private
 
   def set_api
     url = "https://www.googleapis.com/books/v1/volumes/#{params[:work_id]}"
@@ -51,5 +51,9 @@ class BooksController < ApplicationController
     @base_content = @book
     @img_url = @base_content["volumeInfo"]["imageLinks"]["thumbnail"] if @base_content["volumeInfo"]["imageLinks"].present?
     @title = @base_content["volumeInfo"]["title"]
+  end
+
+  def search_param
+    params.permit(:search)
   end
 end

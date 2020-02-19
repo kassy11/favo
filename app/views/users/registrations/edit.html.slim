@@ -29,7 +29,7 @@
             em
               = @minimum_password_length
               | 文字以上のパスワードを設定してください
-          = f.password_field :password, autocomplete: "new-password",class: "col-md-12 from-control"
+          = f.password_field :change_password, autocomplete: "new-password",class: "col-md-12 from-control"
         .field.user-form
           = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: "new-password",class: "col-md-12 from-control"

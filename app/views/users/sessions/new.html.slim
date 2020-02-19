@@ -8,10 +8,10 @@
       = link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: 'col-md-4 offset-md-4 btn btn-primary btn-lg'
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field.user-form
-          = f.label :email
+          = f.label :email, 'Eメール'
           = f.email_field :email, autofocus: true, autocomplete: "email",class: "col-md-12 from-control"
         .field.user-form
-          = f.label :password
+          = f.label :password, 'パスワード'
           = f.password_field :password, autocomplete: "current-password", class: "col-md-12 form-control"
         .actions.user-form
           = f.submit "ログイン", class:"btn btn-primary col-md-4 offset-md-4 btn-lg submit-btn"

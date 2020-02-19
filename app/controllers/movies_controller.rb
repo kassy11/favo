@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   before_action :base_info, only: [:show, :create]
   
   def index
-    search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&query=#{params[:search]}"
+    search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&query=#{search_param['search']}"
     enc_uri = URI.encode(search_uri)
     uri = URI.parse(enc_uri)
     json = Net::HTTP.get(uri)
@@ -49,5 +49,9 @@ class MoviesController < ApplicationController
   def base_info
     @title = @movie["title"]
     @img_path = @movie["poster_path"]
+  end
+
+  def search_param
+    params.permit(:search)
   end
 end
