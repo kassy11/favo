@@ -41,11 +41,11 @@ class User < ApplicationRecord
     auth.info.description
   end
 
-  #def self.set_image(auth)
-  #  if auto.info.image.present?
-  #    auth.info.image
-  #  else
-  #    "default_user.jpg"
-  #  end
-  #end
+  def self.set_image(auth)
+    if auto.info.image.present?
+      auth.info.image
+    else
+      "default_user.jpg"
+    end
+  end
 end
