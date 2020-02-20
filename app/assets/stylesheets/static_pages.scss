@@ -25,12 +25,10 @@
 
 .intro-image img{
   width: 75%;
-  transition-duration: 0.5s;
-}
-
-.intro-image:hover img{
-  transform: scale(1.2);
-  transition-duration: 0.5s;
+  &:hover{
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+  }
 }
 
 .register-btn{

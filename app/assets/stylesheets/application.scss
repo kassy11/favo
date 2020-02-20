@@ -89,6 +89,10 @@
     margin: 10px;
     width: 25%;
     height: 25%;
+    &:hover{
+      transform: scale(1.2);
+      transition-duration: 0.5s;
+    }
   }
   .btn-lg{
     font-size: 1.25rem;
@@ -128,6 +132,10 @@
     margin: 20px;
     width: 20%;
     height: 20%;
+    &:hover{
+      transform: scale(1.2);
+      transition-duration: 0.5s;
+    }
   }
   .btn-lg{
     font-size: 1.75rem;
