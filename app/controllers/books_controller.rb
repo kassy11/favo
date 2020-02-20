@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   before_action :base_info, only: [:show, :create]
 
   def index
-    search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{search_param['search']}&maxResults=40&orderBy=relevance&Country=JP"
+    search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{search_param['search']}&maxResults=40&orderBy=newest&country=JP"
     enc_str = URI.encode(search_uri)
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)
