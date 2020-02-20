@@ -17,6 +17,8 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
+            name:
+              blank: "が入力されていません。"
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -60,10 +62,10 @@ ja:
     failure:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
-      invalid: "%{authentication_keys}またはパスワードが違います。"
+      invalid: "Eメールまたはパスワードが違います。"
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントは凍結されています。
-      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+      not_found_in_database: "Eメールまたはパスワードが違います。"
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: アカウント登録もしくはログインしてください。
       unconfirmed: メールアドレスの本人確認が必要です。

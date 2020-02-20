@@ -96,9 +96,27 @@
   .submit-btn{
     font-size: 1.5rem !important;
     height: 4rem !important;
+  }
 
+  .card-title{
+    font-size: 18px;
+  }
+
+  .work-index{
+    padding-top: 30px;
+    width: 50%;
+  }
+
+  .work-row{
+    flex-direction: row!important;
+  }
+
+  .work-name{
+    font-size: 25px;
   }
 }
+
+
 
 .show-img{
   height: 350px;
@@ -160,9 +178,6 @@
   margin-top: 30px;
 }
 
-.work-index{
-  padding-top: 30px;
-}
 
 .show-info{
   background-color: whitesmoke;

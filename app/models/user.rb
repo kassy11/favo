@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :profile, length: { maximum: 500 }
   validates :name, presence: true
+  validates :email, uniqueness: true
 
   has_many :movies
   has_many :musics
