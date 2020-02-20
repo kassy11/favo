@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :movies
   has_many :musics
   has_many :books
+  
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -28,21 +29,21 @@ class User < ApplicationRecord
     user
   end
 
-  def password_required?
-    if self.uid.present?
-      false
-    else
-      super
-    end
-  end
-
-  def email_required?
-    if self.uid.present?
-      false
-    else
-      super
-    end
-  end
+  #def password_required?
+  #  super && provider.blank?
+  #end
+  #
+  #def email_required?
+  #  super && provider.blank?
+  #end
+  #
+  #def update_with_password(params, *options)
+  #  if encrypted_password.blank?
+  #    update_attributes(params, *options)
+  #  else
+  #    super
+  #  end
+  #end
 
 
   private
