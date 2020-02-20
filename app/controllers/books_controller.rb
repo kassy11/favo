@@ -7,6 +7,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :set_api, only: [:show, :create]
   before_action :base_info, only: [:show, :create]
+  before_action :search_param, only: :index
 
   def index
     search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{search_param['search']}&maxResults=40&orderBy=relevance&langRestrict=ja"
@@ -52,9 +53,5 @@ class BooksController < ApplicationController
     @base_content = @book
     @img_url = @base_content["volumeInfo"]["imageLinks"]["thumbnail"] if @base_content["volumeInfo"]["imageLinks"].present?
     @title = @base_content["volumeInfo"]["title"]
-  end
-
-  def search_param
-    params.permit(:search)
   end
 end
