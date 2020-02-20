@@ -17,6 +17,8 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
+            name:
+              blank: "が入力されていません。"
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
