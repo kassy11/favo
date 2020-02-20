@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :movies
   has_many :musics
   has_many :books
-  
+
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
