@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
   def create
     img_url = "https://image.tmdb.org/t/p/w154/#{@img_path}"
     @movie_fav = current_user.movies.new(movie_id: params[:work_id], movie_name: @title, movie_image_url: img_url)
-    @movie_fav.save
+    @movie_fav.save!
     redirect_to movie_index_user_path(current_user), notice: 'MOVIE LISTの項目を追加しました'
   end
 

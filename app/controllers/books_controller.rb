@@ -29,7 +29,7 @@ class BooksController < ApplicationController
 
   def create
     @book_fav = current_user.books.new(book_id: params[:work_id], book_name: @title, book_image_url: @img_url )
-    @book_fav.save
+    @book_fav.save!
     redirect_to book_index_user_path(current_user), notice: 'BOOK LISTの項目を追加しました'
   end
 
