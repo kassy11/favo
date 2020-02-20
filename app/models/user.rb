@@ -29,21 +29,6 @@ class User < ApplicationRecord
     user
   end
 
-  #def password_required?
-  #  super && provider.blank?
-  #end
-  #
-  #def email_required?
-  #  super && provider.blank?
-  #end
-  #
-  #def update_with_password(params, *options)
-  #  if encrypted_password.blank?
-  #    update_attributes(params, *options)
-  #  else
-  #    super
-  #  end
-  #end
 
 
   private
@@ -56,11 +41,11 @@ class User < ApplicationRecord
     auth.info.description
   end
 
-  def self.set_image(auth)
-    if auto.info.image.present?
-      auth.info.image
-    else
-      "default_user.jpg"
-    end
-  end
+  #def self.set_image(auth)
+  #  if auto.info.image.present?
+  #    auth.info.image
+  #  else
+  #    "default_user.jpg"
+  #  end
+  #end
 end
