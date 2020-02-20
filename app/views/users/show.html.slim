@@ -5,7 +5,9 @@
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.page-title
       .user_info
         - if @user.image.present?
-          =image_tag @user.image.to_s, :size => '200×200'
+          =image_tag @user.image.to_s, size: '200×200'
+        - else
+          = image_tag "default_user.jpg"
         h1.font-weight-bold
           = @user.name
         = render 'sns' if current_user == @user
