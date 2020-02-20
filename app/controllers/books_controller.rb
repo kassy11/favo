@@ -2,13 +2,14 @@ class BooksController < ApplicationController
   require 'net/http'
   require "json"
   require 'uri'
+  require 'base64'
 
   before_action :authenticate_user!, except: :show
   before_action :set_api, only: [:show, :create]
   before_action :base_info, only: [:show, :create]
 
   def index
-    search_uri = "https://www.googleapis.com/books/v1/volumes?q=search+#{search_param['search']}&maxResults=40&orderBy=relevance&country=JP"
+    search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{search_param['search']}&maxResults=40&orderBy=relevance&langRestrict=ja"
     enc_str = URI.encode(search_uri)
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)
