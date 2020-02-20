@@ -21,7 +21,7 @@ class MusicsController < ApplicationController
 
   def create
     @artist_fav = current_user.musics.new(artist_id: params[:work_id])
-    @artist_fav.save!
+    @artist_fav.save
     redirect_to music_index_user_path(current_user), notice: 'ARTIST LISTの項目を追加しました'
   end
 
