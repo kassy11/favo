@@ -2,10 +2,12 @@ class MoviesController < ApplicationController
   require 'net/http'
   require "json"
   require 'uri'
+  include MoviesHelper
   before_action :authenticate_user!, except: :show
   before_action :set_api, only: [:show, :create]
   before_action :base_info, only: [:show, :create]
   before_action :search_param, only: :index
+  before_action :youtube_base, only: :show
 
 
   def index
@@ -23,6 +25,8 @@ class MoviesController < ApplicationController
     @img_url = "https://image.tmdb.org/t/p/w342/#{@img_path}"
     @release_date = @movie["release_date"]
     @genres = @movie["genres"]
+    youtube_opt = set_opt(@title)
+    @youtube_data = @service.list_searches(:snippet, youtube_opt)
   end
 
   def create
@@ -51,5 +55,10 @@ class MoviesController < ApplicationController
   def base_info
     @title = @movie["title"]
     @img_path = @movie["poster_path"]
+  end
+
+  def youtube_base
+    @service = Google::Apis::YoutubeV3::YouTubeService.new
+    @service.key = MOVIE::GOOGLE_API_KEY
   end
 end
