@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
 
+  mount_uploader :image, UserImagesUploader
+
   has_many :movies
   has_many :musics
   has_many :books
