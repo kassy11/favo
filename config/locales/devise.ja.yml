@@ -65,7 +65,7 @@ ja:
       invalid: "Eメールまたはパスワードが違います。"
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントは凍結されています。
-      not_found_in_database: "Eメールまたはパスワードが違います。"
+      not_found_in_database: "アカウントが見つかりません。"
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: アカウント登録もしくはログインしてください。
       unconfirmed: メールアドレスの本人確認が必要です。
