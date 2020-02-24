@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hvh4fdja9
+  api_key: '896471217791586'
+  api_secret: WvrZHGJ9YVZZaCNCPIU5ggc85U0
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: hvh4fdja9
+  api_key: '896471217791586'
+  api_secret: WvrZHGJ9YVZZaCNCPIU5ggc85U0
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: hvh4fdja9
+  api_key: '896471217791586'
+  api_secret: WvrZHGJ9YVZZaCNCPIU5ggc85U0
+  enhance_image_tag: true
+  static_file_support: false
