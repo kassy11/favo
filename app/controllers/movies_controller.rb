@@ -7,8 +7,20 @@ class MoviesController < ApplicationController
   before_action :set_api, only: [:show, :create]
   before_action :base_info, only: [:show, :create]
   before_action :search_param, only: :index
-  before_action :youtube_base, only: :show
+  GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]
 
+  def find_videos(keyword)
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = GOOGLE_API_KEY
+
+    opt = {
+        q: keyword + " 予告",
+        type: 'video',
+        max_results: 3,
+        order: :relevance
+    }
+    service.list_searches(:snippet, opt)
+  end
 
   def index
     search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&query=#{search_param['search']}"
@@ -24,9 +36,8 @@ class MoviesController < ApplicationController
     @overview = @movie["overview"]
     @img_url = "https://image.tmdb.org/t/p/w342/#{@img_path}"
     @release_date = @movie["release_date"]
+    @youtube_data = find_videos(@title).items.first
     @genres = @movie["genres"]
-    youtube_opt = set_opt(@title)
-    @youtube_data = @service.list_searches(:snippet, youtube_opt)
   end
 
   def create
@@ -55,10 +66,5 @@ class MoviesController < ApplicationController
   def base_info
     @title = @movie["title"]
     @img_path = @movie["poster_path"]
-  end
-
-  def youtube_base
-    @service = Google::Apis::YoutubeV3::YouTubeService.new
-    @service.key = MOVIE::GOOGLE_API_KEY
   end
 end
