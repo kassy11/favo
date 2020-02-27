@@ -44,7 +44,7 @@ class User < ApplicationRecord
   end
 
   def self.set_image(auth)
-    if auto.info.image.present?
+    if auth.info.image.present?
       auth.info.image
     else
       "default_user.jpg"
