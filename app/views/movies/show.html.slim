@@ -20,5 +20,14 @@
         | あらすじ
       .show-info.summary
         =simple_format @overview
-
+    - if @youtube_data.present?
+      h4.show-title
+        | 予告編
+      .show-info
+        - snippet = @youtube_data.snippet
+        .trailers
+          .trailer-title
+            = snippet.title
+          .youtube-movie
+            iframe width="80%" height="350" src="https://www.youtube.com/embed/#{@youtube_data.id.video_id}" allow="fullscreen"
 

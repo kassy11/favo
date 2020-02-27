@@ -81,6 +81,7 @@ gem 'font-awesome-rails'
 # for favotite-list
 gem 'rspotify'
 gem 'meta-tags'
+gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
 
 gem 'coffee-script-source', '1.8.0'
 
