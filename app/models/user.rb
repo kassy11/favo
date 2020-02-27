@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
 
+  mount_uploader :image, UserImagesUploader
+
   has_many :movies
   has_many :musics
   has_many :books
@@ -42,7 +44,7 @@ class User < ApplicationRecord
   end
 
   def self.set_image(auth)
-    if auto.info.image.present?
+    if auth.info.image.present?
       auth.info.image
     else
       "default_user.jpg"
