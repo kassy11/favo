@@ -9,10 +9,6 @@
   padding-top: 80px;
 }
 
-.list-btn{
-  float: right;
-}
-
 .fav_list{
   margin-top: 30px;
 }
@@ -35,6 +31,11 @@
     margin-top: 40px;
     margin-bottom: 40px;
   }
+
+  .list-btn{
+    float: right;
+    margin-right: 2px;
+  }
 }
 
 @media screen and (min-width:821px) {
@@ -43,6 +44,11 @@
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 40px;
+  }
+
+  .list-btn{
+    float: right;
+    margin-right: 10px;
   }
 }
 

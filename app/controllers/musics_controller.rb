@@ -4,6 +4,8 @@ class MusicsController < ApplicationController
 
   include ApplicationHelper
 
+  def search; end
+
   def index
     @artists = search_artist(search_param['search']) unless search_param['search'].blank?
     @base_contents = @artists

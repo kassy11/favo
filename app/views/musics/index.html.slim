@@ -1,6 +1,6 @@
 h3.text-center.font-weight-bold.page-title
   | アーティスト名で検索
-= render 'users/search', url: musics_index_path
+= render 'shared/search', url: musics_index_path
 - if !@artists.blank?
   =render 'shared/result'
   .container

@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :set_user
   
-  def show
-  end
+  def show; end
 
   def music_index
     @my_musics = @user.musics

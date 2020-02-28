@@ -9,6 +9,8 @@ class BooksController < ApplicationController
   before_action :base_info, only: [:show, :create]
   before_action :search_param, only: :index
 
+  def search; end
+
   def index
     search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{search_param['search']}&maxResults=40&orderBy=relevance&langRestrict=ja"
     enc_str = URI.encode(search_uri)

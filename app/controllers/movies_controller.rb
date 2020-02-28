@@ -22,6 +22,8 @@ class MoviesController < ApplicationController
     service.list_searches(:snippet, opt)
   end
 
+  def search; end
+
   def index
     search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&query=#{search_param['search']}"
     enc_uri = URI.encode(search_uri)
