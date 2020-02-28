@@ -16,41 +16,94 @@
             | プロフィール :
             = @user.profile
       .user_lists
-        .fav_list
-          h3.font-weight-bold
-            | ARTIST LIST
-            = link_to "編集する", music_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if user_signed_in? && current_user == @user
-          - @user.musics.each do |my_music|
-            - music_id = my_music.artist_id
-            - artist = find_artist(music_id)
-            - if artist.images.any?
-              - image = artist.images.second
-              =link_to music_path(music_id) do
-                =image_tag image["url"], class: "img-fluid work-img"
-            - else
-              =image_tag "no_image.jpg", class: "img-fluid work-img"
-        .fav_list
-          h3.font-weight-bold
-            | MOVIE LIST 
-            = link_to "編集する", movie_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
-          - @user.movies.each do |my_movie|
-            - movie_id = my_movie.movie_id
-            - movie_image = my_movie.movie_image_url
-            - if movie_image
-              = link_to movie_path(movie_id) do
-                =image_tag movie_image, class: "img-fluid work-img"
-            - else
-              =image_tag "no_image.jpg", class: "img-fluid work-img"
-        .fav_list
-          h3.font-weight-bold
-            | BOOK LIST 
-            = link_to "編集する",book_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
-          - @user.books.each do |my_book|
-            - book_id = my_book.book_id
-            - book_image = my_book.book_image_url
-            - if book_image
-              = link_to book_path(book_id) do
-                =image_tag book_image, class: "img-fluid work-img"
-            - else
-              =image_tag "no_image.jpg", class: "img-fluid work-img"
+        ul.nav.nav-tabs.tab-links
+          li.nav-item
+            a.nav-link.active.tab-word href="#all" data-toggle="tab"
+              | ALL
+          li.nav-item
+            a.nav-link.tab-word href="#artist" data-toggle="tab"
+              | ARTIST
+          li.nav-item
+            a.nav-link.tab-word href="#movie" data-toggle="tab"
+              | MOVIE
+          li.nav-item
+            a.nav-link.tab-word href="#book" data-toggle="tab"
+              | BOOK
+        .tab-content
+          .tab-pane.active#all
+            .fav_list
+              h3.font-weight-bold
+                | ARTIST LIST
+                = link_to "編集する", music_index_user_path(@user), :class => "list-btn btn btn-primary btn-lg" if user_signed_in? && current_user == @user
+              - @user.musics.each do |my_music|
+                - music_id = my_music.artist_id
+                - artist = find_artist(music_id)
+                - if artist.images.any?
+                  - image = artist.images.second
+                  = link_to music_path(music_id) do
+                    = image_tag image["url"], class: "img-fluid work-img"
+                - else
+                  = image_tag "no_image.jpg", class: "img-fluid work-img"
+              .fav_list
+                h3.font-weight-bold
+                  | MOVIE LIST
+                  = link_to "編集する", movie_index_user_path(@user), :class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
+                - @user.movies.each do |my_movie|
+                  - movie_id = my_movie.movie_id
+                  - movie_image = my_movie.movie_image_url
+                  - if movie_image
+                    = link_to movie_path(movie_id) do
+                      = image_tag movie_image, class: "img-fluid work-img"
+                  - else
+                    = image_tag "no_image.jpg", class: "img-fluid work-img"
+              .fav_list
+                h3.font-weight-bold
+                  | BOOK LIST
+                  = link_to "編集する",book_index_user_path(@user), :class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
+                - @user.books.each do |my_book|
+                  - book_id = my_book.book_id
+                  - book_image = my_book.book_image_url
+                  - if book_image
+                    = link_to book_path(book_id) do
+                      = image_tag book_image, class: "img-fluid work-img"
+                  - else
+                    = image_tag "no_image.jpg", class: "img-fluid work-img"
+
+          .fav_list.tab-pane#artist
+            h3.font-weight-bold
+              | ARTIST LIST
+              = link_to "編集する", music_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if user_signed_in? && current_user == @user
+            - @user.musics.each do |my_music|
+              - music_id = my_music.artist_id
+              - artist = find_artist(music_id)
+              - if artist.images.any?
+                - image = artist.images.second
+                =link_to music_path(music_id) do
+                  =image_tag image["url"], class: "img-fluid work-img"
+              - else
+                =image_tag "no_image.jpg", class: "img-fluid work-img"
+          .fav_list.tab-pane#movie
+            h3.font-weight-bold
+              | MOVIE LIST
+              = link_to "編集する", movie_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
+            - @user.movies.each do |my_movie|
+              - movie_id = my_movie.movie_id
+              - movie_image = my_movie.movie_image_url
+              - if movie_image
+                = link_to movie_path(movie_id) do
+                  =image_tag movie_image, class: "img-fluid work-img"
+              - else
+                =image_tag "no_image.jpg", class: "img-fluid work-img"
+          .fav_list.tab-pane#book
+            h3.font-weight-bold
+              | BOOK LIST
+              = link_to "編集する",book_index_user_path(@user),:class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
+            - @user.books.each do |my_book|
+              - book_id = my_book.book_id
+              - book_image = my_book.book_image_url
+              - if book_image
+                = link_to book_path(book_id) do
+                  =image_tag book_image, class: "img-fluid work-img"
+              - else
+                =image_tag "no_image.jpg", class: "img-fluid work-img"
     .col-xs-1.col-sm-1.col-md-1.col-lg-1
