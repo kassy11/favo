@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     opt = {
         q: keyword + " 予告",
         type: 'video',
-        max_results: 3,
+        max_results: 1,
         order: :relevance
     }
     service.list_searches(:snippet, opt)

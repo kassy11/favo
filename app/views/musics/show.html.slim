@@ -12,12 +12,11 @@
           p = genre
     - if @top_tracks.present?
       h4.show-title
-        | ベスト３
+        | 人気曲を聴いてみる
       .show-info
         - @top_tracks.each do |track|
           p
-            = link_to "#{track.name}","#{track.preview_url}", target: :_blank, rel: :noopener
-        / TODO:mp3を埋め込めるようにする？
+            = link_to "#{track.name}","#{track.preview_url}"
     - if @spotify_link.present?
       h4.show-title
         |Spotifyで聴く
