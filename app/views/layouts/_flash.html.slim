@@ -1,7 +1,10 @@
 - if notice
-  .alert.alert-info
+  .alert.alert-info.alert-dismissible.fade.show role="alert"
     = notice
+    button type="button" class="close" data-dismiss="alert"
+      span aria-hidden="true" &times;
 - elsif alert
-  .alert.alert-danger
+  .alert.alert-danger.alert-dismissible.fade.show role="alert"
     = alert
-
+    button type="button" class="close" data-dismiss="alert"
+      span aria-hidden="true" &times;
