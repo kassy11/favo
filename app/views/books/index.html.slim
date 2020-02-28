@@ -16,7 +16,8 @@ h3.text-center.font-weight-bold.page-title
                 =link_to book_path(book_id) do
                   =image_tag img_url, class: "card-img-top img-fluid book-img"
               - else
-                =image_tag "no_image.jpg", class: "card-img-top img-fluid book-img"
+                =link_to book_path(book_id) do
+                  =image_tag "no_image.jpg", class: "card-img-top img-fluid book-img"
               .card-body
                 h4.card-title
                   = title

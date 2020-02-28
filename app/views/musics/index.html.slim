@@ -14,7 +14,8 @@ h3.text-center.font-weight-bold.page-title
                 =link_to music_path(artist.id) do
                   =image_tag image["url"], :class => "card-img-top img-fluid artist-img"
               - else
-                =image_tag "no_image.jpg", :class => "card-img-top img-fluid artist-img"
+                =link_to music_path(artist.id) do
+                  =image_tag "no_image.jpg", :class => "card-img-top img-fluid artist-img"
               .card-body
                 h4.card-title
                   = artist.name
