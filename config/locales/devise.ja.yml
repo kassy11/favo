@@ -25,18 +25,17 @@ ja:
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
         created_at: 作成日
-        current_password: 現在のパスワード＜必須＞
+        current_password: 現在のパスワード
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
-        email: Eメール＜必須＞
-        email_login: Eメール
+        email: Eメール
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
         last_sign_in_ip: 最終ログインIPアドレス
         locked_at: ロック時刻
         password_login: パスワード
-        password: パスワード＜必須＞
+        password: パスワード
         change_password: パスワード変更(変更しない場合は空白)
         password_confirmation: パスワード確認
         remember_created_at: ログイン記憶時刻
@@ -47,7 +46,7 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-        name: 名前＜必須＞
+        name: 名前
         image: プロフィール画像
         profile: プロフィール
     models:

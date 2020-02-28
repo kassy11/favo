@@ -38,6 +38,7 @@
             = f.label :password_confirmation
             = f.password_field :password_confirmation, autocomplete: "new-password",class: "col-md-12 from-control"
           .field.user-form
+            span.must 必須
             = f.label :current_password
             = f.password_field :current_password, autocomplete: "current-password"
         .actions.user-form
