@@ -36,6 +36,11 @@
     float: right;
     margin-right: 2px;
   }
+
+  .no-works-wrap{
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width:821px) {
@@ -49,6 +54,11 @@
   .list-btn{
     float: right;
     margin-right: 10px;
+  }
+
+  .no-works-wrap{
+    width: 50%;
+    margin: 0 auto;
   }
 }
 
