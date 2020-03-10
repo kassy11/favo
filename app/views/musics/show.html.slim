@@ -25,7 +25,17 @@
         |Spotifyで聴く
       .show-info
         = link_to "#{@title}を聴いてみる", "#{@spotify_link}", target: :_blank, rel: :noopener
-
+    - if @youtube_data.present?
+      h4.show-title
+        | Youtubeで聴く
+      .show-info
+        - snippet = @youtube_data.snippet
+        .trailers
+          .trailer-title
+            = snippet.title.html_safe
+          .youtube-wrap
+            .youtube-movie
+              iframe src="https://www.youtube.com/embed/#{@youtube_data.id.video_id}" allow="fullscreen"
 
 
 

@@ -1,8 +1,23 @@
 class MusicsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :search_param, only: :index
+  GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]
+
 
   include ApplicationHelper
+
+  def find_videos(keyword)
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = GOOGLE_API_KEY
+
+    opt = {
+        q: keyword + " official",
+        type: 'video',
+        max_results: 1,
+        order: :relevance
+    }
+    service.list_searches(:snippet, opt)
+  end
 
   def search; end
 
@@ -19,6 +34,7 @@ class MusicsController < ApplicationController
     @genres = @artist.genres
     @spotify_link = @artist.external_urls["spotify"]
     @img_url = @artist.images[1]["url"] unless @artist.images.blank?
+    @youtube_data = find_videos(@title).items.first
   end
 
   def create
