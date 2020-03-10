@@ -15,8 +15,11 @@
         | 人気曲を聴いてみる
       .show-info
         - @top_tracks.each do |track|
-          p
-            = link_to "#{track.name}","#{track.preview_url}"
+          span
+            = track.name
+          .audio-sample
+            audio.audio-form controls=""
+              source src="#{track.preview_url}"
     - if @spotify_link.present?
       h4.show-title
         |Spotifyで聴く
