@@ -25,7 +25,7 @@ class User < ApplicationRecord
       name: auth.info.name,
       profile: User.set_profile(auth),
       email: User.set_email(auth),
-      image: User.set_image(auth),
+      # image: User.set_image(auth),
       password: Devise.friendly_token[0, 20]
     )
     user

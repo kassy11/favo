@@ -1,20 +1,37 @@
 class UserImagesUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  if Rails.env.production?
-    include Cloudinary::CarrierWave
-    process resize_to_fit: [250,250]
-  else
-    include CarrierWave::RMagick
-    process resize_to_fit: [250,250]
-    storage :file
-    def store_dir
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end
+  # if Rails.env.production?
+  #   include Cloudinary::CarrierWave
+  #   process resize_to_fit: [250,250]
+  # else
+  #   include CarrierWave::RMagick
+  #   process resize_to_fit: [250,250]
+  #   storage :file
+  #   def store_dir
+  #     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #   end
+  # end
+
+  storage :file
+
+  process convert: 'jpg'
+
+  # 保存するディレクトリ名
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  # thumb バージョン(width 400px x height 200px)
+
+  # 許可する画像の拡張子
   def extension_white_list
-    %w(jpg jpeg png)
+    %W[jpg jpeg gif png]
+  end
+
+  # 変換したファイルのファイル名の規則
+  def filename
+    "#{Time.zone.now.strftime('%Y%m%d%H%M%S')}.jpg" if original_filename.present?
   end
   # include CarrierWave::MiniMagick
 

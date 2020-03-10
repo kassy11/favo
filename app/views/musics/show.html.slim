@@ -12,17 +12,30 @@
           p = genre
     - if @top_tracks.present?
       h4.show-title
-        | 人気曲を聴いてみる
+        | 人気曲
       .show-info
         - @top_tracks.each do |track|
-          p
-            = link_to "#{track.name}","#{track.preview_url}"
+          span
+            = track.name
+          .audio-sample
+            audio.audio-form controls=""
+              source src="#{track.preview_url}"
     - if @spotify_link.present?
       h4.show-title
-        |Spotifyで聴く
+        |Spotifyで聴いてみる
       .show-info
         = link_to "#{@title}を聴いてみる", "#{@spotify_link}", target: :_blank, rel: :noopener
-
+    - if @youtube_data.present?
+      h4.show-title
+        | Youtubeで聴いてみる
+      .show-info
+        - snippet = @youtube_data.snippet
+        .trailers
+          .trailer-title
+            = snippet.title.html_safe
+          .youtube-wrap
+            .youtube-movie
+              iframe src="https://www.youtube.com/embed/#{@youtube_data.id.video_id}" allow="fullscreen"
 
 
 

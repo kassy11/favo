@@ -1,3 +1,28 @@
 // Place all the styles related to the musics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+@media screen and (max-width:820px){
+  .audio-form{
+    width: 100%;
+    margin: 15px 0;
+  }
+
+  .audio-sample{
+    text-align: center;
+  }
+
+}
+
+@media screen and (min-width:821px){
+  .audio-form{
+    width: 70%;
+    margin: 15px 0;
+  }
+
+  .audio-sample{
+    text-align: center;
+  }
+}
