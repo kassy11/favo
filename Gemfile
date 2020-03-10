@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.7.0'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '6.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -41,7 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'sqlite3', '~> 1.3.13'
+  gem 'sqlite3', '>= 1.4.2'
   # Use sqlite3 as the database for Active Record
   gem 'rubocop-rails'
 end
@@ -51,6 +51,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'listen'
 end
 
 group :test do
@@ -62,7 +63,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
