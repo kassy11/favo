@@ -32,7 +32,7 @@
         - snippet = @youtube_data.snippet
         .trailers
           .trailer-title
-            = snippet.title.html_safe
+            = sanitize snippet.title
           .youtube-wrap
             .youtube-movie
               iframe src="https://www.youtube.com/embed/#{@youtube_data.id.video_id}" allow="fullscreen"
