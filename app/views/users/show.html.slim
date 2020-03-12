@@ -10,7 +10,7 @@
         = render 'users/shared/sns' if current_user == @user
         - if user_signed_in? && current_user == @user
           div
-            =link_to "ユーザ情報の編集",edit_user_registration_path
+            =link_to "ユーザ情報の編集", edit_user_registration_path, class: 'milligram-fix-atag'
         - if @user.profile.present?
           p
             | プロフィール :
@@ -18,16 +18,16 @@
       .user_lists
         ul.nav.nav-tabs.tab-links
           li.nav-item
-            a.nav-link.active.tab-word href="#all" data-toggle="tab"
+            a.nav-link.active.tab-word.milligram-fix-atag href="#all" data-toggle="tab"
               | ALL
           li.nav-item
-            a.nav-link.tab-word href="#artist" data-toggle="tab"
+            a.nav-link.tab-word.milligram-fix-atag href="#artist" data-toggle="tab"
               | ARTIST
           li.nav-item
-            a.nav-link.tab-word href="#movie" data-toggle="tab"
+            a.nav-link.tab-word.milligram-fix-atag href="#movie" data-toggle="tab"
               | MOVIE
           li.nav-item
-            a.nav-link.tab-word href="#book" data-toggle="tab"
+            a.nav-link.tab-word.milligram-fix-atag href="#book" data-toggle="tab"
               | BOOK
         .tab-content
           .tab-pane.active#all

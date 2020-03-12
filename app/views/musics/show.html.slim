@@ -24,7 +24,7 @@
       h4.show-title
         |Spotifyで聴いてみる
       .show-info
-        = link_to "#{@title}を聴いてみる", "#{@spotify_link}", target: :_blank, rel: :noopener
+        = link_to "#{@title}を聴いてみる", "#{@spotify_link}", target: :_blank, rel: :noopener, class: 'milligram-fix-atag'
     - if @youtube_data.present?
       h4.show-title
         | Youtubeで聴いてみる
