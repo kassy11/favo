@@ -46,6 +46,6 @@ class MusicsController < ApplicationController
   def destroy
     @artist_fav = current_user.musics.find_by(artist_id: params[:work_id])
     @artist_fav.destroy
-    redirect_to music_index_user_path(current_user), alert: 'ARTIST LISTの項目を削除しました'
+    redirect_to user_path(current_user), alert: 'ARTIST LISTの項目を削除しました'
   end
 end

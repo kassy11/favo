@@ -52,7 +52,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie_fav = current_user.movies.find_by(movie_id: params[:work_id])
     @movie_fav.destroy
-    redirect_to movie_index_user_path(current_user), alert: 'MOVIE LISTの項目を削除しました'
+    redirect_to user_path(current_user), alert: 'MOVIE LISTの項目を削除しました'
   end
 
   private 

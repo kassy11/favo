@@ -26,7 +26,6 @@ class BooksController < ApplicationController
     @book_id = @base_content["id"].encode!
     @description = @base_content["volumeInfo"]["description"]
     @preview_link = @base_content["volumeInfo"]["previewLink"]
-    ## TODO:試し読みのリンクってなかったっけ？
   end
 
   def create
@@ -38,7 +37,7 @@ class BooksController < ApplicationController
   def destroy
     @book_fav = current_user.books.find_by(book_id: params[:work_id])
     @book_fav.destroy
-    redirect_to book_index_user_path(current_user), alert: 'BOOK LISTの項目を削除しました'
+    redirect_to user_path(current_user), alert: 'BOOK LISTの項目を削除しました'
   end
 
   private
