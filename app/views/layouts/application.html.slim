@@ -12,9 +12,6 @@ html
     link[rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css"]
     link[rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"]
     link[rel="stylesheet" color="#2181cf" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css"]
-    script
-      |  !function(){var e=new XMLHttpRequest,t=document.querySelectorAll("link[color]")[0];e.timeout=3e4,e.open("get",t.getAttribute("href"),!0),e.onreadystatechange=function(){if(200==this.status&&""!=this.responseText){e.onreadystatechange=null;var n=this.responseText,a=t.getAttribute("color");n=n.replace(/#9b4dca/g,a);var o=document.getElementsByTagName("head").item(0),r=document.createElement("style"),s=document.createTextNode(n);r.media="screen",r.type="text/css",r.appendChild(s),o.appendChild(r)}},e.send()}();
-      / TODO: ここをきれいにする
   body
     = render 'layouts/header'
     = render 'layouts/flash'
@@ -22,4 +19,3 @@ html
     script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    / TODO: ここの上３行の読み込みの理由がわからない
