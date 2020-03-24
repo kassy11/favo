@@ -2,7 +2,8 @@
   "name": "dig_mad",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "4.2.2"
+    "@rails/webpacker": "4.2.2",
+    "milligram": "^1.3.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
