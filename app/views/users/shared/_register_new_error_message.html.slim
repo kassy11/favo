@@ -1,3 +1,5 @@
 - if resource.errors.any?
-  .alert.alert-danger
-    simple_format 必須項目を入力してください。
+  .alert.alert-danger.alert-dismissible.fade.show role="alert"
+    | 必須項目を正しく入力してください
+    button type="button" class="close" data-dismiss="alert"
+      span.flash-delete aria-hidden="true" &times;
