@@ -23,7 +23,7 @@ describe User do
     user.valid?
     expect(user.errors.messages[:password]).to include('が入力されていません。')
   end
-  
+
   it 'is invalid with short password' do
     password_length_bound = 5
     user = build(:user, password: 'a' * password_length_bound )
