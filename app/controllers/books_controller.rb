@@ -14,8 +14,9 @@ class BooksController < ApplicationController
   def search; end
 
   def index
-    search_uri = "https://www.googleapis.com/books/v1/volumes?q=#{search_param['search']}&maxResults=40&orderBy=relevance&langRestrict=ja"
-    enc_str = URI.encode(search_uri)
+    search_uri = "https://www.googleapis.com/books/v1/volumes?maxResults=40&orderBy=relevance&langRestrict=ja&"
+    query = URI.encode_www_form(q: "#{search_param['search']}")
+    enc_str = search_uri + query
     uri = URI.parse(enc_str)
     json = Net::HTTP.get(uri)
     @books = JSON.parse(json)
@@ -46,8 +47,7 @@ class BooksController < ApplicationController
 
   def set_api
     url = "https://www.googleapis.com/books/v1/volumes/#{params[:work_id]}"
-    enc_str = URI.encode(url)
-    uri = URI.parse(enc_str)
+    uri = URI.parse(url)
     json = Net::HTTP.get(uri)
     @book = JSON.parse(json)
   end

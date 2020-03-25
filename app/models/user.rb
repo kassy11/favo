@@ -30,17 +30,18 @@ class User < ApplicationRecord
     user
   end
 
-  private
+  class << self
+    private
+    def set_email(auth)
+      auth.info.email || "#{auth.uid}-#{auth.provider}@example.com"
+    end
 
-  def self.set_email(auth)
-    auth.info.email || "#{auth.uid}-#{auth.provider}@example.com"
-  end
+    def set_profile(auth)
+      auth.info.description
+    end
 
-  def self.set_profile(auth)
-    auth.info.description
-  end
-
-  def self.set_image(auth)
-    auth.info.image.presence || 'default_user.jpg'
+    def set_image(auth)
+      auth.info.image.presence || 'default_user.jpg'
+    end
   end
 end

@@ -27,8 +27,9 @@ class MoviesController < ApplicationController
   def search; end
 
   def index
-    search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&query=#{search_param['search']}"
-    enc_uri = URI.encode(search_uri)
+    search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&"
+    query = URI.encode_www_form(query: "#{search_param['search']}")
+    enc_uri = search_uri + query
     uri = URI.parse(enc_uri)
     json = Net::HTTP.get(uri)
     @movies = JSON.parse(json)
@@ -61,8 +62,7 @@ class MoviesController < ApplicationController
 
   def set_api
     search_uri = "https://api.themoviedb.org/3/movie/#{params[:work_id]}?api_key=#{Movie::API_KEY}&language=ja-JA"
-    enc_uri = URI.encode(search_uri)
-    uri = URI.parse(enc_uri)
+    uri = URI.parse(search_uri)
     json = Net::HTTP.get(uri)
     @movie = JSON.parse(json)
   end
