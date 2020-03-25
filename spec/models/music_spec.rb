@@ -1,0 +1,3 @@
+describe Music do
+
+end
