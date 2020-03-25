@@ -48,7 +48,6 @@ group :development, :test do
   gem "factory_bot_rails"
   gem 'spring-commands-rspec'
   gem 'rails-controller-testing'
-  gem 'rubocop-rails'
 end
 
 group :development do
@@ -57,6 +56,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen'
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
