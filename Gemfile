@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'spring-commands-rspec'
+  gem 'faker'
 end
 
 group :development do
@@ -70,7 +71,6 @@ group :test do
   gem 'simplecov', require: false
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'database_cleaner'
-  gem 'faker'
   gem 'launchy'
   gem 'webdrivers'
 end
