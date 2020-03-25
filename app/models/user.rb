@@ -32,6 +32,7 @@ class User < ApplicationRecord
 
   class << self
     private
+
     def set_email(auth)
       auth.info.email || "#{auth.uid}-#{auth.provider}@example.com"
     end

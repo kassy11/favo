@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
 
   def index
     search_uri = "https://api.themoviedb.org/3/search/movie?api_key=#{Movie::API_KEY}&language=ja-JA&"
-    query = URI.encode_www_form(query: "#{search_param['search']}")
+    query = URI.encode_www_form(query: search_param['search'].to_s)
     enc_uri = search_uri + query
     uri = URI.parse(enc_uri)
     json = Net::HTTP.get(uri)
