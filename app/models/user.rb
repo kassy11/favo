@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_many :musics
   has_many :books
 
-
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
     user ||= User.create(
@@ -31,8 +30,6 @@ class User < ApplicationRecord
     user
   end
 
-
-
   private
 
   def self.set_email(auth)
@@ -44,10 +41,6 @@ class User < ApplicationRecord
   end
 
   def self.set_image(auth)
-    if auth.info.image.present?
-      auth.info.image
-    else
-      "default_user.jpg"
-    end
+    auth.info.image.presence || 'default_user.jpg'
   end
 end

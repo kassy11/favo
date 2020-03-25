@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserImagesUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -26,12 +28,14 @@ class UserImagesUploader < CarrierWave::Uploader::Base
 
   # 許可する画像の拡張子
   def extension_white_list
-    %W[jpg jpeg gif png]
+    %w[jpg jpeg gif png]
   end
 
   # 変換したファイルのファイル名の規則
   def filename
-    "#{Time.zone.now.strftime('%Y%m%d%H%M%S')}.jpg" if original_filename.present?
+    if original_filename.present?
+      "#{Time.zone.now.strftime('%Y%m%d%H%M%S')}.jpg"
+    end
   end
   # include CarrierWave::MiniMagick
 

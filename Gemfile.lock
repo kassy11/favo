@@ -58,8 +58,6 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     ast (2.4.0)
     autoprefixer-rails (9.7.5)
       execjs
@@ -96,9 +94,6 @@ GEM
       mimemagic (>= 0.3.0)
       mini_mime (>= 0.1.3)
     childprocess (3.0.0)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     cloudinary (1.13.2)
       aws_cf_signer
       rest-client
@@ -171,7 +166,6 @@ GEM
     image_processing (1.10.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    io-like (0.3.1)
     jaro_winkler (1.5.4)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
@@ -319,14 +313,14 @@ GEM
     rspec-mocks (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
-    rspec-rails (3.9.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-      rspec-support (~> 3.9.0)
+    rspec-rails (4.0.0)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
     rspec-support (3.9.2)
     rspotify (2.4.0)
       omniauth-oauth2 (~> 1.3.1)
@@ -412,6 +406,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (4.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webpacker (4.2.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -435,7 +433,6 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave
-  chromedriver-helper
   cloudinary
   coffee-rails (= 5.0.0)
   coffee-script-source (= 1.8.0)
@@ -461,8 +458,9 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (= 6.0.2)
   rails-controller-testing
-  rspec-rails
+  rspec-rails (~> 4.0.0.beta2)
   rspotify
+  rubocop
   rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -474,6 +472,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webdrivers
   webpacker
 
 RUBY VERSION

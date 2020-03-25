@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class MoviesController < ApplicationController
   require 'net/http'
-  require "json"
+  require 'json'
   require 'uri'
   include MoviesHelper
   before_action :authenticate_user!, except: :show
-  before_action :set_api, only: [:show, :create]
-  before_action :base_info, only: [:show, :create]
+  before_action :set_api, only: %i[show create]
+  before_action :base_info, only: %i[show create]
   before_action :search_param, only: :index
   GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]
 
@@ -14,10 +16,10 @@ class MoviesController < ApplicationController
     service.key = GOOGLE_API_KEY
 
     opt = {
-        q: keyword + " 予告",
-        type: 'video',
-        max_results: 1,
-        order: :relevance
+      q: keyword + ' 予告',
+      type: 'video',
+      max_results: 1,
+      order: :relevance
     }
     service.list_searches(:snippet, opt)
   end
@@ -30,16 +32,16 @@ class MoviesController < ApplicationController
     uri = URI.parse(enc_uri)
     json = Net::HTTP.get(uri)
     @movies = JSON.parse(json)
-    @base_contents = @movies["results"]
+    @base_contents = @movies['results']
   end
 
   def show
-    @movie_id = @movie["id"]
-    @overview = @movie["overview"]
+    @movie_id = @movie['id']
+    @overview = @movie['overview']
     @img_url = "https://image.tmdb.org/t/p/w342/#{@img_path}"
-    @release_date = @movie["release_date"]
+    @release_date = @movie['release_date']
     @youtube_data = find_videos(@title).items.first
-    @genres = @movie["genres"]
+    @genres = @movie['genres']
   end
 
   def create
@@ -55,7 +57,7 @@ class MoviesController < ApplicationController
     redirect_to user_path(current_user), alert: 'MOVIE LISTの項目を削除しました'
   end
 
-  private 
+  private
 
   def set_api
     search_uri = "https://api.themoviedb.org/3/movie/#{params[:work_id]}?api_key=#{Movie::API_KEY}&language=ja-JA"
@@ -66,7 +68,7 @@ class MoviesController < ApplicationController
   end
 
   def base_info
-    @title = @movie["title"]
-    @img_path = @movie["poster_path"]
+    @title = @movie['title']
+    @img_path = @movie['poster_path']
   end
 end

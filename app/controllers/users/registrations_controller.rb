@@ -2,8 +2,9 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   protected
+
   # アカウント編集後、プロフィール画面に移動する
-  def after_update_path_for(resource)
+  def after_update_path_for(_resource)
     users_path(id: current_user.id)
   end
   # before_action :configure_sign_up_params, only: [:create]

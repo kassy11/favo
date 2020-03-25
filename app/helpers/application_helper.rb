@@ -1,5 +1,6 @@
-module ApplicationHelper
+# frozen_string_literal: true
 
+module ApplicationHelper
   def search_artist(artist_name)
     RSpotify::Artist.search(artist_name, limit: 50, offset: 0, market: nil)
   end
@@ -7,8 +8,6 @@ module ApplicationHelper
   def find_artist(artist_id)
     RSpotify::Artist.find(artist_id)
   end
-
-
 
   # def default_meta_tags
   #   {
