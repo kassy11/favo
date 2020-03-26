@@ -2,7 +2,7 @@
 
 class Music < ApplicationRecord
   validates :user_id, { presence: true }
-  validates :artist_id, { presence: true, uniqueness: true }
+  validates :artist_id, { presence: true, uniqueness: { scope: :user_id } }
   belongs_to :user
   require 'rspotify'
   API_KEY = Rails.application.credentials.spotify[:api_key]

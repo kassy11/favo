@@ -48,9 +48,7 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta2'
-  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -62,6 +60,7 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'web-console', '>= 3.3.0'
+  gem 'spring-commands-rspec'
 end
 
 group :test do

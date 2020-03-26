@@ -20,9 +20,10 @@ describe Music do
     expect(music).to be_invalid
   end
 
-  it 'is invalid with duplicate artist_id' do
-    music1 = create(:music, artist_id: '24ce8dbd-ce7d-4352-ad3f-7dff62fbf5a9')
-    music2 = build_stubbed(:music, artist_id: '24ce8dbd-ce7d-4352-ad3f-7dff62fbf5a9')
+  it 'is invalid with duplicate artist_id by same user' do
+    user = create(:user)
+    music1 = create(:music, artist_id: '24ce8dbd-ce7d-4352-ad3f-7dff62fbf5a9', user: user)
+    music2 = build_stubbed(:music, artist_id: '24ce8dbd-ce7d-4352-ad3f-7dff62fbf5a9', user: user)
     music2.valid?
     expect(music2).to be_invalid
   end
