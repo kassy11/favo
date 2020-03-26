@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Music do
-
   it 'is valid with user_id and artist_id' do
     music = build_stubbed(:music)
     expect(music).to be_valid

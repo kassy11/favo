@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe User do
@@ -26,7 +28,7 @@ describe User do
 
   it 'is invalid with short password' do
     password_length_bound = 5
-    user = build(:user, password: 'a' * password_length_bound )
+    user = build(:user, password: 'a' * password_length_bound)
     user.valid?
     expect(user.errors.messages[:password]).to include('は6文字以上に設定して下さい。')
   end

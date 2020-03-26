@@ -47,10 +47,10 @@ group :development, :test do
   gem 'sqlite3', '>= 1.4.2'
   # Use sqlite3 as the database for Active Record
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'spring-commands-rspec'
-  gem 'faker'
 end
 
 group :development do
