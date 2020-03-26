@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   get 'musics/search' => 'musics#search'
   get 'books/search' => 'books#search'
   get 'movies/search' => 'movies#search'
@@ -8,14 +9,14 @@ Rails.application.routes.draw do
   get 'books/index' => 'books#index'
   get 'movies/index' => 'movies#index'
 
-  post "musics/:work_id/create" => "musics#create", as: :musics
-  post "movies/:work_id/create" => "movies#create", as: :movies
-  post "books/:work_id/create" => "books#create", as: :books
+  post 'musics/:work_id/create' => 'musics#create', as: :musics
+  post 'movies/:work_id/create' => 'movies#create', as: :movies
+  post 'books/:work_id/create' => 'books#create', as: :books
   ## TODO:ここの上下３つをどうにかまとめたい..
 
-  resources :musics, :books, :movies, only: [ :destroy, :show ], param: :work_id
+  resources :musics, :books, :movies, only: %i[destroy show], param: :work_id
 
-  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :users, only: :show do
     get :book_index, on: :member

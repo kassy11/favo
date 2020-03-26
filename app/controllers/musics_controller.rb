@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class MusicsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :search_param, only: :index
   GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]
-
 
   include ApplicationHelper
 
@@ -11,10 +12,10 @@ class MusicsController < ApplicationController
     service.key = GOOGLE_API_KEY
 
     opt = {
-        q: keyword + " official",
-        type: 'video',
-        max_results: 1,
-        order: :relevance
+      q: keyword + ' official',
+      type: 'video',
+      max_results: 1,
+      order: :relevance
     }
     service.list_searches(:snippet, opt)
   end
@@ -22,7 +23,9 @@ class MusicsController < ApplicationController
   def search; end
 
   def index
-    @artists = search_artist(search_param['search']) unless search_param['search'].blank?
+    if search_param['search'].present?
+      @artists = search_artist(search_param['search'])
+    end
     @base_contents = @artists
   end
 
@@ -32,8 +35,8 @@ class MusicsController < ApplicationController
     @top_tracks = @artist.top_tracks(:US).first(3)
     @title = @artist.name
     @genres = @artist.genres
-    @spotify_link = @artist.external_urls["spotify"]
-    @img_url = @artist.images[1]["url"] unless @artist.images.blank?
+    @spotify_link = @artist.external_urls['spotify']
+    @img_url = @artist.images[1]['url'] if @artist.images.present?
     @youtube_data = find_videos(@title).items.first
   end
 

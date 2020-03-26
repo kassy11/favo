@@ -1,0 +1,13 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-rails
+
+Rails:
+  Enabled: true
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Severity: warning

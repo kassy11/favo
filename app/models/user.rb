@@ -6,7 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
 
-  validates :profile, length: { maximum: 500 }
   validates :name, presence: true
   validates :email, uniqueness: true
 
@@ -15,7 +14,6 @@ class User < ApplicationRecord
   has_many :movies
   has_many :musics
   has_many :books
-
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -31,23 +29,19 @@ class User < ApplicationRecord
     user
   end
 
+  class << self
+    private
 
+    def set_email(auth)
+      auth.info.email || "#{auth.uid}-#{auth.provider}@example.com"
+    end
 
-  private
+    def set_profile(auth)
+      auth.info.description
+    end
 
-  def self.set_email(auth)
-    auth.info.email || "#{auth.uid}-#{auth.provider}@example.com"
-  end
-
-  def self.set_profile(auth)
-    auth.info.description
-  end
-
-  def self.set_image(auth)
-    if auth.info.image.present?
-      auth.info.image
-    else
-      "default_user.jpg"
+    def set_image(auth)
+      auth.info.image.presence || 'default_user.jpg'
     end
   end
 end

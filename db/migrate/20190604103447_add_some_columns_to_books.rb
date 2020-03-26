@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSomeColumnsToBooks < ActiveRecord::Migration[6.0]
   def change
     add_column :books, :book_name, :string
