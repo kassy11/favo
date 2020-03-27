@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   it 'is valid with name, email and password' do
     user = build(:user)
     expect(user).to be_valid

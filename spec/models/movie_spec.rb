@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Movie do
+RSpec.describe Movie, type: :model do
   it 'is valid with user_id and movie_id' do
     movie = build_stubbed(:movie)
     expect(movie).to be_valid

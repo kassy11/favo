@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Book do
+RSpec.describe Book, type: :model do
   it 'is valid with user_id and book_id' do
     book = build_stubbed(:book)
     expect(book).to be_valid

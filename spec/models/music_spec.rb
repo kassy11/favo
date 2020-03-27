@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Music do
+RSpec.describe Music, type: :model do
   it 'is valid with user_id and artist_id' do
     music = build_stubbed(:music)
     expect(music).to be_valid
