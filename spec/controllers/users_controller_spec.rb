@@ -1,20 +1,20 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-
   shared_context 'as an authorized user' do
-    let(:user){create(:user)}
+    let(:user) { create(:user) }
   end
 
   shared_context 'as an unauthorized user' do
-      let(:user){create(:user)}
-      let(:other_user){create(:user)}
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
   end
 
   shared_context 'as a guest' do
-    let!(:user){create(:user)}
+    let!(:user) { create(:user) }
   end
-
 
   describe '#show' do
     context 'as an authorized user' do
@@ -22,16 +22,15 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :show, params: {id: user.id}
+        get :show, params: { id: user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :show, params: {id: user.id}
-        expect(response).to have_http_status "200"
+        get :show, params: { id: user.id }
+        expect(response).to have_http_status '200'
       end
-
     end
 
     context 'as an unauthorized user' do
@@ -39,33 +38,30 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :show, params: {id: other_user.id}
+        get :show, params: { id: other_user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :show, params: {id: other_user.id}
-        expect(response).to have_http_status "200"
+        get :show, params: { id: other_user.id }
+        expect(response).to have_http_status '200'
       end
-
-
     end
 
     context 'as a guest' do
       include_context 'as a guest'
 
       xit 'response successfully' do
-        get :show, params: {id: user.id}
+        get :show, params: { id: user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
-        get :show, params: {id: user.id}
-        expect(response).to have_http_status "200"
+        get :show, params: { id: user.id }
+        expect(response).to have_http_status '200'
       end
     end
-
   end
 
   describe '#music_index' do
@@ -74,16 +70,15 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :music_index, params: {id: user.id}
+        get :music_index, params: { id: user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :music_index, params: {id: user.id}
-        expect(response).to have_http_status "200"
+        get :music_index, params: { id: user.id }
+        expect(response).to have_http_status '200'
       end
-
     end
 
     context 'as an unauthorized user' do
@@ -91,27 +86,25 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :music_index, params: {id: other_user.id}
+        get :music_index, params: { id: other_user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :music_index, params: {id: other_user.id}
-        expect(response).to have_http_status "200"
+        get :music_index, params: { id: other_user.id }
+        expect(response).to have_http_status '200'
       end
-
     end
 
     context 'as a guest' do
       include_context 'as a guest'
 
       xit 'response successfully' do
-        get :music_index, params: {id: user.id}
+        get :music_index, params: { id: user.id }
         expect(response).to be_success
       end
     end
-
   end
 
   describe '#movie_index' do
@@ -120,14 +113,14 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :movie_index, params: {id: user.id}
+        get :movie_index, params: { id: user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :movie_index, params: {id: user.id}
-        expect(response).to have_http_status "200"
+        get :movie_index, params: { id: user.id }
+        expect(response).to have_http_status '200'
       end
     end
 
@@ -136,23 +129,22 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :movie_index, params: {id: other_user.id}
+        get :movie_index, params: { id: other_user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :movie_index, params: {id: other_user.id}
-        expect(response).to have_http_status "200"
+        get :movie_index, params: { id: other_user.id }
+        expect(response).to have_http_status '200'
       end
-
     end
 
     context 'as a guest' do
       include_context 'as a guest'
 
       xit 'response successfully' do
-        get :movie_index, params: {id: user.id}
+        get :movie_index, params: { id: user.id }
         expect(response).to be_success
       end
     end
@@ -164,14 +156,14 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :book_index, params: {id: user.id}
+        get :book_index, params: { id: user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :book_index, params: {id: user.id}
-        expect(response).to have_http_status "200"
+        get :book_index, params: { id: user.id }
+        expect(response).to have_http_status '200'
       end
     end
 
@@ -180,27 +172,24 @@ RSpec.describe UsersController, type: :controller do
 
       xit 'response successfully' do
         sign_in user
-        get :book_index, params: {id: other_user.id}
+        get :book_index, params: { id: other_user.id }
         expect(response).to be_success
       end
 
       it 'return a 200 response' do
         sign_in user
-        get :book_index, params: {id: other_user.id}
-        expect(response).to have_http_status "200"
+        get :book_index, params: { id: other_user.id }
+        expect(response).to have_http_status '200'
       end
-
     end
 
     context 'as a guest' do
       include_context 'as a guest'
 
       xit 'response successfully' do
-        get :book_index, params: {id: user.id}
+        get :book_index, params: { id: user.id }
         expect(response).to be_success
       end
     end
-
   end
-
 end

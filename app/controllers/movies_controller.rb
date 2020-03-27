@@ -11,7 +11,6 @@ class MoviesController < ApplicationController
   before_action :search_param, only: :index
   GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]
 
-
   def search; end
 
   def index
@@ -65,12 +64,11 @@ class MoviesController < ApplicationController
     service.key = GOOGLE_API_KEY
 
     opt = {
-        q: keyword + ' 予告',
-        type: 'video',
-        max_results: 1,
-        order: :relevance
+      q: keyword + ' 予告',
+      type: 'video',
+      max_results: 1,
+      order: :relevance
     }
     service.list_searches(:snippet, opt)
   end
-
 end
