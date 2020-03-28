@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_112015) do
   create_table "books", force: :cascade do |t|
     t.integer "user_id"
     t.string "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "book_name"
     t.string "book_image_url"
   end
@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_112015) do
   create_table "movies", force: :cascade do |t|
     t.integer "user_id"
     t.integer "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "movie_name"
     t.string "movie_image_url"
   end
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_112015) do
   create_table "musics", force: :cascade do |t|
     t.integer "user_id"
     t.string "artist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_112015) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "uid"
     t.string "provider"
     t.string "image"
