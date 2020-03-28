@@ -82,11 +82,10 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # for User
+gem 'activestorage-cloudinary-service'
+gem 'cloudinary', require: false
 gem 'devise'
 gem 'mini_magick'
-gem 'cloudinary', require: false
-gem 'activestorage-cloudinary-service'
-
 
 gem 'omniauth'
 gem 'omniauth-twitter'

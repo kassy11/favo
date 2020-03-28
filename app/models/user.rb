@@ -9,7 +9,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
 
-
   has_many :movies
   has_many :musics
   has_many :books
@@ -20,7 +19,6 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
-
     user ||= User.create(
       uid: auth.uid,
       provider: auth.provider,
@@ -30,9 +28,9 @@ class User < ApplicationRecord
       password: Devise.friendly_token[0, 20]
     )
 
-#     downloaded_image = open(auth.info.image)
-#     user.image.attach(io: downloaded_image, filename: "#{auth.uid}-user-img.jpg", content_type: downloaded_image.content_type)
-# content_type
+    #     downloaded_image = open(auth.info.image)
+    #     user.image.attach(io: downloaded_image, filename: "#{auth.uid}-user-img.jpg", content_type: downloaded_image.content_type)
+    # content_type
     user
   end
 
@@ -46,6 +44,5 @@ class User < ApplicationRecord
     def set_profile(auth)
       auth.info.description
     end
-
   end
 end
