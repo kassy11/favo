@@ -44,7 +44,7 @@ class User < ApplicationRecord
     end
 
     def set_profile(auth)
-      auth.info.description 
+      auth.info.description
     end
 
   end
