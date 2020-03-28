@@ -45,9 +45,17 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  # FactoryBotのメソッドをメソッド名だけで呼び出せるようにする設定
   config.include FactoryBot::Syntax::Methods
-  config.include Devise::TestHelpers, type: :controller
+
+  # 独自マクロ
   config.include LoginMacros, type: :controller
+
+  # Deviseのメソッドをテスト内で使えるようにする設定
+  config.include Devise::TestHelpers, type: :controller
+  config.include RequestSpecHelper, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
