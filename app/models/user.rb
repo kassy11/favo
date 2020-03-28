@@ -9,11 +9,12 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
 
-  mount_uploader :image, UserImagesUploader
 
   has_many :movies
   has_many :musics
   has_many :books
+
+  has_one_attached :image
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -23,7 +24,7 @@ class User < ApplicationRecord
       name: auth.info.name,
       profile: set_profile(auth),
       email: set_email(auth),
-      # image: User.set_image(auth),
+      image: set_image(auth),
       password: Devise.friendly_token[0, 20]
     )
     user

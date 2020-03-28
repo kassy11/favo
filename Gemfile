@@ -82,9 +82,8 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # for User
-gem 'carrierwave'
 gem 'devise'
-# gem 'rmagick'
+gem 'mini_magick'
 gem 'cloudinary'
 
 gem 'omniauth'
