@@ -72,6 +72,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'webdrivers'
+  gem 'shoulda-matchers'
 end
 
 group :production do
