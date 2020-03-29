@@ -4,8 +4,8 @@
 
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.page-title
       .user_info
-        - if @user.image.present?
-         = image_tag @user.image.variant(resize: "250x250").processed
+        - if @user.image.attached?
+         = image_tag @user.image
         - else
           = image_tag gravatar_for(current_user)
         h1.user-name.font-weight-bold
