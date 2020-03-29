@@ -9,23 +9,28 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
 
-  mount_uploader :image, UserImagesUploader
-
   has_many :movies
   has_many :musics
   has_many :books
 
+  has_one_attached :image
+  require 'open-uri'
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
+
     user ||= User.create(
       uid: auth.uid,
       provider: auth.provider,
       name: auth.info.name,
       profile: set_profile(auth),
       email: set_email(auth),
-      # image: User.set_image(auth),
       password: Devise.friendly_token[0, 20]
     )
+
+    #     downloaded_image = open(auth.info.image)
+    #     user.image.attach(io: downloaded_image, filename: "#{auth.uid}-user-img.jpg", content_type: downloaded_image.content_type)
+    # content_type
     user
   end
 
@@ -38,10 +43,6 @@ class User < ApplicationRecord
 
     def set_profile(auth)
       auth.info.description
-    end
-
-    def set_image(auth)
-      auth.info.image.presence || 'default_user.jpg'
     end
   end
 end

@@ -4,8 +4,11 @@
 
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.page-title
       .user_info
-        / =cl_image_tag @user.image.url.to_s, size: '200×200'
-        h1.font-weight-bold
+        - if @user.image.attached?
+         = image_tag @user.image.variant(resize: "300x300").processed
+        - else
+          = image_tag gravatar_for(current_user)
+        h1.user-name.font-weight-bold
           = @user.name
         = render 'users/shared/sns' if current_user == @user
         - if user_signed_in? && current_user == @user
