@@ -84,7 +84,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # for User
 gem 'activestorage-cloudinary-service'
-gem 'cloudinary'
+gem 'cloudinary', require: false
 gem 'devise'
 gem 'mini_magick'
 
