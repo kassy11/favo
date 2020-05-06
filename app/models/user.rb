@@ -27,10 +27,6 @@ class User < ApplicationRecord
       email: set_email(auth),
       password: Devise.friendly_token[0, 20]
     )
-
-    #     downloaded_image = open(auth.info.image)
-    #     user.image.attach(io: downloaded_image, filename: "#{auth.uid}-user-img.jpg", content_type: downloaded_image.content_type)
-    # content_type
     user
   end
 
