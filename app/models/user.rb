@@ -19,16 +19,16 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    binding.pry
     user ||= User.create(
       uid: auth.uid,
       provider: auth.provider,
       name: auth.info.name,
-      image: set_image(auth),
       profile: set_profile(auth),
       email: set_email(auth),
       password: Devise.friendly_token[0, 20]
     )
+    image = auth.info.image
+    user.image.attach(image)
     user
   end
 
@@ -39,12 +39,12 @@ class User < ApplicationRecord
       auth.info.email || "#{auth.uid}-#{auth.provider}@example.com"
     end
 
-    def set_image(auth)
-      auth.info.image
-    end
+    # def set_image(auth)
+    #   auth.info.image
+    # end
 
     def set_profile(auth)
-      auth.info.description.blank ? "プロフィール文を設定してね！" : auth.info.description
+      auth.info.description.blank ? 'プロフィール文を設定してね！' : auth.info.description
     end
   end
 end
