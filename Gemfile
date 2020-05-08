@@ -71,8 +71,8 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'webdrivers'
   gem 'shoulda-matchers'
+  gem 'webdrivers'
 end
 
 group :production do
@@ -86,7 +86,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'devise'
 gem 'mini_magick'
 
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 
 gem 'omniauth'
 gem 'omniauth-twitter'
