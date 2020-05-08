@@ -10,9 +10,9 @@
         .field.user-form
           = f.label :name
           = f.text_field :name, autofocus: true,class: "col-md-12 from-control"
-        .field.user-form
-          = f.label :image
-          = f.file_field :image, accept: "image/png, image/jpeg"
+        / .field.user-form
+        /   = f.label :image
+        /   = f.file_field :image, accept: "image/png, image/jpeg"
         - if current_user.uid.blank?
           .field.user-form
             = f.label :email
