@@ -26,6 +26,6 @@ class UsersController < ApplicationController
   end
 
   def current_user_index!
-    redirect_to root_path if current_user.id != params[:id]
+    redirect_to root_path if current_user.id != params[:id].to_i
   end
 end
