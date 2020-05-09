@@ -23,7 +23,7 @@ RSpec.describe UsersController, type: :controller do
       xit 'response successfully' do
         sign_in user
         get :show, params: { id: user.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it 'return a 200 response' do
@@ -39,7 +39,7 @@ RSpec.describe UsersController, type: :controller do
       xit 'response successfully' do
         sign_in user
         get :show, params: { id: other_user.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it 'return a 200 response' do

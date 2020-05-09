@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :set_user
+  before_action :current_user_index!, except: :show
 
   def show; end
 
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def movie_index
     @my_movies = @user.movies
+
   end
 
   def book_index
@@ -22,5 +24,11 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def current_user_index!
+    if current_user.id != params[:id]
+      redirect_to root_path
+    end
   end
 end
