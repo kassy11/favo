@@ -22,7 +22,7 @@ RSpec.describe Book, type: :model do
 
   it 'is invalid with duplicate artist_id by same user' do
     user = create(:user)
-    book1 = create(:book, book_id: '24ce8dbd-ce7d-4352-ad3f-7dff62fbf5a9', user: user)
+    create(:book, book_id: '24ce8dbd-ce7d-4352-ad3f-7dff62fbf5a9', user: user)
     book2 = build_stubbed(:book, book_id: '24ce8dbd-ce7d-4352-ad3f-7dff62fbf5a9', user: user)
     book2.valid?
     expect(book2).to be_invalid

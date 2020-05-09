@@ -9,12 +9,13 @@ RSpec.describe MoviesController, type: :controller do
 
   shared_context 'as an unauthorized user' do
     let(:user) { create(:user) }
-    let!(:other_user) { create(:user) }
+    let(:other_user) { create(:user) }
   end
 
   shared_context 'as a guest' do
     let!(:user) { create(:user) }
   end
+
 
   describe '#search' do
     context 'as an authorized user' do
@@ -101,8 +102,6 @@ RSpec.describe MoviesController, type: :controller do
     end
 
     context 'as a guest' do
-      include_context 'as a guest'
-
       xit 'response successfully' do
         get :show, params: { work_id: 265_712 }
         expect(response).to be_success
@@ -127,7 +126,10 @@ RSpec.describe MoviesController, type: :controller do
         end.to change(user.movies, :count).by(1)
       end
 
-      xit 'redirect movie_index_user_path after adds a movie' do
+      it 'redirect _path after adds a movie' do
+        sign_in user
+        movie = create(:movie)
+        expect(post :create, params: { work_id: movie.id }).to redirect_to movie_index_user_path(user)
       end
     end
 
@@ -188,7 +190,6 @@ RSpec.describe MoviesController, type: :controller do
     end
 
     context 'as a guest' do
-      include_context 'as a guest'
     end
   end
 end
