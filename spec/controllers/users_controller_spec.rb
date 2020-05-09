@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
@@ -23,7 +22,7 @@ RSpec.describe UsersController, type: :controller do
       xit 'response successfully' do
         sign_in user
         get :show, params: { id: user.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it 'return a 200 response' do
@@ -39,7 +38,7 @@ RSpec.describe UsersController, type: :controller do
       xit 'response successfully' do
         sign_in user
         get :show, params: { id: other_user.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it 'return a 200 response' do
@@ -84,25 +83,30 @@ RSpec.describe UsersController, type: :controller do
     context 'as an unauthorized user' do
       include_context 'as an unauthorized user'
 
-      xit 'response successfully' do
+      it 'redirect to root_path' do
         sign_in user
         get :music_index, params: { id: other_user.id }
-        expect(response).to be_success
+        expect(response).to redirect_to root_path
       end
 
-      it 'return a 200 response' do
+      it 'return a 302 response' do
         sign_in user
         get :music_index, params: { id: other_user.id }
-        expect(response).to have_http_status '200'
+        expect(response).to have_http_status '302'
       end
     end
 
     context 'as a guest' do
       include_context 'as a guest'
 
-      xit 'response successfully' do
+      it 'redirect to new_user_session_path' do
         get :music_index, params: { id: user.id }
-        expect(response).to be_success
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      it 'return a 302 response' do
+        get :music_index, params: { id: user.id }
+        expect(response).to have_http_status '302'
       end
     end
   end
@@ -127,25 +131,30 @@ RSpec.describe UsersController, type: :controller do
     context 'as an unauthorized user' do
       include_context 'as an unauthorized user'
 
-      xit 'response successfully' do
+      it 'redirect to root_path' do
         sign_in user
         get :movie_index, params: { id: other_user.id }
-        expect(response).to be_success
+        expect(response).to redirect_to root_path
       end
 
-      it 'return a 200 response' do
+      it 'return a 302 response' do
         sign_in user
         get :movie_index, params: { id: other_user.id }
-        expect(response).to have_http_status '200'
+        expect(response).to have_http_status '302'
       end
     end
 
     context 'as a guest' do
       include_context 'as a guest'
 
-      xit 'response successfully' do
+      it 'redirect to new_user_session_path' do
         get :movie_index, params: { id: user.id }
-        expect(response).to be_success
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      it 'return a 302 response' do
+        get :movie_index, params: { id: user.id }
+        expect(response).to have_http_status '302'
       end
     end
   end
@@ -170,25 +179,30 @@ RSpec.describe UsersController, type: :controller do
     context 'as an unauthorized user' do
       include_context 'as an unauthorized user'
 
-      xit 'response successfully' do
+      it 'redirect to root_path' do
         sign_in user
         get :book_index, params: { id: other_user.id }
-        expect(response).to be_success
+        expect(response).to redirect_to root_path
       end
 
-      it 'return a 200 response' do
+      it 'return a 302 response' do
         sign_in user
         get :book_index, params: { id: other_user.id }
-        expect(response).to have_http_status '200'
+        expect(response).to have_http_status '302'
       end
     end
 
     context 'as a guest' do
       include_context 'as a guest'
 
-      xit 'response successfully' do
+      it 'redirect to new_user_session_path' do
         get :book_index, params: { id: user.id }
-        expect(response).to be_success
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      it 'return a 302 response' do
+        get :book_index, params: { id: user.id }
+        expect(response).to have_http_status '302'
       end
     end
   end

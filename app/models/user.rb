@@ -9,9 +9,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
 
-  has_many :movies
-  has_many :musics
-  has_many :books
+  has_many :movies, dependent: :destroy
+  has_many :musics, dependent: :destroy
+  has_many :books, dependent: :destroy
 
   has_one_attached :image
   require 'open-uri'
