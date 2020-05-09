@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid with duplicate email' do
-    user1 = create(:user, email: 'kotaro11kassy@gmail.com')
+    create(:user, email: 'kotaro11kassy@gmail.com')
     user2 = build(:user, email: 'kotaro11kassy@gmail.com')
     user2.valid?
     expect(user2.errors.messages[:email]).to include('は既に使用されています。')

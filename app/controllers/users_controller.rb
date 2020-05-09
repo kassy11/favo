@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def movie_index
     @my_movies = @user.movies
-
   end
 
   def book_index
@@ -27,8 +26,6 @@ class UsersController < ApplicationController
   end
 
   def current_user_index!
-    if current_user.id != params[:id]
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id != params[:id]
   end
 end
