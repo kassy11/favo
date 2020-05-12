@@ -5,6 +5,15 @@ RSpec.describe MusicsController, type: :controller do
     let(:user) { create(:user) }
   end
 
+  shared_context 'as an unauthorized user' do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+  end
+
+  shared_context 'as a guest' do
+    let!(:user) { create(:user) }
+  end
+
   describe '#index' do
 
   end
@@ -20,9 +29,10 @@ RSpec.describe MusicsController, type: :controller do
   describe '#show' do
     context 'as an authorized user' do
       include_context 'as an authorized user'
+      ## ここでRSpotifyの認証エラーになってしまう
       xit 'response successfully' do
         sign_in user
-        get :show, params: {work_id: "2kQnsbKnIiMahOetwlfcaS"}
+        get :show, params: {work_id: "2kQnsbKnIiMahOetwlfcaS".to_i }
         expect(response).to be_successful
       end
 
@@ -36,14 +46,12 @@ RSpec.describe MusicsController, type: :controller do
     context 'as a guest' do
       include_context 'as a guest'
       xit 'response successfully' do
-        sign_in user
-        get :show
+        get :show, params: { work_id: "2kQnsbKnIiMahOetwlfcaS"}
         expect(response).to be_successful
       end
 
-      it 'return a 200 response' do
-        sign_in user
-        get :show
+      xit 'return a 200 response' do
+        get :show, params: { work_id: "2kQnsbKnIiMahOetwlfcaS"}
         expect(response).to have_http_status '200'
       end
     end
