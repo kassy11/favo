@@ -9,7 +9,7 @@ RSpec.describe StaticPagesController, type: :controller do
         @user = create(:user)
       end
 
-      # rspecのバグでbe_successが使えないようなので一旦pending
+      # TODO: rspecのバグでbe_successが使えないようなので一旦pending
       xit 'response successfully' do
         sign_in @user
         get :home

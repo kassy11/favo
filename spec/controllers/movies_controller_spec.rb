@@ -16,6 +16,9 @@ RSpec.describe MoviesController, type: :controller do
     let!(:user) { create(:user) }
   end
 
+  shared_context 'as an authorized user who has fav list' do
+    let(:user) { create(:user, :with_fav_movies) }
+  end
 
   describe '#search' do
     context 'as an authorized user' do
@@ -64,10 +67,11 @@ RSpec.describe MoviesController, type: :controller do
       end
 
       # 検索結果の配列をどうテストすればいいのかわからないのでpending
+      # TODO:そもそもこれはcontroller specではなくフィーチャースペック（Capybara）でやるのかも
       xit 'has search result items' do
         sign_in user
         get :index, params: { name: 'ドラえもん' }
-        expect(response).to include
+        expect(response).to
       end
     end
 
@@ -122,27 +126,34 @@ RSpec.describe MoviesController, type: :controller do
         sign_in user
         movie = create(:movie)
         expect  do
-          post :create, params: { work_id: movie.id }
+          post :create, params: { work_id: movie.movie_id }
         end.to change(user.movies, :count).by(1)
       end
 
-      it 'redirect _path after adds a movie' do
+      it 'redirect movie_index_user_path after adds a movie' do
         sign_in user
         movie = create(:movie)
-        expect(post :create, params: { work_id: movie.id }).to redirect_to movie_index_user_path(user)
+        expect(post(:create, params: { work_id: movie.id })).to redirect_to movie_index_user_path(user)
+      end
+
+      # TODO: これもほぼバリデーションのテストなのでコントローラスペックに書くのは違う気がする
+      xit 'cannot add same work to user list' do
+        sign_in user
+        movie = create(:movie)
+        post :create, params: { work_id: movie.id }
+        expect(post(:create, params: { work_id: movie.id })).to be_falsey
       end
     end
 
     context 'as an unauthorized user' do
       include_context 'as an unauthorized user'
 
-      # そもそものバリデーションのかけ方がおかしいのかもしれない
-      xit 'does not add a movie to user list' do
+      it 'does not add a movie to user list' do
         sign_in user
-        movie = create(:movie, user: other_user)
+        movie = create(:movie)
         expect  do
-          post :create, params: { work_id: movie.id }
-        end.not_to change(user.movies, :count)
+          post :create, params: { work_id: movie.movie_id }
+        end.not_to change(other_user.movies, :count)
       end
     end
 
@@ -158,21 +169,22 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe '#destory' do
-    context 'as an authorized user' do
-      include_context 'as an authorized user'
+    context 'as an authorized user who has fav list' do
+      include_context 'as an authorized user who has fav list'
 
-      # destroyがNoMethodErrorになってしまう謎のエラー
+      # TODO: destroyがnil呼び出しになってる（作品がないから）問題を解決する
       xit 'destroy a movie in user list' do
         sign_in user
-        movie = create(:movie, user: user)
-        p movie
+        movie = user.movies.first
         expect do
-          delete :destroy, params: { work_id: movie.id }
+          post :destroy, params: { work_id: movie.id }
         end.to change(user.movies, :count).by(-1)
       end
 
-      # redirectさせる方法がわからない、コールバック？？
       xit 'redirect movie_index_user_path after delete a movie' do
+        sign_in user
+        movie = create(:movie, user: user)
+        expect(post(:destroy, params: { work_id: movie.id })).to redirect_to movie_index_user_path(user)
       end
     end
 
@@ -190,6 +202,14 @@ RSpec.describe MoviesController, type: :controller do
     end
 
     context 'as a guest' do
+      xit 'does not destroy a movie in user list' do
+        sign_in user
+        movie = create(:movie, user: user)
+        p movie
+        expect do
+          delete :destroy, params: { work_id: movie.id }
+        end.to change(user.movies, :count).by(-1)
+      end
     end
   end
 end
