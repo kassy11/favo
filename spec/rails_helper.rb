@@ -10,7 +10,6 @@ SimpleCov.start 'rails'
 require File.expand_path('../config/environment', __dir__)
 
 require 'devise'
-require File.expand_path('spec/support/login_macros.rb')
 
 # Prevent database truncation if the environment is production
 if Rails.env.production?
@@ -51,7 +50,6 @@ RSpec.configure do |config|
   # FactoryBotのメソッドをメソッド名だけで呼び出せるようにする設定
   config.include FactoryBot::Syntax::Methods
 
-  config.include LoginMacros, type: :controller
 
   # Deviseのメソッドをテスト内で使えるようにする設定
   config.include Devise::Test::ControllerHelpers, type: :controller
