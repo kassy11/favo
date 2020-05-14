@@ -3,15 +3,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Books', type: :feature do
+  include LoginSupport
   scenario 'user search books and creates a new book favorite' do
     user = create(:user)
-
-    visit root_path
-    click_link 'ログイン'
-    fill_in 'Eメール', with: user.email
-    fill_in 'パスワード', with: user.password
-    click_button 'ログイン'
-
+    sign_in_as user
     expect{
       within '.book-fav-btns' do
         click_link('追加する')
@@ -26,6 +21,5 @@ RSpec.feature 'Books', type: :feature do
       click_link('リストに追加する')
 
     }.to change(user.books, :count).by(1)
-
   end
 end

@@ -3,15 +3,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Movies', type: :feature do
+  include LoginSupport
   scenario 'user search movies and creates a new movie favorite' do
     user = create(:user)
-
-    visit root_path
-    click_link 'ログイン'
-    fill_in 'Eメール', with: user.email
-    fill_in 'パスワード', with: user.password
-    click_button 'ログイン'
-
+    sign_in_as user
     expect{
       within '.movie-fav-btns' do
         click_link('追加する')
