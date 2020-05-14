@@ -1,5 +1,5 @@
 .search
   = form_with url: url, method: :get, local: true, class: 'col-md-6 offset-md-3' do |f|
     .search-form
-      = f.text_field :search, value: params['search']
+      = f.text_field :search, value: params['search'], id: 'search-form-id'
     = f.submit '検索',:name => nil, class: 'col-md-4 offset-md-4 submit-btn'

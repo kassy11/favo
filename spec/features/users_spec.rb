@@ -3,12 +3,15 @@
 require 'rails_helper'
 
 RSpec.feature 'Users', type: :feature do
-  scenario 'user create a new music favorite' do
+  scenario 'create new user' do
+
   end
 
-  scenario 'user create a new movie favorite' do
+  scenario 'view my fav list' do
+
   end
 
-  scenario 'user create a new book favorite' do
+  scenario 'view other users fav list' do
+
   end
 end

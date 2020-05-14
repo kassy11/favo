@@ -36,7 +36,7 @@
           .tab-pane.active#all
             .all_list
               .fav_list
-                h3.font-weight-bold
+                h3.font-weight-bold.music-fav-btns
                   | ARTIST LIST
                   = link_to "編集する", music_index_user_path(@user), :class => "list-btn btn btn-primary btn-lg" if user_signed_in? && current_user == @user
                   = link_to "追加する", musics_search_path, :class => "list-btn btn btn-primary btn-lg" if user_signed_in? && current_user == @user
@@ -55,7 +55,7 @@
                   .no-works-wrap
                     = image_tag "noworks.png", class: "img-fluid no-works-img"
               .fav_list
-                h3.font-weight-bold
+                h3.font-weight-bold.movie-fav-btns
                   | MOVIE LIST
                   = link_to "編集する", movie_index_user_path(@user), :class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
                   = link_to "追加する", movies_search_path, :class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
@@ -73,7 +73,7 @@
                   .no-works-wrap
                     = image_tag "noworks.png", class: "img-fluid no-works-img"
               .fav_list
-                h3.font-weight-bold
+                h3.font-weight-bold.book-fav-btns
                   | BOOK LIST
                   = link_to "編集する",book_index_user_path(@user), :class => "list-btn btn btn-primary btn-lg" if current_user != nil && current_user == @user
                   = link_to "追加する", books_search_path, :class => "list-btn btn btn-primary btn-lg" if user_signed_in? && current_user == @user
