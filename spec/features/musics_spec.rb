@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Musics', type: :feature do
-  include LoginSupport
   scenario 'user search artists and creates a new music favorite' do
     user = create(:user)
-    sign_in_as user
+    sign_in user
+    visit root_path
     expect{
       within '.music-fav-btns' do
         click_link('追加する')

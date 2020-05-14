@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Books', type: :feature do
-  include LoginSupport
   scenario 'user search books and creates a new book favorite' do
     user = create(:user)
-    sign_in_as user
+    sign_in user
+    visit root_path
     expect{
       within '.book-fav-btns' do
         click_link('追加する')

@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Users', type: :feature do
-  include LoginSupport
   scenario 'create new user with email and password' do
     visit root_path
     click_link '新規登録'
@@ -24,7 +23,7 @@ RSpec.feature 'Users', type: :feature do
 
   scenario 'view my fav list' do
     user = create(:user)
-    sign_in_as user
+    sign_in user
     visit root_path
     expect(page).to have_content(user.name)
   end
@@ -32,7 +31,8 @@ RSpec.feature 'Users', type: :feature do
   scenario 'view other users fav list' do
     user = create(:user)
     other_user = create(:user)
-    sign_in_as user
+    sign_in user
+    visit root_path
     visit user_path(other_user)
     expect(page).to have_content(other_user.name)
   end
