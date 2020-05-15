@@ -1,13 +1,24 @@
-version: '3.7'
+version: '3'
 services:
-  postgres:
+  db:
     image: postgres
-    restart: always
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-    hostname: postgres
-    ports:
-      - 5432:5432
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/favo
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - chrome
+  chrome:
+    image: selenium/standalone-chrome:3.141.59-dubnium
+    ports:
+      - 4444:4444
