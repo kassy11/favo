@@ -50,7 +50,6 @@ RSpec.configure do |config|
   # FactoryBotのメソッドをメソッド名だけで呼び出せるようにする設定
   config.include FactoryBot::Syntax::Methods
 
-
   # Deviseのメソッドをテスト内で使えるようにする設定
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::TestHelpers, type: :controller

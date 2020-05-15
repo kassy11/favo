@@ -7,7 +7,7 @@ RSpec.feature 'Books', type: :feature do
     user = create(:user)
     sign_in user
     visit root_path
-    expect{
+    expect do
       within '.book-fav-btns' do
         click_link('追加する')
       end
@@ -16,10 +16,9 @@ RSpec.feature 'Books', type: :feature do
       click_button '検索'
 
       expect(page).to have_content('村上春樹の検索結果')
-      first(".list-btns").click_link('詳細')
+      first('.list-btns').click_link('詳細')
       expect(page).to have_content('著者')
       click_link('リストに追加する')
-
-    }.to change(user.books, :count).by(1)
+    end.to change(user.books, :count).by(1)
   end
 end

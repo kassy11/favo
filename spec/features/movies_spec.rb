@@ -7,7 +7,7 @@ RSpec.feature 'Movies', type: :feature do
     user = create(:user)
     sign_in user
     visit root_path
-    expect{
+    expect do
       within '.movie-fav-btns' do
         click_link('追加する')
       end
@@ -16,11 +16,9 @@ RSpec.feature 'Movies', type: :feature do
       click_button '検索'
 
       expect(page).to have_content('ドラえもんの検索結果')
-      first(".list-btns").click_link('詳細')
+      first('.list-btns').click_link('詳細')
       expect(page).to have_content('ジャンル')
       click_link('リストに追加する')
-
-    }.to change(user.movies, :count).by(1)
-
+    end.to change(user.movies, :count).by(1)
   end
 end
